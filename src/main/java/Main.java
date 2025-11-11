@@ -1,1 +1,3 @@
-class hi
+public class Main {
+
+}
