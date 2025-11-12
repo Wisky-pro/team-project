@@ -1,0 +1,32 @@
+{"products": {
+    "https://www.bestbuy.ca/en-ca/product/19206110": {
+        "name": "Samsung 75\" QN70F Series 4K UHD HDR Neo QLED Tizen Smart TV (QN75QN70FAFXZC) - 2025 - Only at Best Buy",
+        "curPrice": 1699.99,
+        "historyPrice": [{
+            "date": "2025-11-11",
+            "price": 1699.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/19206130": {
+        "name": "Rastar 1:8 Scale Oracle Red Bull Racing 19 Remote Control Model Building Car Set - 2464 Piece, Collectible Sports Car",
+        "curPrice": 199.99,
+        "historyPrice": [{
+            "date": "2025-11-11",
+            "price": 199.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/19206120": {
+        "name": "Samsung 85\" Q7F Series 4K UHD HDR QLED Tizen Smart TV (QN85Q7FAAFXZC) - 2025",
+        "curPrice": 1699.99,
+        "historyPrice": [
+          {
+            "date": "2025-11-11",
+            "price": 1699.99
+        },
+          {
+            "date": "2025-11-9",
+            "price": 2099.99
+          }
+        ]
+    }
+}}
