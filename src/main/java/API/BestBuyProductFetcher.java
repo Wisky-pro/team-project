@@ -15,11 +15,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-public class BestBuyProductFetcher {
-    private String productURL;
-    private double price;
-    private static final HttpClient client = HttpClient.newHttpClient();
-    private String name;
+public class BestBuyProductFetcher extends Fetcher {
+    protected final String productURL;
+    protected double price;
 
     public BestBuyProductFetcher(String URL){
         this.productURL = URL;
@@ -35,8 +33,8 @@ public class BestBuyProductFetcher {
         }
     }
 
-
-    private HttpResponse<String> sendRequest() {
+    @Override
+    protected HttpResponse<String> sendRequest() {
         String productID = extractProductID(productURL);
 
         String url = "https://www.bestbuy.ca/api/v2/json/product/" + productID +
@@ -60,20 +58,20 @@ public class BestBuyProductFetcher {
             if (response.statusCode() == 200) {
                 return response;
             } else {
-                throw new IllegalArgumentException("Failed to fetch product info. Status: " + response.statusCode());
+                throw new IllegalArgumentException("Failed to fetch product info." + response.statusCode());
             }
-
         } catch (IOException | InterruptedException e) {
             throw new IllegalArgumentException("Failed to fetch product info, the request is invalid");
         }
     }
 
-    private JSONObject formatData(JSONObject responseJson){
+    @Override
+    protected JSONObject formatData(JSONObject responseJson){
 
         JSONObject productData = new JSONObject();
 
         price = responseJson.getDouble("salePrice");
-        name = responseJson.getString("name");
+        String name = responseJson.getString("name");
 
         JSONArray historyPrice = new JSONArray();
         JSONObject priceStamp = new JSONObject();
@@ -89,6 +87,7 @@ public class BestBuyProductFetcher {
         return productData;
     }
 
+    @Override
     public void updateJson() {
         String filePath = "data_access/priceHistory.json";
 
