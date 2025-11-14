@@ -4,7 +4,9 @@ import entity.User;
 
 public interface LogInUserDataAccessInterface {
 
-    boolean existsByName(String username);
+    boolean userExists(String username);
+
+    boolean isPasswordCorrect(String username, String password);
 
     User get(String username);
 

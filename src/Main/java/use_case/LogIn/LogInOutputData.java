@@ -10,9 +10,5 @@ public class LogInOutputData {
     public String getUsername() {
         return username;
     }
-
-    public String getUser() {
-        return null;
-    }
 }
 

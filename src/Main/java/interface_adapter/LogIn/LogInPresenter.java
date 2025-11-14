@@ -13,7 +13,7 @@ public class LogInPresenter implements LogInOutputBoundary {
 
     @Override
     public void prepareSuccessView(LogInOutputData data) {
-        viewModel.setSuccessMessage("Welcome, " + data.getUser());
+        viewModel.setSuccessMessage("Welcome, " + data.getUsername());
         viewModel.setLoggedIn(true);
         // In a real system: notify observers or fire property change
     }
