@@ -3,28 +3,26 @@ package data_access;
 import entity.User;
 import entity.UserFactory;
 import use_case.LogIn.LogInUserDataAccessInterface;
+import use_case.Signup.SignupUserDataAccessInterface;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class FileUserDataAccess implements LogInUserDataAccessInterface {
+public class FileUserDataAccessObject implements LogInUserDataAccessInterface, SignupUserDataAccessInterface {
 
     private final Map<String, User> users = new HashMap<>();
     private String currentUsername;
     private final UserFactory userFactory;
 
-    public FileUserDataAccess(String filename, UserFactory userFactory) {
+    public FileUserDataAccessObject(String filename, UserFactory userFactory) {
         this.userFactory = userFactory;
+
         // Optional: add a default test user
-        User defaultUser = userFactory.createUser("Kevin", "1234");
+        User defaultUser = userFactory.createUser("CSC207", "1234");
         users.put(defaultUser.getUsername(), defaultUser);
     }
 
-    // For adding new users
-    public void addUser(User user) {
-        users.put(user.getUsername(), user);
-    }
-
+    // --- Login interface methods ---
     @Override
     public boolean userExists(String username) {
         return users.containsKey(username);
@@ -46,9 +44,24 @@ public class FileUserDataAccess implements LogInUserDataAccessInterface {
         this.currentUsername = username;
     }
 
+    // --- Signup interface methods ---
+    @Override
+    public boolean usernameTaken(String username) {
+        return users.containsKey(username);
+    }
+
+    @Override
+    public void saveUser(User user) {
+        users.put(user.getUsername(), user);
+    }
+
+    @Override
+    public void addUser(User user){
+        saveUser(user);
+    }
+
     // Optional helper to access all users
     public Map<String, User> getUserMap() {
         return users;
     }
 }
-
