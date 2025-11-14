@@ -3,10 +3,16 @@
         "name": "HyperX QuadCast S RGB USB Condenser Microphone - Black",
         "curPrice": 155.98,
         "productURL": "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3",
-        "historyPrice": [{
-            "date": "2025-11-12",
-            "price": 155.98
-        }]
+        "historyPrice": [
+            {
+                "date": "2025-11-12",
+                "price": 155.98
+            },
+            {
+                "date": "2025-11-14",
+                "price": 209.99
+            }
+        ]
     },
     "https://www.bestbuy.ca/en-ca/product/laifen-premium-hair-dryer-lpr200gp-golden-pink-only-at-best-buy/17113615?source=collection&adSlot=1&slotPos=1": {
         "name": "Laifen Premium Hair Dryer (LPR200GP) - Golden Pink - Only at Best Buy",
@@ -74,6 +80,10 @@
             {
                 "date": "2025-11-13",
                 "price": 1699.99
+            },
+            {
+                "date": "2025-11-14",
+                "price": 1499.99
             }
         ]
     },
