@@ -126,6 +126,7 @@ public class BestBuyProductFetcher extends Fetcher {
                 newPrice.put("date", LocalDate.now().toString());
                 newPrice.put("price", price);
                 historyPrice.put(newPrice);
+                products.getJSONObject(productURL).put("curPrice", price);
             }
         } else {
             products.put(productURL, formatData(responseJson));
