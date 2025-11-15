@@ -1,27 +1,36 @@
 package interface_adapter.LogIn;
 
+import interface_adapter.Dashboard.DashboardViewModel;
+import interface_adapter.ViewManagerModel;
 import use_case.LogIn.LogInOutputBoundary;
 import use_case.LogIn.LogInOutputData;
 
 public class LogInPresenter implements LogInOutputBoundary {
 
-    private final LogInViewModel viewModel;
+    private final LogInViewModel loginViewModel;
+    private final DashboardViewModel dashboardViewModel;
+    private final ViewManagerModel viewManagerModel;
 
-    public LogInPresenter(LogInViewModel viewModel) {
-        this.viewModel = viewModel;
+    public LogInPresenter(LogInViewModel loginViewModel,
+                          DashboardViewModel dashboardViewModel,
+                          ViewManagerModel viewManagerModel) {
+        this.loginViewModel = loginViewModel;
+        this.dashboardViewModel = dashboardViewModel;
+        this.viewManagerModel = viewManagerModel;
     }
 
     @Override
     public void prepareSuccessView(LogInOutputData data) {
-        viewModel.setSuccessMessage("Welcome, " + data.getUsername());
-        viewModel.setLoggedIn(true);
-        // In a real system: notify observers or fire property change
+        dashboardViewModel.setMessage("Logged in as: " + data.getUsername());
+        dashboardViewModel.firePropertyChanged();
+
+        viewManagerModel.setActiveView("dashboard");
+        viewManagerModel.firePropertyChanged();
     }
 
     @Override
-    public void prepareFailView(String error) {
-        viewModel.setErrorMessage(error);
-        viewModel.setLoggedIn(false);
-        // Notify observers if needed
+    public void prepareFailView(String errorMessage) {
+        loginViewModel.setMessage(errorMessage);
+        loginViewModel.firePropertyChanged();
     }
 }

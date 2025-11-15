@@ -1,26 +1,30 @@
 package interface_adapter.Signup;
 
+import interface_adapter.ViewManagerModel;
 import use_case.Signup.SignupOutputBoundary;
 import use_case.Signup.SignupOutputData;
 
 public class SignupPresenter implements SignupOutputBoundary {
 
-    private final SignupViewModel viewModel;
+    private final SignupViewModel signupViewModel;
+    private final ViewManagerModel viewManagerModel;
 
-    public SignupPresenter(SignupViewModel viewModel) {
-        this.viewModel = viewModel;
+    public SignupPresenter(SignupViewModel signupViewModel, ViewManagerModel viewManagerModel) {
+        this.signupViewModel = signupViewModel;
+        this.viewManagerModel = viewManagerModel;
     }
 
     @Override
-    public void prepareSuccessView(SignupOutputData outputData) {
-        // Update the ViewModel with a success message
-        viewModel.setSuccessMessage("Account created successfully: " + outputData.getUsername());
+    public void prepareSuccessView(SignupOutputData data) {
+        signupViewModel.setSuccessMessage("Signup successful: " + data.getUsername());
+        viewManagerModel.setActiveView("login");
+        viewManagerModel.firePropertyChanged();
+
     }
 
     @Override
-    public void prepareFailView(String errorMessage) {
-        // Update the ViewModel with an error message
-        viewModel.setErrorMessage(errorMessage);
+    public void prepareFailView(String error) {
+        signupViewModel.setErrorMessage(error);
+        signupViewModel.firePropertyChanged();
     }
 }
-

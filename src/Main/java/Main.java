@@ -1,47 +1,59 @@
 import app.AppBuilder;
+import interface_adapter.ViewManagerModel;
+import view.DashboardView;
 import view.LoginView;
 import view.SignupView;
+import view.ViewManager;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Main {
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
 
-            // Build the app
-            AppBuilder appBuilder = new AppBuilder();
-            appBuilder.addLoginUseCase();
-            appBuilder.addSignupUseCase();
+            AppBuilder app = new AppBuilder();
+            app.addLoginUseCase()
+               .addSignupUseCase()
+               .addDashboardView();
 
-            LoginView loginView = appBuilder.getLoginView();
-            SignupView signupView = appBuilder.getSignupView();
+            LoginView loginView = app.getLoginView();
+            SignupView signupView = app.getSignupView();
+            DashboardView dashboardView = app.getDashboardView();
+            ViewManagerModel viewManagerModel = app.getViewManagerModel();
 
-            // Main frame
-            JFrame frame = new JFrame("Price tracker");
+            loginView.setSwitchToSignupCallback(() -> {
+                viewManagerModel.setActiveView("signup");
+                viewManagerModel.firePropertyChanged();
+            });
+
+            signupView.setSwitchToLoginCallback(() -> {
+                viewManagerModel.setActiveView("login");
+                viewManagerModel.firePropertyChanged();
+            });
+
+
+
+            JFrame frame = new JFrame("Price Tracker");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            // CardLayout panel
-            JPanel cardPanel = new JPanel(new CardLayout());
-            cardPanel.add(loginView, "login");
-            cardPanel.add(signupView, "signup");
+            JPanel screens = new JPanel(new CardLayout());
+            screens.add(loginView, "login");
+            screens.add(signupView, "signup");
+            screens.add(dashboardView, "dashboard");
 
-            frame.add(cardPanel);
+            // --- The ViewManager listens to ViewManagerModel and switches screens ---
+            new ViewManager(screens, viewManagerModel);
+
+            frame.add(screens);
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
 
-            // Switch between login and signup when buttons are clicked
-            // Here we assume LoginView and SignupView have methods to set navigation callbacks
-            loginView.setSwitchToSignupCallback(() -> {
-                CardLayout cl = (CardLayout) cardPanel.getLayout();
-                cl.show(cardPanel, "signup");
-            });
-
-            signupView.setSwitchToLoginCallback(() -> {
-                CardLayout cl = (CardLayout) cardPanel.getLayout();
-                cl.show(cardPanel, "login");
-            });
+            // At start show login
+            viewManagerModel.setActiveView("login");
+            viewManagerModel.firePropertyChanged();
         });
     }
 }

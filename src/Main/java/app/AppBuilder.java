@@ -2,56 +2,83 @@ package app;
 
 import data_access.FileUserDataAccessObject;
 import entity.UserFactory;
+import interface_adapter.Dashboard.DashboardViewModel;
 import interface_adapter.LogIn.*;
 import interface_adapter.Signup.*;
+import interface_adapter.ViewManagerModel;
 import use_case.LogIn.*;
 import use_case.Signup.*;
+import view.DashboardView;
 import view.LoginView;
 import view.SignupView;
 
 public class AppBuilder {
 
     private final UserFactory userFactory = new UserFactory();
-    private final LogInUserDataAccessInterface userDataAccess = new FileUserDataAccessObject("users.csv", userFactory);
+    private final FileUserDataAccessObject userDataAccess =
+            new FileUserDataAccessObject("users.csv", userFactory);
 
-    // Views (kept as fields for getters)
+    // Shared view models (ONE instance each)
+    private final LogInViewModel loginVM = new LogInViewModel();
+    private final SignupViewModel signupVM = new SignupViewModel();
+    private final DashboardViewModel dashboardVM = new DashboardViewModel();
+    private final ViewManagerModel viewManagerModel = new ViewManagerModel();
+
+    // Views
     private LoginView loginView;
     private SignupView signupView;
+    private DashboardView dashboardView;
 
-    // --- Add Login use case ---
     public AppBuilder addLoginUseCase() {
-        LogInViewModel loginViewModel = new LogInViewModel();
-        LogInPresenter loginPresenter = new LogInPresenter(loginViewModel);
-        LogInInteractor loginInteractor = new LogInInteractor(userDataAccess, loginPresenter);
-        LogInController loginController = new LogInController(loginInteractor);
 
-        loginView = new LoginView(loginController, loginViewModel);
+        LogInPresenter presenter =
+                new LogInPresenter(loginVM, dashboardVM, viewManagerModel);
+
+        LogInInteractor interactor =
+                new LogInInteractor(userDataAccess, presenter);
+
+        LogInController controller = new LogInController(interactor);
+
+        loginView = new LoginView(controller, loginVM);
 
         return this;
     }
 
-    // --- Add Signup use case ---
     public AppBuilder addSignupUseCase() {
-        SignupViewModel signupViewModel = new SignupViewModel();
-        SignupPresenter signupPresenter = new SignupPresenter(signupViewModel);
-        SignupInteractor signupInteractor = new SignupInteractor(
-                (SignupUserDataAccessInterface) userDataAccess,
-                signupPresenter,
-                userFactory
-        );
-        SignupController signupController = new SignupController(signupInteractor);
 
-        signupView = new SignupView(signupController, signupViewModel);
+        SignupPresenter presenter =
+                new SignupPresenter(signupVM, viewManagerModel);
+
+        SignupInteractor interactor =
+                new SignupInteractor(userDataAccess, presenter, userFactory);
+
+        SignupController controller = new SignupController(interactor);
+
+        signupView = new SignupView(controller, signupVM);
 
         return this;
     }
 
-    // --- Getters for views ---
+    public AppBuilder addDashboardView() {
+        dashboardView = new DashboardView(dashboardVM);
+        return this;
+    }
+
+    // --- Getters ---
+
     public LoginView getLoginView() {
         return loginView;
     }
 
     public SignupView getSignupView() {
         return signupView;
+    }
+
+    public DashboardView getDashboardView() {
+        return dashboardView;
+    }
+
+    public ViewManagerModel getViewManagerModel() {
+        return viewManagerModel;
     }
 }

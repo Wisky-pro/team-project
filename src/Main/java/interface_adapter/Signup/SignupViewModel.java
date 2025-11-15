@@ -30,4 +30,9 @@ public class SignupViewModel {
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
+
+    public void firePropertyChanged(){
+        pcs.firePropertyChange("message", null, this.message);
+    }
+
 }
