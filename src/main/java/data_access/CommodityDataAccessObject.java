@@ -3,7 +3,14 @@ package data_access;
 import entity.Commodity;
 import use_case.Recommendation.PurchaseRecommendationDataAccessInterface;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
 
 /**
   Data access object for commodity-related use cases (9 and 10).
@@ -19,9 +26,29 @@ public class CommodityDataAccessObject implements PurchaseRecommendationDataAcce
     private final Map<String, Commodity> currentCommodities = new HashMap<>();
     private final List<Commodity> cart = new ArrayList<>();
 
-    public CommodityDataAccessObject(String priceHistoryFilename) {
-        // TODO: read priceHistory.json and initialize priceHistory + currentCommodities
+    public CommodityDataAccessObject() {
         // This constructor is just a placeholder so AppBuilder can pass a filename.
+        try{
+        String filePath = "priceHistory.json";
+        String jsontext = Files.readString(Paths.get(filePath));
+        JSONObject jsonObject = new JSONObject(jsontext);
+        JSONObject json = jsonObject.getJSONObject("products");
+        for (String url : json.keySet()) {
+            JSONObject curr_product  = json.getJSONObject(url);;
+            String name = curr_product.getString("name");
+            Commodity commodity = new Commodity(name,curr_product.getDouble("curPrice"));
+            this.currentCommodities.put(name,commodity);
+            List<Double> pricelist = new ArrayList<>();
+            JSONArray jsonArray = curr_product.getJSONArray("historyPrice");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                pricelist.add(jsonArray.getJSONObject(i).getDouble("price"));
+            }
+            this.priceHistory.put(name,pricelist);
+        }
+        } catch (IOException e) {
+            throw new RuntimeException("Falied to read JSON file");
+        }
+
     }
 
     // --------- Use Case 9 methods ---------

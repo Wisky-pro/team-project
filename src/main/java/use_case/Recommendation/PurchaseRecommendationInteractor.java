@@ -42,10 +42,10 @@ public class PurchaseRecommendationInteractor implements PurchaseRecommendationI
         String suggestion;
         // According to your spec: higher than mean -> recommend to buy
         // equal or lower -> not recommend
-        if (currentPrice > mean) {
-            suggestion = "Price is higher than mean, recommend to buy.";
+        if (currentPrice < mean) {
+            suggestion = "Price is lower than mean, recommend to buy.";
         } else {
-            suggestion = "Price is equal or lower than mean, NOT recommend to buy.";
+            suggestion = "Price is equal or higher than mean, NOT recommend to buy.";
         }
 
         PurchaseRecommendationOutputData outputData =
