@@ -1,7 +1,7 @@
 {"products": {
     "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3": {
         "name": "HyperX QuadCast S RGB USB Condenser Microphone - Black",
-        "curPrice": 155.98,
+        "curPrice": 159.99,
         "productURL": "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3",
         "historyPrice": [
             {
@@ -15,17 +15,27 @@
             {
                 "date": "2025-11-15",
                 "price": 155.98
+            },
+            {
+                "date": "2025-11-19",
+                "price": 159.99
             }
         ]
     },
     "https://www.bestbuy.ca/en-ca/product/laifen-premium-hair-dryer-lpr200gp-golden-pink-only-at-best-buy/17113615?source=collection&adSlot=1&slotPos=1": {
         "name": "Laifen Premium Hair Dryer (LPR200GP) - Golden Pink - Only at Best Buy",
-        "curPrice": 219.99,
+        "curPrice": 159.99,
         "productURL": "https://www.bestbuy.ca/en-ca/product/laifen-premium-hair-dryer-lpr200gp-golden-pink-only-at-best-buy/17113615?source=collection&adSlot=1&slotPos=1",
-        "historyPrice": [{
-            "date": "2025-11-12",
-            "price": 219.99
-        }]
+        "historyPrice": [
+            {
+                "date": "2025-11-12",
+                "price": 219.99
+            },
+            {
+                "date": "2025-11-19",
+                "price": 159.99
+            }
+        ]
     },
     "https://www.bestbuy.ca/en-ca/product/logitech-mx-master-4-bluetooth-optical-mouse-w-advanced-performance-haptic-feedback-black-only-at-best-buy/19430806": {
         "name": "Logitech MX Master 4 Bluetooth Optical Mouse w/ Advanced Performance Haptic Feedback - Black - Only at Best Buy",
@@ -54,6 +64,10 @@
             {
                 "date": "2025-11-14",
                 "price": 299.99
+            },
+            {
+                "date": "2025-11-19",
+                "price": 209.99
             }
         ]
     },
