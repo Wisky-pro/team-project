@@ -1,7 +1,7 @@
 {"products": {
     "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3": {
         "name": "HyperX QuadCast S RGB USB Condenser Microphone - Black",
-        "curPrice": 159.99,
+        "curPrice": 155.98,
         "productURL": "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3",
         "historyPrice": [
             {
@@ -19,6 +19,10 @@
             {
                 "date": "2025-11-19",
                 "price": 159.99
+            },
+            {
+                "date": "2025-11-20",
+                "price": 155.98
             }
         ]
     },
@@ -107,7 +111,7 @@
     },
     "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk": {
         "name": "Logitech MX Mechanical Wireless Full-size Backlit Tactile Keyboard - Graphite",
-        "curPrice": 249.99,
+        "curPrice": 199.99,
         "productURL": "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk",
         "historyPrice": [
             {
@@ -117,6 +121,10 @@
             {
                 "date": "2025-11-13",
                 "price": 249.99
+            },
+            {
+                "date": "2025-11-20",
+                "price": 199.99
             }
         ]
     }
