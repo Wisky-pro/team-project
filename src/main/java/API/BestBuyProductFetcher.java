@@ -18,6 +18,7 @@ import org.json.JSONObject;
 public class BestBuyProductFetcher extends Fetcher {
     protected final String productURL;
     protected double price;
+    protected String name;
 
     public BestBuyProductFetcher(String URL){
         this.productURL = URL;
@@ -69,9 +70,6 @@ public class BestBuyProductFetcher extends Fetcher {
 
         JSONObject productData = new JSONObject();
 
-        price = responseJson.getDouble("salePrice");
-        String name = responseJson.getString("name");
-
         JSONArray historyPrice = new JSONArray();
         JSONObject priceStamp = new JSONObject();
         priceStamp.put("date", LocalDate.now().toString());
@@ -88,10 +86,10 @@ public class BestBuyProductFetcher extends Fetcher {
 
     @Override
     public void updateJson() {
-        String filePath = "data_access/priceHistory.json";
+        String filePath = "priceHistory.json";
 
         File file = new File(filePath);
-        if (file.exists()) {
+        if (!file.exists()) {
             try{
                 file.createNewFile();
             } catch (IOException e) {
@@ -110,22 +108,26 @@ public class BestBuyProductFetcher extends Fetcher {
         JSONObject json;
         if (content.isEmpty()) {
             json = new JSONObject();
-            json.put("products", new org.json.JSONArray());
+            json.put("products", new org.json.JSONObject());
         } else {
             json = new JSONObject(content);
         }
 
         JSONObject responseJson = new JSONObject(sendRequest().body());
+        price = responseJson.getDouble("salePrice");
+        name = responseJson.getString("name");
 
         JSONObject products = json.getJSONObject("products");
         if (products.has(productURL)) {
             JSONArray historyPrice = products.getJSONObject(productURL).getJSONArray("historyPrice");
             double lastPrice = historyPrice.getJSONObject(historyPrice.length()-1).getDouble("price");
+
             if (lastPrice != price){
                 JSONObject newPrice = new JSONObject();
                 newPrice.put("date", LocalDate.now().toString());
                 newPrice.put("price", price);
                 historyPrice.put(newPrice);
+                products.getJSONObject(productURL).put("curPrice", price);
             }
         } else {
             products.put(productURL, formatData(responseJson));
