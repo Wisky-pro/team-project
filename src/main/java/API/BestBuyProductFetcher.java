@@ -47,6 +47,7 @@ public class BestBuyProductFetcher extends Fetcher {
                 .header("Accept-Language", "en-US,en;q=0.9")
                 .header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_3_1) " +
                         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
+                .header("Referer", "https://www.bestbuy.ca/en-ca/product/19206111")
                 .header("X-Requested-With", "XMLHttpRequest")
                 .GET()
                 .build();
