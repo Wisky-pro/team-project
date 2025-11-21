@@ -1,7 +1,7 @@
 {"products": {
     "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3": {
         "name": "HyperX QuadCast S RGB USB Condenser Microphone - Black",
-        "curPrice": 155.98,
+        "curPrice": 159.99,
         "productURL": "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3",
         "historyPrice": [
             {
@@ -23,6 +23,10 @@
             {
                 "date": "2025-11-20",
                 "price": 155.98
+            },
+            {
+                "date": "2025-11-21",
+                "price": 159.99
             }
         ]
     },
