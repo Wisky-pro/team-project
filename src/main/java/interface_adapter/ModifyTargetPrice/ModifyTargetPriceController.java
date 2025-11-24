@@ -11,7 +11,7 @@ public class ModifyTargetPriceController {
         this.inputBoundary = boundary;
     }
 
-    public void updatePrice(CartItem item, int newPrice) {
+    public void execute(CartItem item, int newPrice) {
         ModifyTargetPriceInputData input = new ModifyTargetPriceInputData(item, newPrice);
 
         inputBoundary.execute(input);

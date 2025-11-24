@@ -15,6 +15,16 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    // alternative constructor for adding target price. We can delete the original one later. 
+
+    public CartItem(String productUrl, String name, double price, int quantity, int targetPrice) {
+        this.productUrl = productUrl;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.targetPrice = targetPrice;
+    }
+
     public String getProductUrl() {
         return productUrl;
     }
