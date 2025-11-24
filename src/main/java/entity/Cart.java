@@ -9,7 +9,7 @@ public class Cart {
     private final Map<String, CartItem> items = new HashMap<>();
 
     // for the target price use case
-    private double targetTotalPrice;
+    // private double targetTotalPrice;
 
     public void addItem(String productUrl, String name, double price, int quantity) {
         if (items.containsKey(productUrl)) {

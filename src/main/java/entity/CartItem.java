@@ -6,6 +6,7 @@ public class CartItem {
     private final String name;
     private final double price;
     private int quantity;
+    private int targetPrice;
 
     public CartItem(String productUrl, String name, double price, int quantity) {
         this.productUrl = productUrl;
@@ -30,11 +31,19 @@ public class CartItem {
         return quantity;
     }
 
+    public int getTargetPrice() {
+        return targetPrice;
+    }
+
     public void increaseQuantity(int amount) {
         this.quantity += amount;
     }
 
     public void decreaseQuantity(int amount) {
         this.quantity -= amount;
+    }
+
+    public void setTargetPrice(int newPrice) {
+        targetPrice = newPrice;
     }
 }
