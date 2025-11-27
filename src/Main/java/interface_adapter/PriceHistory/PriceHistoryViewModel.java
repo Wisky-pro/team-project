@@ -1,5 +1,6 @@
 package interface_adapter.PriceHistory;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,12 @@ public class PriceHistoryViewModel {
     private List<Double> prices;
     private String productName;
     private String errorMessage;
-    public PriceHistoryViewModel(List<Date> dates, List<Double> prices) {}
+    public PriceHistoryViewModel() {
+        this.dates = new ArrayList<>();
+        this.prices = new ArrayList<>();
+        this.productName = "";
+        this.errorMessage = "";
+    }
 
     public List<Date> getDates() {
         return dates;
