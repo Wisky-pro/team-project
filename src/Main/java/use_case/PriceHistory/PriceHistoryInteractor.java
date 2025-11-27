@@ -1,8 +1,9 @@
 package use_case.PriceHistory;
 
+import entity.PriceHistory;
+
 import java.awt.*;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
 import java.util.List;
 
@@ -24,7 +25,8 @@ public class PriceHistoryInteractor implements PriceHistoryInputBoundary {
         String productUrl = InputData.getProductUrl();
         int numDays = InputData.getNumDaysView();
 
-        Map<LocalDate, Double> priceHistory = dataAccess.getPriceHistory(productUrl);
+        PriceHistory history = dataAccess.getPriceHistory(productUrl);
+        Map<LocalDate, Double> priceHistory = history.getPriceHistory();
         LocalDate today = LocalDate.now();
 
         List<LocalDate> dates = new ArrayList<>();
