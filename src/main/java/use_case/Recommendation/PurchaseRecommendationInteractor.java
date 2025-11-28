@@ -39,6 +39,11 @@ public class PurchaseRecommendationInteractor implements PurchaseRecommendationI
 
         double currentPrice = dataAccess.getCurrentPrice(name);
 
+        PurchaseRecommendationOutputData outputData = getPurchaseRecommendationOutputData(currentPrice, mean, name);
+        presenter.prepareSuccessView(outputData);
+    }
+
+    private static PurchaseRecommendationOutputData getPurchaseRecommendationOutputData(double currentPrice, double mean, String name) {
         String suggestion;
         // According to your spec: higher than mean -> recommend to buy
         // equal or lower -> not recommend
@@ -48,8 +53,6 @@ public class PurchaseRecommendationInteractor implements PurchaseRecommendationI
             suggestion = "Price is equal or higher than mean, NOT recommend to buy.";
         }
 
-        PurchaseRecommendationOutputData outputData =
-                new PurchaseRecommendationOutputData(name, currentPrice, mean, suggestion);
-        presenter.prepareSuccessView(outputData);
+        return new PurchaseRecommendationOutputData(name, currentPrice, mean, suggestion);
     }
 }
