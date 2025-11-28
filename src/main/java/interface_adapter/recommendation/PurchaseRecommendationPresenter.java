@@ -1,6 +1,6 @@
-package interface_adapter.Recommendation;
+package interface_adapter.recommendation;
 
-import interface_adapter.Dashboard.DashboardViewModel;
+import interface_adapter.dashboard.DashboardViewModel;
 import use_case.Recommendation.PurchaseRecommendationOutputBoundary;
 import use_case.Recommendation.PurchaseRecommendationOutputData;
 

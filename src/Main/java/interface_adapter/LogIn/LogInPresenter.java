@@ -1,6 +1,6 @@
-package interface_adapter.LogIn;
+package interface_adapter.login;
 
-import interface_adapter.Dashboard.DashboardViewModel;
+import interface_adapter.dashboard.DashboardViewModel;
 import interface_adapter.ViewManagerModel;
 import use_case.LogIn.LogInOutputBoundary;
 import use_case.LogIn.LogInOutputData;

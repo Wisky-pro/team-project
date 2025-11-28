@@ -1,10 +1,9 @@
 package view;
 
-import interface_adapter.LogIn.LogInController;
-import interface_adapter.LogIn.LogInViewModel;
+import interface_adapter.login.LogInController;
+import interface_adapter.login.LogInViewModel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 

@@ -11,7 +11,7 @@ public class Main {
             appBuilder.addCartUseCase();
 
             JFrame frame = new JFrame("Price Tracker Test");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
             frame.add(appBuilder.getPriceTrackerView());
             frame.pack();

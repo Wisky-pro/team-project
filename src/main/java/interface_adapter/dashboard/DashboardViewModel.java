@@ -1,4 +1,4 @@
-package interface_adapter.Dashboard;
+package interface_adapter.dashboard;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

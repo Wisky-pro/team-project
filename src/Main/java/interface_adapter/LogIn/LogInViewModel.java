@@ -1,4 +1,4 @@
-package interface_adapter.LogIn;
+package interface_adapter.login;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

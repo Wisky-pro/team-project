@@ -1,7 +1,7 @@
 package app;
 
 import data_access.FakePurchaseRecommendationDataAccessObject;
-import interface_adapter.Recommendation.ConsolePurchaseRecommendationPresenter;
+import interface_adapter.recommendation.ConsolePurchaseRecommendationPresenter;
 import use_case.Recommendation.*;
 
 public class TestRecommendation {

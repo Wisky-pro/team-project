@@ -1,10 +1,9 @@
 package app;
 
 import data_access.CommodityDataAccessObject;
-import data_access.FakePurchaseRecommendationDataAccessObject;
-import interface_adapter.Dashboard.DashboardViewModel;
-import interface_adapter.Recommendation.PurchaseRecommendationController;
-import interface_adapter.Recommendation.PurchaseRecommendationPresenter;
+import interface_adapter.dashboard.DashboardViewModel;
+import interface_adapter.recommendation.PurchaseRecommendationController;
+import interface_adapter.recommendation.PurchaseRecommendationPresenter;
 import use_case.Recommendation.*;
 import view.DashboardViewForTest;
 
@@ -16,6 +15,19 @@ public class TestRecommendationGuiMain {
         DashboardViewModel dashboardVM = new DashboardViewModel();
 
         // 2. DataAccess
+        PurchaseRecommendationController controller = getPurchaseRecommendationController(dashboardVM);
+
+        // 6. View
+        DashboardViewForTest view = new DashboardViewForTest(dashboardVM, controller);
+
+        JFrame frame = new JFrame("Test Recommendation");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setContentPane(view);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    private static PurchaseRecommendationController getPurchaseRecommendationController(DashboardViewModel dashboardVM) {
         PurchaseRecommendationDataAccessInterface dataAccess =
                 new CommodityDataAccessObject();
 
@@ -28,16 +40,6 @@ public class TestRecommendationGuiMain {
                 new PurchaseRecommendationInteractor(dataAccess, presenter);
 
         // 5. Controller
-        PurchaseRecommendationController controller =
-                new PurchaseRecommendationController(interactor);
-
-        // 6. View
-        DashboardViewForTest view = new DashboardViewForTest(dashboardVM, controller);
-
-        JFrame frame = new JFrame("Test Recommendation");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(view);
-        frame.pack();
-        frame.setVisible(true);
+        return new PurchaseRecommendationController(interactor);
     }
 }

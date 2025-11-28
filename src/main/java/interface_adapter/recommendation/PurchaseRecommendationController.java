@@ -1,4 +1,4 @@
-package interface_adapter.Recommendation;
+package interface_adapter.recommendation;
 
 import use_case.Recommendation.PurchaseRecommendationInputBoundary;
 import use_case.Recommendation.PurchaseRecommendationInputData;
