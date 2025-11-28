@@ -1,5 +1,7 @@
 package use_case.ModifyTargetPrice;
 
+import entity.CartItem;
+
 public class ModifyTargetPriceInteractor implements ModifyTargetPriceInputBoundary {
     private final ModifyTargetPriceDataAccessInterface dataAccess;
     private final ModifyTargetPriceOutputBoundary outputBoundary;
@@ -19,7 +21,8 @@ public class ModifyTargetPriceInteractor implements ModifyTargetPriceInputBounda
             return;
         }
 
-        // Next step: Save the cart item and the new updated price into the system.
+        CartItem item = input.getItem();
+        dataAccess.setCurrentTargetPrice(item, price);
 
         ModifyTargetPriceOutputData output = new ModifyTargetPriceOutputData(price);
 

@@ -40,11 +40,15 @@ public class ModifyTargetPriceView extends JFrame implements PropertyChangeListe
             setTitle("Cart");
             setLayout(new BorderLayout());
 
+            ModifyTargetPricePanel.setLayout(new BoxLayout(ModifyTargetPricePanel, BoxLayout.Y_AXIS));
+
             // int currentTargetPrice = dataAccessInterface.getCurrentTargetPrice(item);
 
             JButton updateButton = new JButton("Update price");
 
             updateButton.addActionListener(e -> updateTargetPrice());
+
+            pack();
     }
 
     private void updateTargetPrice() {
