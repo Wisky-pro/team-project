@@ -16,6 +16,8 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
     private final JTextField quantityField = new JTextField("1", 5);
     private final JButton addButton = new JButton("Add to Cart");
     private final JButton viewCartButton = new JButton("View Cart");
+    private final JButton priceRecommendationButton = new JButton("Price Recommendation");
+
     private final JLabel messageLabel = new JLabel(" ");
     private final JLabel totalLabel = new JLabel("Total: $0.00");
 
@@ -24,6 +26,8 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
     private final CartViewModel cartViewModel;
     private final CartDataAccessInterface cartDataAccess;
     private final String username;
+
+    private Runnable switchToRecommendationCallback;
 
     public PriceTrackerView(AddToCartController addToCartController,
                             RemoveFromCartController removeFromCartController,
@@ -48,11 +52,15 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         urlPanel.add(addButton);
         urlPanel.add(viewCartButton);
 
+        JPanel recPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        recPanel.add(priceRecommendationButton);
+
         JPanel infoPanel = new JPanel(new GridLayout(2, 1));
         infoPanel.add(messageLabel);
         infoPanel.add(totalLabel);
 
         add(urlPanel);
+        add(recPanel);   // <--- under the View Cart button
         add(infoPanel);
 
         addButton.addActionListener(e -> {
@@ -93,6 +101,16 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
             CartWindow window = new CartWindow(cartDataAccess, removeFromCartController, cartViewModel, username);
             window.setVisible(true);
         });
+
+        priceRecommendationButton.addActionListener(e -> {
+            if (switchToRecommendationCallback != null) {
+                switchToRecommendationCallback.run();
+            }
+        });
+    }
+
+    public void setSwitchToRecommendationCallback(Runnable callback) {
+        this.switchToRecommendationCallback = callback;
     }
 
     @Override
