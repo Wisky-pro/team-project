@@ -19,7 +19,7 @@ import org.json.JSONArray;
  - Actually load data from priceHistory.json
  - Maintain a cart data structure
  */
-public class CommodityDataAccessObject implements PurchaseRecommendationDataAccessInterface{
+public class CommodityDataAccessObject implements PurchaseRecommendationDataAccessInterface {
 
     // Example in-memory storage. You will replace this with real JSON loading.
     private final Map<String, List<Double>> priceHistory = new HashMap<>();

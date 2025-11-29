@@ -1,26 +1,18 @@
 package view;
 
-import entity.CartItem;
-import interface_adapter.Cart.CartViewModel;
 import interface_adapter.ModifyTargetPrice.ModifyTargetPriceController;
 import interface_adapter.ModifyTargetPrice.ModifyTargetPriceViewModel;
-import interface_adapter.RemoveFromCart.RemoveFromCartController;
-import use_case.Cart.CartDataAccessInterface;
 import use_case.ModifyTargetPrice.ModifyTargetPriceDataAccessInterface;
-import interface_adapter.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
 public class ModifyTargetPriceView extends JFrame implements PropertyChangeListener {
-    private final ModifyTargetPriceDataAccessInterface dataAccessInterface;
     private final ModifyTargetPriceController controller;
     private final ModifyTargetPriceViewModel viewModel;
-
-    private CartItem item;
+    private final String username;
+    private final String productUrl;
 
     private final JPanel ModifyTargetPricePanel = new JPanel();
     private final JTextField updatedTargetPriceField = new JTextField(10);
@@ -28,31 +20,30 @@ public class ModifyTargetPriceView extends JFrame implements PropertyChangeListe
     
     public ModifyTargetPriceView(ModifyTargetPriceDataAccessInterface dataAccessInterface, 
                                 ModifyTargetPriceController controller,
-                                ModifyTargetPriceViewModel model
+                                ModifyTargetPriceViewModel model,
+                                String username,
+                                String productUrl
                                 ) {
     
-            this.dataAccessInterface = dataAccessInterface;
             this.controller = controller;
             this.viewModel = model;
+            this.username = username;
+            this.productUrl = productUrl;
 
             viewModel.addPropertyChangeListener(this);
 
-            setTitle("Cart");
+            setTitle("Update target price");
             setLayout(new BorderLayout());
 
             ModifyTargetPricePanel.setLayout(new BoxLayout(ModifyTargetPricePanel, BoxLayout.Y_AXIS));
 
-            // int currentTargetPrice = dataAccessInterface.getCurrentTargetPrice(item);
-
             JButton updateButton = new JButton("Update price");
-
             updateButton.addActionListener(e -> updateTargetPrice());
 
             pack();
     }
 
     private void updateTargetPrice() {
-        // Do the required stuff in here
         int updatedPrice = 0;
 
         String input = updatedTargetPriceField.getText().trim();
@@ -60,7 +51,7 @@ public class ModifyTargetPriceView extends JFrame implements PropertyChangeListe
             updatedPrice = Integer.parseInt(input);
 
             if (updatedPrice <= 0) {
-                message.setText("Your updated price must be negative. ");
+                message.setText("Your updated price must be positive. ");
                 return;
             }
         }
@@ -70,13 +61,13 @@ public class ModifyTargetPriceView extends JFrame implements PropertyChangeListe
             return;
         }
 
-        controller.execute(item, updatedPrice);
+        controller.execute(username, productUrl, updatedPrice);
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent event) {
         message.setText(viewModel.getMessage());
 
-        // Maybe clear out the text field also?
+        updatedTargetPriceField.setText("");
     }
 }

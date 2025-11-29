@@ -1,20 +1,25 @@
 package use_case.ModifyTargetPrice;
-import entity.CartItem;
 
 public class ModifyTargetPriceInputData {
-    private final CartItem item;  
+    private final String username;
+    private final String productUrl;
     private final int newPrice;
     
-    public ModifyTargetPriceInputData(CartItem item, int newPrice) {
-        this.item = item;
+    public ModifyTargetPriceInputData(String username, String productUrl, int newPrice) {
+        this.username = username;
         this.newPrice = newPrice;
+        this.productUrl = productUrl;
     }
 
-    public CartItem getItem() {
-        return item;
-    }
-
-    public int getPrice() {
+    public int getUpdatedPrice() {
         return newPrice;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getProductUrl() {
+        return productUrl;
     }
 }

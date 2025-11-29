@@ -32,4 +32,8 @@ public class AddToCartInputData {
     public int getQuantity() {
         return quantity;
     }
+
+    public int getTargetPrice() {
+        return targetPrice;
+    }
 }

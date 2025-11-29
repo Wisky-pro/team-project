@@ -48,8 +48,8 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         urlPanel.add(new JLabel("Quantity:"));
         urlPanel.add(quantityField);
 
-        //urlPanel.add(new JLabel("Target Price: "));
-        //urlPanel.add(targetPriceField);
+        urlPanel.add(new JLabel("Target Price: "));
+        urlPanel.add(targetPriceField);
 
         urlPanel.add(addButton);
         urlPanel.add(viewCartButton);
@@ -64,7 +64,7 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         addButton.addActionListener(e -> {
             String url = urlField.getText().trim();
             String quantityText = quantityField.getText().trim();
-            //String targetPriceText = targetPriceField.getText().trim();
+            String targetPriceText = targetPriceField.getText().trim();
 
             int quantity;
 
@@ -87,7 +87,7 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
             }
 
             int targetPrice;
-            /* 
+            
 
             try {
                 targetPrice = Integer.parseInt(targetPriceText);
@@ -107,14 +107,13 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
                 urlField.requestFocusInWindow();
                 return;
             }
-                */
 
             if (url.isEmpty()) {
                 messageLabel.setText("Please enter a URL.");
                 return;
             }
 
-            addToCartController.execute(username, url, quantity); //targetPrice);
+            addToCartController.execute(username, url, quantity, targetPrice); 
 
             urlField.setText("");
             quantityField.setText("1");

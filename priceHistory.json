@@ -57,6 +57,15 @@
             }
         ]
     },
+    "https://www.bestbuy.ca/en-ca/product/google-tv-streamer-4k-porcelain/17970356?source=collection&adSlot=1&slotPos=1": {
+        "name": "Google TV Streamer (4K) - Porcelain",
+        "curPrice": 99.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/google-tv-streamer-4k-porcelain/17970356?source=collection&adSlot=1&slotPos=1",
+        "historyPrice": [{
+            "date": "2025-11-29",
+            "price": 99.99
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/oakley-meta-vanguard-glasses-with-meta-ai-audio-photo-video-compatibility-black-prizm-24k/19466231": {
         "name": "Oakley | Meta Vanguard Glasses with Meta AI, Audio, Photo, Video Compatibility - Black/Prizm 24K",
         "curPrice": 679.99,

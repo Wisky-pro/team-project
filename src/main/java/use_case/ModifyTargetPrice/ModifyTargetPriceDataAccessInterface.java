@@ -1,11 +1,8 @@
 package use_case.ModifyTargetPrice;
-
-import entity.CartItem;
+import entity.Cart;
 
 public interface ModifyTargetPriceDataAccessInterface {
-    boolean isValidPrice(int price);
-
-    // maybe this isn't necsessary 
-    // int getCurrentTargetPrice(CartItem item);
-    void setCurrentTargetPrice(CartItem item, int price);
+    Cart getCart(String username);
+    
+    void saveCart(String username, Cart cart);
 }

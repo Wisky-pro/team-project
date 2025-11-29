@@ -2,7 +2,6 @@ package interface_adapter.ModifyTargetPrice;
 
 import use_case.ModifyTargetPrice.ModifyTargetPriceInputBoundary;
 import use_case.ModifyTargetPrice.ModifyTargetPriceInputData;
-import entity.CartItem;
 
 public class ModifyTargetPriceController {
     private final ModifyTargetPriceInputBoundary inputBoundary;
@@ -11,9 +10,8 @@ public class ModifyTargetPriceController {
         this.inputBoundary = boundary;
     }
 
-    public void execute(CartItem item, int newPrice) {
-        ModifyTargetPriceInputData input = new ModifyTargetPriceInputData(item, newPrice);
-
+    public void execute(String username, String productUrl, int newPrice) {
+        ModifyTargetPriceInputData input = new ModifyTargetPriceInputData(username, productUrl , newPrice);
         inputBoundary.execute(input);
     }
 }

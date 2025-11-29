@@ -1,6 +1,6 @@
 package use_case.ModifyTargetPrice;
 
-import entity.CartItem;
+import entity.Cart;
 
 public class ModifyTargetPriceInteractor implements ModifyTargetPriceInputBoundary {
     private final ModifyTargetPriceDataAccessInterface dataAccess;
@@ -14,18 +14,20 @@ public class ModifyTargetPriceInteractor implements ModifyTargetPriceInputBounda
 
     @Override 
     public void execute(ModifyTargetPriceInputData input) {
-        int price = input.getPrice();
+        String username = input.getUsername();
+        String productUrl = input.getProductUrl();
+        int price = input.getUpdatedPrice();
 
-        if (!dataAccess.isValidPrice(price)) {
+        if (price <= 0) {
             outputBoundary.prepareFailView("You have inputted a invalid price. Please try again.");
             return;
         }
 
-        CartItem item = input.getItem();
-        dataAccess.setCurrentTargetPrice(item, price);
+        Cart cart = dataAccess.getCart(username);
+        cart.updateItem(productUrl, price);
+        dataAccess.saveCart(username, cart);
 
         ModifyTargetPriceOutputData output = new ModifyTargetPriceOutputData(price);
-
         outputBoundary.prepareSuccessView(output);
     }
 }
