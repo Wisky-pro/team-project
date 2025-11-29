@@ -7,13 +7,12 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
 
             AppBuilder appBuilder = new AppBuilder();
+            appBuilder.addDashboardView();
 
-            appBuilder.addCartUseCase();
-
-            JFrame frame = new JFrame("Price Tracker Test");
+            JFrame frame = new JFrame("Price Tracker Dashboard");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            frame.add(appBuilder.getPriceTrackerView());
+            frame.setContentPane(appBuilder.getDashboardView());
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
