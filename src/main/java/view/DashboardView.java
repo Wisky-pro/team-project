@@ -28,7 +28,7 @@ public class DashboardView extends JPanel implements PropertyChangeListener {
         add(urlField);
 
         add(addButton);
-        add(Box.createVerticalStrut(10));
+        add(Box.createVerticalStrut(15));
 
         JPanel buttons = new JPanel();
         buttons.add(cartButton);
