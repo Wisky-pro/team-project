@@ -22,4 +22,6 @@ public class InMemoryCartDataAccess implements CartDataAccessInterface {
     public void saveCart(String username, Cart cart) {
         carts.put(username, cart);
     }
+
+    // New: add methods that update the cart. 
 }

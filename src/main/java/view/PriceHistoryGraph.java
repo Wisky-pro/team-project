@@ -16,9 +16,9 @@ public class PriceHistoryGraph {
         List<Double> yData = new ArrayList<>();
 
         LocalDate today = LocalDate.now();
-        int numDates = 10; //number of dates in the x-axis (numDates >= len(yData))
+        int numDates = 10; // number of dates in the x-axis (numDates >= len(yData))
 
-        //Dummy prices & dates
+        // Dummy prices & dates
         Map<LocalDate, Double> priceByDate = new HashMap<>();
         priceByDate.put(LocalDate.of(2025, 11, 6), 1.0);
         priceByDate.put(LocalDate.of(2025, 11, 9), 2.0);
