@@ -7,15 +7,16 @@ import javax.swing.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class DashboardViewForTest extends JPanel implements PropertyChangeListener {
+public class RecommendationView extends JPanel implements PropertyChangeListener {
 
     private final DashboardViewModel viewModel;
-
+    private Runnable switchToPriceTrackerViewCallback;
     private final JTextField nameField = new JTextField(20);
     private final JTextArea resultArea = new JTextArea(5, 30);
+    private final JButton backButton = new JButton("Back to PriceTrackerView");
 
-    public DashboardViewForTest(DashboardViewModel viewModel,
-                                PurchaseRecommendationController controller) {
+    public RecommendationView(DashboardViewModel viewModel,
+                              PurchaseRecommendationController controller) {
         this.viewModel = viewModel;
 
         this.viewModel.addPropertyChangeListener(this);
@@ -25,11 +26,17 @@ public class DashboardViewForTest extends JPanel implements PropertyChangeListen
         this.add(nameField);
         JButton button = new JButton("Get Recommendation");
         this.add(button);
+        this.add(backButton);
         this.add(new JScrollPane(resultArea));
 
         button.addActionListener(e -> {
             String name = nameField.getText();
             controller.getRecommendation(name);
+        });
+        backButton.addActionListener(e -> {
+            if (switchToPriceTrackerViewCallback != null) {
+                switchToPriceTrackerViewCallback.run();
+            }
         });
     }
 
@@ -38,5 +45,8 @@ public class DashboardViewForTest extends JPanel implements PropertyChangeListen
         if ("dashboardMesssage".equals(evt.getPropertyName())) {
             resultArea.setText(viewModel.getMessage());
         }
+    }
+    public void setSwitchToPriceTrackerViewCallback(Runnable callback) {
+        this.switchToPriceTrackerViewCallback = callback;
     }
 }

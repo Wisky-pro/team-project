@@ -24,6 +24,7 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
     private final CartViewModel cartViewModel;
     private final CartDataAccessInterface cartDataAccess;
     private final String username;
+    private Runnable switchToRecommendationCallback;
 
     public PriceTrackerView(AddToCartController addToCartController,
                             RemoveFromCartController removeFromCartController,
@@ -93,12 +94,19 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
             CartWindow window = new CartWindow(cartDataAccess, removeFromCartController, cartViewModel, username);
             window.setVisible(true);
         });
-        recommendationButton.addActionListener(e -> {});
+        recommendationButton.addActionListener(e -> {
+            if (switchToRecommendationCallback != null) {
+                switchToRecommendationCallback.run();
+            }
+        });
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         messageLabel.setText(cartViewModel.getMessage());
         totalLabel.setText(String.format("Total: $%.2f", cartViewModel.getTotal()));
+    }
+    public void setSwitchToRecommendationCallback(Runnable callback) {
+        this.switchToRecommendationCallback = callback;
     }
 }

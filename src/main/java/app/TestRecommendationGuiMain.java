@@ -5,7 +5,7 @@ import interface_adapter.Dashboard.DashboardViewModel;
 import interface_adapter.Recommendation.PurchaseRecommendationController;
 import interface_adapter.Recommendation.PurchaseRecommendationPresenter;
 import use_case.Recommendation.*;
-import view.DashboardViewForTest;
+import view.RecommendationView;
 
 import javax.swing.*;
 
@@ -18,7 +18,7 @@ public class TestRecommendationGuiMain {
         PurchaseRecommendationController controller = getPurchaseRecommendationController(dashboardVM);
 
         // 6. View
-        DashboardViewForTest view = new DashboardViewForTest(dashboardVM, controller);
+        RecommendationView view = new RecommendationView(dashboardVM, controller);
 
         JFrame frame = new JFrame("Test Recommendation");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

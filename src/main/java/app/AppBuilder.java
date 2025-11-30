@@ -42,7 +42,7 @@ import use_case.Signup.SignupOutputBoundary;
 
 import use_case.LogIn.LogInInteractor;
 
-import view.DashboardViewForTest;
+import view.RecommendationView;
 import view.LoginView;
 import view.PriceTrackerView;
 import view.SignupView;
@@ -51,7 +51,7 @@ public class AppBuilder {
 
     private RemoveFromCartController removeFromCartController;
     private PriceTrackerView priceTrackerView;
-    private DashboardViewForTest dashboardView;
+    private RecommendationView dashboardView;
 
     private final ViewManagerModel viewManagerModel = new ViewManagerModel();
     private final ViewManager viewManager = new ViewManager(viewManagerModel);
@@ -117,7 +117,7 @@ public class AppBuilder {
                         cartViewModel, cartDataAccess, "Kevin");
 
         viewManager.addView(priceTrackerView, "dashboard");
-
+        priceTrackerView.setSwitchToRecommendationCallback(() -> viewManagerModel.setActiveView("recommendation"));
         return this;
     }
 
@@ -131,8 +131,9 @@ public class AppBuilder {
         PurchaseRecommendationInputBoundary interactor =
                 new PurchaseRecommendationInteractor(dataAccess, presenter);
         PurchaseRecommendationController controller = new PurchaseRecommendationController(interactor);
-        dashboardView = new DashboardViewForTest(dashboardVM, controller);
+        dashboardView = new RecommendationView(dashboardVM, controller);
         viewManager.addView(dashboardView, "recommendation");
+        dashboardView.setSwitchToPriceTrackerViewCallback(() -> viewManagerModel.setActiveView("dashboard"));
         return this;
     }
 
