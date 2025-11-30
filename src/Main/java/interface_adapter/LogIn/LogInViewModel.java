@@ -7,6 +7,7 @@ public class LogInViewModel {
 
     private String message = "";
     private boolean loggedIn = false;
+    private final String viewName = "login";
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -26,6 +27,10 @@ public class LogInViewModel {
         String old = this.message;
         this.message = message;
         support.firePropertyChange("message", old, message);
+    }
+
+    public String getViewName() {
+        return viewName;
     }
 
     public boolean isLoggedIn() {

@@ -11,13 +11,11 @@ import javax.swing.*;
 
 public class TestRecommendationGuiMain {
     public static void main(String[] args) {
-        // 1. ViewModel
+
         DashboardViewModel dashboardVM = new DashboardViewModel();
 
-        // 2. DataAccess
         PurchaseRecommendationController controller = getPurchaseRecommendationController(dashboardVM);
 
-        // 6. View
         DashboardViewForTest view = new DashboardViewForTest(dashboardVM, controller);
 
         JFrame frame = new JFrame("Test Recommendation");
@@ -31,15 +29,12 @@ public class TestRecommendationGuiMain {
         PurchaseRecommendationDataAccessInterface dataAccess =
                 new CommodityDataAccessObject();
 
-        // 3. Presenter
         PurchaseRecommendationOutputBoundary presenter =
                 new PurchaseRecommendationPresenter(dashboardVM);
 
-        // 4. Interactor
         PurchaseRecommendationInputBoundary interactor =
                 new PurchaseRecommendationInteractor(dataAccess, presenter);
 
-        // 5. Controller
         return new PurchaseRecommendationController(interactor);
     }
 }
