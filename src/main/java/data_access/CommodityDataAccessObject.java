@@ -42,7 +42,7 @@ public class CommodityDataAccessObject implements PurchaseRecommendationDataAcce
             this.priceHistory.put(name,pricelist);
         }
         } catch (IOException e) {
-            throw new RuntimeException("Falied to read JSON file");
+            throw new RuntimeException("Failed to read JSON file");
         }
 
     }

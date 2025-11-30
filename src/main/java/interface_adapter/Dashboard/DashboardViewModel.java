@@ -21,7 +21,7 @@ public class DashboardViewModel {
     }
 
     public void firePropertyChanged(){
-        support.firePropertyChange("dashboardMesssage", null, message);
+        support.firePropertyChange("dashboardMessage", null, message);
     }
 
 }
