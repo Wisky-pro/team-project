@@ -1,6 +1,7 @@
 package app;
 
 import data_access.BestBuyProductDataAccess;
+import data_access.CommodityDataAccessObject;
 import data_access.InMemoryCartDataAccess;
 import data_access.InMemoryUserDataAccess;
 
@@ -10,6 +11,8 @@ import interface_adapter.AddToCart.AddToCartController;
 import interface_adapter.AddToCart.AddToCartPresenter;
 import interface_adapter.Cart.CartViewModel;
 import interface_adapter.Dashboard.DashboardViewModel;
+import interface_adapter.Recommendation.PurchaseRecommendationController;
+import interface_adapter.Recommendation.PurchaseRecommendationPresenter;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import interface_adapter.RemoveFromCart.RemoveFromCartPresenter;
 
@@ -27,6 +30,10 @@ import interface_adapter.LogIn.LogInViewModel;
 import use_case.AddToCart.AddToCartInteractor;
 import use_case.AddToCart.ProductDataAccessInterface;
 import use_case.Cart.CartDataAccessInterface;
+import use_case.Recommendation.PurchaseRecommendationDataAccessInterface;
+import use_case.Recommendation.PurchaseRecommendationInputBoundary;
+import use_case.Recommendation.PurchaseRecommendationInteractor;
+import use_case.Recommendation.PurchaseRecommendationOutputBoundary;
 import use_case.RemoveFromCart.RemoveFromCartInteractor;
 
 import use_case.Signup.SignupInputBoundary;
@@ -35,6 +42,7 @@ import use_case.Signup.SignupOutputBoundary;
 
 import use_case.LogIn.LogInInteractor;
 
+import view.DashboardViewForTest;
 import view.LoginView;
 import view.PriceTrackerView;
 import view.SignupView;
@@ -43,6 +51,7 @@ public class AppBuilder {
 
     private RemoveFromCartController removeFromCartController;
     private PriceTrackerView priceTrackerView;
+    private DashboardViewForTest dashboardView;
 
     private final ViewManagerModel viewManagerModel = new ViewManagerModel();
     private final ViewManager viewManager = new ViewManager(viewManagerModel);
@@ -50,7 +59,6 @@ public class AppBuilder {
     private SignupViewModel signupVM = new SignupViewModel();
     private LogInViewModel loginVM = new LogInViewModel();
     private DashboardViewModel dashboardVM = new DashboardViewModel();
-
     private final InMemoryUserDataAccess userDataAccess = new InMemoryUserDataAccess();
 
     // ------------------- Signup -------------------
@@ -110,6 +118,21 @@ public class AppBuilder {
 
         viewManager.addView(priceTrackerView, "dashboard");
 
+        return this;
+    }
+
+    public AppBuilder addRecommendationUseCase() {
+        PurchaseRecommendationDataAccessInterface dataAccess =
+                new CommodityDataAccessObject();
+        // 3. Presenter
+        PurchaseRecommendationOutputBoundary presenter =
+                new PurchaseRecommendationPresenter(dashboardVM);
+        // 4. Interactor
+        PurchaseRecommendationInputBoundary interactor =
+                new PurchaseRecommendationInteractor(dataAccess, presenter);
+        PurchaseRecommendationController controller = new PurchaseRecommendationController(interactor);
+        dashboardView = new DashboardViewForTest(dashboardVM, controller);
+        viewManager.addView(dashboardView, "recommendation");
         return this;
     }
 

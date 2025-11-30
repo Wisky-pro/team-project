@@ -25,7 +25,7 @@ public class CommodityDataAccessObject implements PurchaseRecommendationDataAcce
     public CommodityDataAccessObject() {
         // This constructor is just a placeholder so AppBuilder can pass a filename.
         try{
-        String filePath = "priceHistory.json";
+        String filePath = "data_access/priceHistory.json";
         String jsontext = Files.readString(Paths.get(filePath));
         JSONObject jsonObject = new JSONObject(jsontext);
         JSONObject json = jsonObject.getJSONObject("products");

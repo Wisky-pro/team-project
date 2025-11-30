@@ -12,6 +12,7 @@ public class Main {
             appBuilder.addSignupUseCase();
             appBuilder.addLoginUseCase();
             appBuilder.addCartUseCase();
+            appBuilder.addRecommendationUseCase();
 
             // Create JFrame
             JFrame frame = new JFrame("Price Tracker");
