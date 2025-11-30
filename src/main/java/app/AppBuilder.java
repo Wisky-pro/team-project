@@ -9,6 +9,7 @@ import entity.UserFactory;
 import interface_adapter.AddToCart.AddToCartController;
 import interface_adapter.AddToCart.AddToCartPresenter;
 import interface_adapter.Cart.CartViewModel;
+import interface_adapter.Dashboard.DashBoardController;
 import interface_adapter.Dashboard.DashboardViewModel;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import interface_adapter.RemoveFromCart.RemoveFromCartPresenter;
@@ -35,9 +36,11 @@ import use_case.Signup.SignupOutputBoundary;
 
 import use_case.LogIn.LogInInteractor;
 
+import view.DashboardView;
 import view.LoginView;
-import view.PriceTrackerView;
 import view.SignupView;
+import view.AccountInfoView;
+import view.PriceTrackerView;
 
 public class AppBuilder {
 
@@ -55,11 +58,9 @@ public class AppBuilder {
 
     // ------------------- Signup -------------------
     public AppBuilder addSignupUseCase() {
-        SignupOutputBoundary presenter =
-                new SignupPresenter(signupVM, viewManagerModel);
+        SignupOutputBoundary presenter = new SignupPresenter(signupVM, viewManagerModel);
         UserFactory userFactory = new UserFactory();
-        SignupInputBoundary interactor =
-                new SignupInteractor(userDataAccess, presenter, userFactory);
+        SignupInputBoundary interactor = new SignupInteractor(userDataAccess, presenter, userFactory);
         SignupController controller = new SignupController(interactor);
 
         SignupView signupView = new SignupView(controller, signupVM);
@@ -89,26 +90,35 @@ public class AppBuilder {
     // ------------------- Cart / Dashboard -------------------
     public AppBuilder addCartUseCase() {
         CartDataAccessInterface cartDataAccess = new InMemoryCartDataAccess();
-        ProductDataAccessInterface productDataAccess =
-                new BestBuyProductDataAccess("data_access/priceHistory.json");
+        ProductDataAccessInterface productDataAccess = new BestBuyProductDataAccess("data_access/priceHistory.json");
 
         CartViewModel cartViewModel = new CartViewModel();
 
         AddToCartPresenter addPresenter = new AddToCartPresenter(cartViewModel);
-        AddToCartInteractor addInteractor =
-                new AddToCartInteractor(cartDataAccess, productDataAccess, addPresenter);
+        AddToCartInteractor addInteractor = new AddToCartInteractor(cartDataAccess, productDataAccess, addPresenter);
         AddToCartController addToCartController = new AddToCartController(addInteractor);
 
         RemoveFromCartPresenter removePresenter = new RemoveFromCartPresenter(cartViewModel);
-        RemoveFromCartInteractor removeInteractor =
-                new RemoveFromCartInteractor(cartDataAccess, removePresenter);
+        RemoveFromCartInteractor removeInteractor = new RemoveFromCartInteractor(cartDataAccess, removePresenter);
         removeFromCartController = new RemoveFromCartController(removeInteractor);
 
-        priceTrackerView =
-                new PriceTrackerView(addToCartController, removeFromCartController,
-                        cartViewModel, cartDataAccess, "Kevin");
+        // ------------------- Dashboard -------------------
+        DashboardView dashboardView = new DashboardView(dashboardVM);
+        dashboardVM.setDashboardView(dashboardView);
 
-        viewManager.addView(priceTrackerView, "dashboard");
+        // ------------------- Account Info -------------------
+        AccountInfoView accountInfoView = new AccountInfoView();
+        viewManager.addView(accountInfoView, "accountInfo");
+
+        // DashboardController handles the Account Info button
+        new DashBoardController(dashboardVM, viewManagerModel, accountInfoView);
+
+        // Add dashboard panel (main dashboard)
+        viewManager.addView(dashboardView, "dashboard");
+
+        // PriceTrackerView for cart functionality (optional if you still need it)
+        priceTrackerView = new PriceTrackerView(addToCartController, removeFromCartController, cartViewModel, cartDataAccess, "Kevin");
+        viewManager.addView(priceTrackerView, "priceTracker");
 
         return this;
     }
