@@ -1,14 +1,16 @@
 package view;
 
+import interface_adapter.PriceHistory.PriceHistoryViewModel;
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.XYChart;
 
 import javax.swing.*;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.awt.*;
 import java.util.*;
 
+public class PriceHistoryGraph extends JPanel{
+    private final PriceHistoryViewModel viewModel;
 
 public class PriceHistoryGraph {
     public static void main(String[] args) {
@@ -44,23 +46,16 @@ public class PriceHistoryGraph {
         }
 
         XYChart graph = new XYChartBuilder()
-                .width(1200)
-                .height(500)
-                .title("Price History")
-                .xAxisTitle("Date")
-                .yAxisTitle("Price ($CAD)")
-                .build();
+                .width(1200).height(500).title("Price History: " + viewModel.getProductName())
+                .xAxisTitle("Date").yAxisTitle("Price ($CAD)").build();
 
-        graph.addSeries("Product Price", xData, yData);
+        graph.addSeries("Product Price", viewModel.getDates(), viewModel.getPrices());
 
         graph.getStyler().setToolTipsEnabled(true);
         graph.getStyler().setDatePattern("MMM d");
         graph.getStyler().setPlotContentSize(0.78);
 
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new XChartPanel<>(graph));
-        frame.pack();
-        frame.setVisible(true);
+        setLayout(new BorderLayout());
+        add(new XChartPanel<>(graph), BorderLayout.CENTER);
     }
 }

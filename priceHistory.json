@@ -111,7 +111,7 @@
     },
     "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk": {
         "name": "Logitech MX Mechanical Wireless Full-size Backlit Tactile Keyboard - Graphite",
-        "curPrice": 249.99,
+        "curPrice": 199.99,
         "productURL": "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk",
         "historyPrice": [
             {
@@ -121,7 +121,29 @@
             {
                 "date": "2025-11-13",
                 "price": 249.99
+            },
+            {
+                "date": "2025-11-29",
+                "price": 199.99
             }
         ]
+    },
+    "https://www.bestbuy.ca/en-ca/product/playstation-5-dualsense-wireless-controller-god-of-war-20th-anniversary-limited-edition/19478135?icmp=Recos_4across_y_mght_ls_lk": {
+        "name": "PlayStation 5 DualSense Wireless Controller - God of War 20th Anniversary Limited Edition",
+        "curPrice": 84.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/playstation-5-dualsense-wireless-controller-god-of-war-20th-anniversary-limited-edition/19478135?icmp=Recos_4across_y_mght_ls_lk",
+        "historyPrice": [{
+            "date": "2025-11-29",
+            "price": 84.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/playstation-5-pro-console/18477929": {
+        "name": "PlayStation 5 Pro Console",
+        "curPrice": 829.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/playstation-5-pro-console/18477929",
+        "historyPrice": [{
+            "date": "2025-11-29",
+            "price": 829.99
+        }]
     }
 }}
