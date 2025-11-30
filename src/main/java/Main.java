@@ -1,59 +1,31 @@
 import app.AppBuilder;
-import interface_adapter.ViewManagerModel;
-import view.DashboardView;
-import view.LoginView;
-import view.SignupView;
-import view.ViewManager;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Main {
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
 
-            AppBuilder app = new AppBuilder();
-            app.addLoginUseCase()
-               .addSignupUseCase()
-               .addDashboardView();
+            AppBuilder appBuilder = new AppBuilder();
 
-            LoginView loginView = app.getLoginView();
-            SignupView signupView = app.getSignupView();
-            DashboardView dashboardView = app.getDashboardView();
-            ViewManagerModel viewManagerModel = app.getViewManagerModel();
+            // Setup use cases
+            appBuilder.addSignupUseCase();
+            appBuilder.addLoginUseCase();
+            appBuilder.addCartUseCase();
 
-            loginView.setSwitchToSignupCallback(() -> {
-                viewManagerModel.setActiveView("signup");
-                viewManagerModel.firePropertyChanged();
-            });
-
-            signupView.setSwitchToLoginCallback(() -> {
-                viewManagerModel.setActiveView("login");
-                viewManagerModel.firePropertyChanged();
-            });
-
-
-
+            // Create JFrame
             JFrame frame = new JFrame("Price Tracker");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            JPanel screens = new JPanel(new CardLayout());
-            screens.add(loginView, "login");
-            screens.add(signupView, "signup");
-            screens.add(dashboardView, "dashboard");
+            // Add the main panel from ViewManager
+            frame.add(appBuilder.getViewManager().getPanel());
 
-            // --- The ViewManager listens to ViewManagerModel and switches screens ---
-            new ViewManager(screens, viewManagerModel);
+            // Show login view at startup
+            appBuilder.getViewManagerModel().setActiveView("login");
 
-            frame.add(screens);
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-
-            // At start show login
-            viewManagerModel.setActiveView("login");
-            viewManagerModel.firePropertyChanged();
         });
     }
 }
