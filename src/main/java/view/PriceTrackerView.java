@@ -16,9 +16,9 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
     private final JTextField quantityField = new JTextField("1", 5);
     private final JButton addButton = new JButton("Add to Cart");
     private final JButton viewCartButton = new JButton("View Cart");
+    private final JButton recommendationButton = new JButton("Recommendation");
     private final JLabel messageLabel = new JLabel(" ");
     private final JLabel totalLabel = new JLabel("Total: $0.00");
-    private final JButton recommendationButton = new JButton("Recommendation");
     private final AddToCartController addToCartController;
     private final RemoveFromCartController removeFromCartController;
     private final CartViewModel cartViewModel;
@@ -49,6 +49,7 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         urlPanel.add(addButton);
         urlPanel.add(viewCartButton);
         urlPanel.add(recommendationButton);
+
         JPanel infoPanel = new JPanel(new GridLayout(2, 1));
         infoPanel.add(messageLabel);
         infoPanel.add(totalLabel);

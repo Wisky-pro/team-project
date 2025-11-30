@@ -10,12 +10,14 @@ import entity.UserFactory;
 import interface_adapter.AddToCart.AddToCartController;
 import interface_adapter.AddToCart.AddToCartPresenter;
 import interface_adapter.Cart.CartViewModel;
+import interface_adapter.Dashboard.DashBoardController;
 import interface_adapter.Dashboard.DashboardViewModel;
 import interface_adapter.Recommendation.PurchaseRecommendationController;
 import interface_adapter.Recommendation.PurchaseRecommendationPresenter;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import interface_adapter.RemoveFromCart.RemoveFromCartPresenter;
-
+import interface_adapter.Logout.LogoutPresenter;
+import interface_adapter.Logout.LogoutController;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.ViewManager;
 
@@ -41,6 +43,8 @@ import use_case.Signup.SignupInteractor;
 import use_case.Signup.SignupOutputBoundary;
 
 import use_case.LogIn.LogInInteractor;
+import use_case.LogOut.LogOutInteractor;
+import view.*;
 
 import view.RecommendationView;
 import view.LoginView;
@@ -51,76 +55,112 @@ public class AppBuilder {
 
     private RemoveFromCartController removeFromCartController;
     private PriceTrackerView priceTrackerView;
-    private RecommendationView dashboardView;
+    private RecommendationView recommendationView;
 
     private final ViewManagerModel viewManagerModel = new ViewManagerModel();
     private final ViewManager viewManager = new ViewManager(viewManagerModel);
 
-    private SignupViewModel signupVM = new SignupViewModel();
-    private LogInViewModel loginVM = new LogInViewModel();
-    private DashboardViewModel dashboardVM = new DashboardViewModel();
+    private final SignupViewModel signupVM = new SignupViewModel();
+    private final LogInViewModel loginVM = new LogInViewModel();
+    private final DashboardViewModel dashboardVM = new DashboardViewModel();
+
     private final InMemoryUserDataAccess userDataAccess = new InMemoryUserDataAccess();
 
     // ------------------- Signup -------------------
     public AppBuilder addSignupUseCase() {
-        SignupOutputBoundary presenter =
-                new SignupPresenter(signupVM, viewManagerModel);
-        UserFactory userFactory = new UserFactory();
-        SignupInputBoundary interactor =
-                new SignupInteractor(userDataAccess, presenter, userFactory);
-        SignupController controller = new SignupController(interactor);
 
+        SignupOutputBoundary presenter = new SignupPresenter(signupVM, viewManagerModel);
+        UserFactory userFactory = new UserFactory();
+        SignupInputBoundary interactor = new SignupInteractor(userDataAccess, presenter, userFactory);
+
+        SignupController controller = new SignupController(interactor);
         SignupView signupView = new SignupView(controller, signupVM);
+
         viewManager.addView(signupView, "signup");
 
-        // Callback: back to login view
-        signupView.setSwitchToLoginCallback(() -> viewManagerModel.setActiveView("login"));
+        signupView.setSwitchToLoginCallback(() ->
+                viewManagerModel.setActiveView("login"));
 
         return this;
     }
 
     // ------------------- Login -------------------
     public AppBuilder addLoginUseCase() {
+
         LogInPresenter presenter = new LogInPresenter(loginVM, dashboardVM, viewManagerModel);
         LogInInteractor interactor = new LogInInteractor(userDataAccess, presenter);
-        LogInController controller = new LogInController(interactor);
 
+        LogInController controller = new LogInController(interactor);
         LoginView loginView = new LoginView(controller, loginVM);
+
         viewManager.addView(loginView, "login");
 
-        // Callback: switch to signup view
-        loginView.setSwitchToSignupCallback(() -> viewManagerModel.setActiveView("signup"));
+        loginView.setSwitchToSignupCallback(() ->
+                viewManagerModel.setActiveView("signup"));
 
         return this;
     }
 
     // ------------------- Cart / Dashboard -------------------
     public AppBuilder addCartUseCase() {
+
         CartDataAccessInterface cartDataAccess = new InMemoryCartDataAccess();
+
         ProductDataAccessInterface productDataAccess =
                 new BestBuyProductDataAccess("data_access/priceHistory.json");
 
         CartViewModel cartViewModel = new CartViewModel();
 
+        // Add to Cart
         AddToCartPresenter addPresenter = new AddToCartPresenter(cartViewModel);
         AddToCartInteractor addInteractor =
                 new AddToCartInteractor(cartDataAccess, productDataAccess, addPresenter);
         AddToCartController addToCartController = new AddToCartController(addInteractor);
 
+        // Remove from Cart
         RemoveFromCartPresenter removePresenter = new RemoveFromCartPresenter(cartViewModel);
         RemoveFromCartInteractor removeInteractor =
                 new RemoveFromCartInteractor(cartDataAccess, removePresenter);
         removeFromCartController = new RemoveFromCartController(removeInteractor);
 
-        priceTrackerView =
-                new PriceTrackerView(addToCartController, removeFromCartController,
-                        cartViewModel, cartDataAccess, "Kevin");
+        // ------------------- Dashboard Buttons Panel -------------------
+        DashboardView dashboardButtons = new DashboardView(dashboardVM);
+        dashboardVM.setDashboardView(dashboardButtons);
 
-        viewManager.addView(priceTrackerView, "dashboard");
+        // correct controller call
+        new DashBoardController(dashboardVM, viewManagerModel);
+
+        LogoutPresenter logoutPresenter =
+                new LogoutPresenter(viewManagerModel, loginVM);
+
+        LogOutInteractor logoutInteractor =
+                new LogOutInteractor(logoutPresenter, userDataAccess);
+
+        LogoutController logoutController =
+                new LogoutController(logoutInteractor);
+
+        dashboardButtons.setLogoutController(logoutController);
+
+        // ------------------- Price Tracker Panel -------------------
+        priceTrackerView = new PriceTrackerView(
+                addToCartController,
+                removeFromCartController,
+                cartViewModel,
+                cartDataAccess,
+                "Kevin"  // TEMP username, will replace later
+        );
+
+        // ------------------- Combine Dashboard Buttons + Tracker -------------------
+        JPanel combinedDashboard = new JPanel();
+        combinedDashboard.setLayout(new BoxLayout(combinedDashboard, BoxLayout.Y_AXIS));
+
+        combinedDashboard.add(dashboardButtons); // top section
+        combinedDashboard.add(priceTrackerView); // tracker section
+
+        viewManager.addView(combinedDashboard, "dashboard");
         priceTrackerView.setSwitchToRecommendationCallback(() -> viewManagerModel.setActiveView("recommendation"));
         return this;
     }
-
     public AppBuilder addRecommendationUseCase() {
         PurchaseRecommendationDataAccessInterface dataAccess =
                 new CommodityDataAccessObject();
@@ -131,9 +171,9 @@ public class AppBuilder {
         PurchaseRecommendationInputBoundary interactor =
                 new PurchaseRecommendationInteractor(dataAccess, presenter);
         PurchaseRecommendationController controller = new PurchaseRecommendationController(interactor);
-        dashboardView = new RecommendationView(dashboardVM, controller);
-        viewManager.addView(dashboardView, "recommendation");
-        dashboardView.setSwitchToPriceTrackerViewCallback(() -> viewManagerModel.setActiveView("dashboard"));
+        recommendationView = new RecommendationView(dashboardVM, controller);
+        viewManager.addView(recommendationView, "recommendation");
+        recommendationView.setSwitchToPriceTrackerViewCallback(() -> viewManagerModel.setActiveView("dashboard"));
         return this;
     }
 
