@@ -155,6 +155,15 @@
             "price": 549.99
         }]
     },
+    "https://www.bestbuy.ca/en-ca/product/asus-rog-strix-g16-16-165hz-gaming-laptop-intel-core-i7-13650hx-16gb-ram-1tb-ssd-rtx-4060-win-11/18928809?cmp=knc-s-9783626314&&g&utm_source=google&utm_id=240827chw645&utm_medium=troas&utm_creativeformat=shopping&gclsrc=aw.ds&gad_source=1&gad_campaignid=9783626314&gbraid=0AAAAAD-7qGxuVquy-3tWaa4q2YlpawQR-&gclid=CjwKCAiA86_JBhAIEiwA4i9Ju1x0IR9FewQ7eoEZq860Suq8LR438n7q7W-nTL7b9YrYoUyNmWDOphoC44YQAvD_BwE": {
+        "name": "ASUS ROG Strix G16 16\" 165Hz Gaming Laptop (Intel Core i7-13650HX/16GB RAM/1TB SSD/RTX 4060/Win 11)",
+        "curPrice": 1299.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/asus-rog-strix-g16-16-165hz-gaming-laptop-intel-core-i7-13650hx-16gb-ram-1tb-ssd-rtx-4060-win-11/18928809?cmp=knc-s-9783626314&&g&utm_source=google&utm_id=240827chw645&utm_medium=troas&utm_creativeformat=shopping&gclsrc=aw.ds&gad_source=1&gad_campaignid=9783626314&gbraid=0AAAAAD-7qGxuVquy-3tWaa4q2YlpawQR-&gclid=CjwKCAiA86_JBhAIEiwA4i9Ju1x0IR9FewQ7eoEZq860Suq8LR438n7q7W-nTL7b9YrYoUyNmWDOphoC44YQAvD_BwE",
+        "historyPrice": [{
+            "date": "2025-11-30",
+            "price": 1299.99
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/hp-15-6-laptop-chalkboard-grey-intel-core-i5-1334u-16gb-ram-512gb-ssd-windows-11/19220172": {
         "name": "HP 15.6\" Laptop - Chalkboard Grey (Intel Core i5-1334U/16GB RAM/512GB SSD/Windows 11)",
         "curPrice": 649.99,
