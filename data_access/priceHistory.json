@@ -203,6 +203,15 @@
             "price": 199.99
         }]
     },
+    "https://www.bestbuy.ca/en-ca/product/apple-macbook-pro-14-fall-2025-space-black-apple-m5-16gb-ram-512gb-ssd-english/19495784": {
+        "name": "Apple MacBook Pro 14\" (Fall 2025) - Space Black (Apple M5 / 16GB RAM / 512GB SSD) - English",
+        "curPrice": 2099.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/apple-macbook-pro-14-fall-2025-space-black-apple-m5-16gb-ram-512gb-ssd-english/19495784",
+        "historyPrice": [{
+            "date": "2025-11-30",
+            "price": 2099.99
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-greyfdsgdsvsbfzbrrfv/19185830": {
         "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
         "curPrice": 549.99,

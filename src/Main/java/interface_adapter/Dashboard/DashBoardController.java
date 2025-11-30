@@ -10,7 +10,9 @@ public class DashBoardController {
     private final ViewManagerModel viewManagerModel;
     private final AccountInfoView accountInfoView;
 
-    public DashBoardController(DashboardViewModel viewModel, ViewManagerModel viewManagerModel, AccountInfoView accountInfoView) {
+    public DashBoardController(DashboardViewModel viewModel,
+                               ViewManagerModel viewManagerModel,
+                               AccountInfoView accountInfoView) {
         this.viewModel = viewModel;
         this.viewManagerModel = viewManagerModel;
         this.accountInfoView = accountInfoView;
@@ -18,8 +20,9 @@ public class DashBoardController {
     }
 
     private void addListeners() {
+        // When the Account Info button is clicked, refresh and switch view
         viewModel.getDashboardView().getAccountButton().addActionListener(e -> {
-            accountInfoView.refresh(); // refresh username from UserSession
+            accountInfoView.refresh();
             viewManagerModel.setActiveView("accountInfo");
         });
     }

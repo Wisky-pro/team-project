@@ -42,6 +42,8 @@ import view.SignupView;
 import view.AccountInfoView;
 import view.PriceTrackerView;
 
+import javax.swing.*;
+
 public class AppBuilder {
 
     private RemoveFromCartController removeFromCartController;
@@ -89,39 +91,48 @@ public class AppBuilder {
 
     // ------------------- Cart / Dashboard -------------------
     public AppBuilder addCartUseCase() {
-        CartDataAccessInterface cartDataAccess = new InMemoryCartDataAccess();
-        ProductDataAccessInterface productDataAccess = new BestBuyProductDataAccess("data_access/priceHistory.json");
+    CartDataAccessInterface cartDataAccess = new InMemoryCartDataAccess();
+    ProductDataAccessInterface productDataAccess =
+            new BestBuyProductDataAccess("data_access/priceHistory.json");
 
-        CartViewModel cartViewModel = new CartViewModel();
+    CartViewModel cartViewModel = new CartViewModel();
 
-        AddToCartPresenter addPresenter = new AddToCartPresenter(cartViewModel);
-        AddToCartInteractor addInteractor = new AddToCartInteractor(cartDataAccess, productDataAccess, addPresenter);
-        AddToCartController addToCartController = new AddToCartController(addInteractor);
+    AddToCartPresenter addPresenter = new AddToCartPresenter(cartViewModel);
+    AddToCartInteractor addInteractor =
+            new AddToCartInteractor(cartDataAccess, productDataAccess, addPresenter);
+    AddToCartController addToCartController = new AddToCartController(addInteractor);
 
-        RemoveFromCartPresenter removePresenter = new RemoveFromCartPresenter(cartViewModel);
-        RemoveFromCartInteractor removeInteractor = new RemoveFromCartInteractor(cartDataAccess, removePresenter);
-        removeFromCartController = new RemoveFromCartController(removeInteractor);
+    RemoveFromCartPresenter removePresenter = new RemoveFromCartPresenter(cartViewModel);
+    RemoveFromCartInteractor removeInteractor =
+            new RemoveFromCartInteractor(cartDataAccess, removePresenter);
+    removeFromCartController = new RemoveFromCartController(removeInteractor);
 
-        // ------------------- Dashboard -------------------
-        DashboardView dashboardView = new DashboardView(dashboardVM);
-        dashboardVM.setDashboardView(dashboardView);
+    // ------------------- Account Info -------------------
+    AccountInfoView accountInfoView = new AccountInfoView();
+    viewManager.addView(accountInfoView, "accountInfo");
 
-        // ------------------- Account Info -------------------
-        AccountInfoView accountInfoView = new AccountInfoView();
-        viewManager.addView(accountInfoView, "accountInfo");
+    // ------------------- Dashboard Buttons Panel -------------------
+    DashboardView dashboardButtons = new DashboardView(dashboardVM);
+    dashboardVM.setDashboardView(dashboardButtons);
 
-        // DashboardController handles the Account Info button
-        new DashBoardController(dashboardVM, viewManagerModel, accountInfoView);
+    // Controller handles the Account Info button
+    new DashboardController(dashboardVM, viewManagerModel, accountInfoView);
 
-        // Add dashboard panel (main dashboard)
-        viewManager.addView(dashboardView, "dashboard");
+    // ------------------- Price Tracker Panel -------------------
+    priceTrackerView =
+            new PriceTrackerView(addToCartController, removeFromCartController, cartViewModel, cartDataAccess, "Kevin");
 
-        // PriceTrackerView for cart functionality (optional if you still need it)
-        priceTrackerView = new PriceTrackerView(addToCartController, removeFromCartController, cartViewModel, cartDataAccess, "Kevin");
-        viewManager.addView(priceTrackerView, "priceTracker");
+    // ------------------- Combine Dashboard Buttons + Tracker -------------------
+    JPanel combinedDashboard = new JPanel();
+    combinedDashboard.setLayout(new BoxLayout(combinedDashboard, BoxLayout.Y_AXIS));
+    combinedDashboard.add(dashboardButtons); // top buttons
+    combinedDashboard.add(priceTrackerView); // tracker below
 
-        return this;
-    }
+    // Add combined panel as "dashboard"
+    viewManager.addView(combinedDashboard, "dashboard");
+
+    return this;
+}
 
     // ------------------- Getters -------------------
     public ViewManager getViewManager() {
@@ -134,5 +145,10 @@ public class AppBuilder {
 
     public PriceTrackerView getPriceTrackerView() {
         return priceTrackerView;
+    }
+
+    private class DashboardController {
+        public DashboardController(DashboardViewModel dashboardVM, ViewManagerModel viewManagerModel, AccountInfoView accountInfoView) {
+        }
     }
 }
