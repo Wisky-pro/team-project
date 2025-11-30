@@ -104,6 +104,15 @@
             }
         ]
     },
+    "https://www.bestbuy.ca/en-ca/product/playstation-5-pro-console/18477929": {
+        "name": "PlayStation 5 Pro Console",
+        "curPrice": 829.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/playstation-5-pro-console/18477929",
+        "historyPrice": [{
+            "date": "2025-11-29",
+            "price": 829.99
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-grey/19185830zdvds": {
         "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
         "curPrice": 549.99,
@@ -184,6 +193,15 @@
                 "price": 0
             }
         ]
+    },
+    "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk": {
+        "name": "Logitech MX Mechanical Wireless Full-size Backlit Tactile Keyboard - Graphite",
+        "curPrice": 199.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk",
+        "historyPrice": [{
+            "date": "2025-11-29",
+            "price": 199.99
+        }]
     },
     "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-greyfdsgdsvsbfzbrrfv/19185830": {
         "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
