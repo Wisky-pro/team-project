@@ -23,6 +23,15 @@
             "price": 278
         }]
     },
+    "https://www.bestbuy.ca/en-ca/product/bell-apple-iphone-17-pro-max-256gb-cosmic-orange-monthly-financing/19418920?icmp=wi_iphone_plan_offer_iphone_priority_2": {
+        "name": "Bell Apple iPhone 17 Pro Max 256GB - Cosmic Orange - Monthly Financing",
+        "curPrice": 74.97,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/bell-apple-iphone-17-pro-max-256gb-cosmic-orange-monthly-financing/19418920?icmp=wi_iphone_plan_offer_iphone_priority_2",
+        "historyPrice": [{
+            "date": "2025-11-30",
+            "price": 74.97
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/open/19185830": {
         "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
         "curPrice": 549.99,

@@ -46,7 +46,10 @@ import use_case.LogIn.LogInInteractor;
 import use_case.LogOut.LogOutInteractor;
 import view.*;
 
-import javax.swing.*;
+import view.RecommendationView;
+import view.LoginView;
+import view.PriceTrackerView;
+import view.SignupView;
 
 public class AppBuilder {
 

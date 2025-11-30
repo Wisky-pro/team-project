@@ -25,7 +25,7 @@ public class CommodityDataAccessObject implements PurchaseRecommendationDataAcce
     public CommodityDataAccessObject() {
         // This constructor is just a placeholder so AppBuilder can pass a filename.
         try{
-        String filePath = "priceHistory.json";
+        String filePath = "data_access/priceHistory.json";
         String jsontext = Files.readString(Paths.get(filePath));
         JSONObject jsonObject = new JSONObject(jsontext);
         JSONObject json = jsonObject.getJSONObject("products");
@@ -42,7 +42,7 @@ public class CommodityDataAccessObject implements PurchaseRecommendationDataAcce
             this.priceHistory.put(name,pricelist);
         }
         } catch (IOException e) {
-            throw new RuntimeException("Falied to read JSON file");
+            throw new RuntimeException("Failed to read JSON file");
         }
 
     }
