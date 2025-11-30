@@ -4,6 +4,7 @@ import interface_adapter.LogIn.LogInController;
 import interface_adapter.LogIn.LogInViewModel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 

@@ -1,54 +1,84 @@
 package app;
 
-import data_access.BestBuyProductDataAccess;
-import data_access.InMemoryCartDataAccess;
-import interface_adapter.AddToCart.AddToCartController;
-import interface_adapter.AddToCart.AddToCartPresenter;
-import interface_adapter.Cart.CartViewModel;
-import interface_adapter.RemoveFromCart.RemoveFromCartController;
-import interface_adapter.RemoveFromCart.RemoveFromCartPresenter;
-import use_case.AddToCart.AddToCartInteractor;
-import use_case.AddToCart.ProductDataAccessInterface;
-import use_case.Cart.CartDataAccessInterface;
-import use_case.RemoveFromCart.RemoveFromCartInteractor;
-import view.PriceTrackerView;
+import data_access.FileUserDataAccessObject;
+import entity.UserFactory;
+import interface_adapter.Dashboard.DashboardViewModel;
+import interface_adapter.LogIn.*;
+import interface_adapter.Signup.*;
+import interface_adapter.ViewManagerModel;
+import use_case.LogIn.*;
+import use_case.Signup.*;
+import view.DashboardView;
+import view.LoginView;
+import view.SignupView;
 
 public class AppBuilder {
 
-    private CartDataAccessInterface cartDataAccess;
-    private CartViewModel cartViewModel;
-    private AddToCartController addToCartController;
-    private RemoveFromCartController removeFromCartController;
+    private final UserFactory userFactory = new UserFactory();
+    private final FileUserDataAccessObject userDataAccess =
+            new FileUserDataAccessObject("users.csv", userFactory);
 
-    private PriceTrackerView priceTrackerView;
+    // Shared view models (ONE instance each)
+    private final LogInViewModel loginVM = new LogInViewModel();
+    private final SignupViewModel signupVM = new SignupViewModel();
+    private final DashboardViewModel dashboardVM = new DashboardViewModel();
+    private final ViewManagerModel viewManagerModel = new ViewManagerModel();
 
-    public AppBuilder addCartUseCase() {
+    // Views
+    private LoginView loginView;
+    private SignupView signupView;
+    private DashboardView dashboardView;
 
-        cartDataAccess = new InMemoryCartDataAccess();
-        ProductDataAccessInterface productDataAccess =
-                new BestBuyProductDataAccess("data_access/priceHistory.json");
+    public AppBuilder addLoginUseCase() {
 
-        cartViewModel = new CartViewModel();
+        LogInPresenter presenter =
+                new LogInPresenter(loginVM, dashboardVM, viewManagerModel);
 
-        AddToCartPresenter addPresenter = new AddToCartPresenter(cartViewModel);
-        AddToCartInteractor addInteractor =
-                new AddToCartInteractor(cartDataAccess, productDataAccess, addPresenter);
-        addToCartController = new AddToCartController(addInteractor);
+        LogInInteractor interactor =
+                new LogInInteractor(userDataAccess, presenter);
 
-        RemoveFromCartPresenter removePresenter = new RemoveFromCartPresenter(cartViewModel);
-        RemoveFromCartInteractor removeInteractor =
-                new RemoveFromCartInteractor(cartDataAccess, removePresenter);
-        removeFromCartController = new RemoveFromCartController(removeInteractor);
+        LogInController controller = new LogInController(interactor);
 
-        String username = "Kevin";
-        priceTrackerView =
-                new PriceTrackerView(addToCartController, removeFromCartController,
-                        cartViewModel, cartDataAccess, username);
+        loginView = new LoginView(controller, loginVM);
 
         return this;
     }
 
-    public PriceTrackerView getPriceTrackerView() {
-        return priceTrackerView;
+    public AppBuilder addSignupUseCase() {
+
+        SignupPresenter presenter =
+                new SignupPresenter(signupVM, viewManagerModel);
+
+        SignupInteractor interactor =
+                new SignupInteractor(userDataAccess, presenter, userFactory);
+
+        SignupController controller = new SignupController(interactor);
+
+        signupView = new SignupView(controller, signupVM);
+
+        return this;
+    }
+
+    public AppBuilder addDashboardView() {
+        dashboardView = new DashboardView(dashboardVM);
+        return this;
+    }
+
+    // --- Getters ---
+
+    public LoginView getLoginView() {
+        return loginView;
+    }
+
+    public SignupView getSignupView() {
+        return signupView;
+    }
+
+    public DashboardView getDashboardView() {
+        return dashboardView;
+    }
+
+    public ViewManagerModel getViewManagerModel() {
+        return viewManagerModel;
     }
 }

@@ -14,7 +14,6 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
 
     private final JTextField urlField = new JTextField(30);
     private final JTextField quantityField = new JTextField("1", 5);
-    private final JTextField targetPriceField = new JTextField(" ", 5);
     private final JButton addButton = new JButton("Add to Cart");
     private final JButton viewCartButton = new JButton("View Cart");
     private final JLabel messageLabel = new JLabel(" ");
@@ -44,13 +43,8 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         JPanel urlPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         urlPanel.add(new JLabel("Item URL:"));
         urlPanel.add(urlField);
-
         urlPanel.add(new JLabel("Quantity:"));
         urlPanel.add(quantityField);
-
-        urlPanel.add(new JLabel("Target Price: "));
-        urlPanel.add(targetPriceField);
-
         urlPanel.add(addButton);
         urlPanel.add(viewCartButton);
 
@@ -64,10 +58,8 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         addButton.addActionListener(e -> {
             String url = urlField.getText().trim();
             String quantityText = quantityField.getText().trim();
-            String targetPriceText = targetPriceField.getText().trim();
 
             int quantity;
-
             try {
                 quantity = Integer.parseInt(quantityText);
                 if (quantity <= 0) {
@@ -77,31 +69,8 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
                     urlField.requestFocusInWindow();
                     return;
                 }
-
             } catch (NumberFormatException ex) {
                 messageLabel.setText("Quantity must be a positive integer.");
-                urlField.setText("");
-                quantityField.setText("1");
-                urlField.requestFocusInWindow();
-                return;
-            }
-
-            int targetPrice;
-            
-
-            try {
-                targetPrice = Integer.parseInt(targetPriceText);
-
-                if (targetPrice <= 0) {
-                    messageLabel.setText("Target price must be a positive integer.");
-                    urlField.setText("");
-                    quantityField.setText("1");
-                    urlField.requestFocusInWindow();
-                    return;
-                }
-
-            } catch (NumberFormatException ex) {
-                messageLabel.setText("Target price must be a positive integer.");
                 urlField.setText("");
                 quantityField.setText("1");
                 urlField.requestFocusInWindow();
@@ -113,7 +82,7 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
                 return;
             }
 
-            addToCartController.execute(username, url, quantity, targetPrice); 
+            addToCartController.execute(username, url, quantity);
 
             urlField.setText("");
             quantityField.setText("1");

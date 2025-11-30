@@ -57,15 +57,6 @@
             }
         ]
     },
-    "https://www.bestbuy.ca/en-ca/product/google-tv-streamer-4k-porcelain/17970356?source=collection&adSlot=1&slotPos=1": {
-        "name": "Google TV Streamer (4K) - Porcelain",
-        "curPrice": 99.99,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/google-tv-streamer-4k-porcelain/17970356?source=collection&adSlot=1&slotPos=1",
-        "historyPrice": [{
-            "date": "2025-11-29",
-            "price": 99.99
-        }]
-    },
     "https://www.bestbuy.ca/en-ca/product/oakley-meta-vanguard-glasses-with-meta-ai-audio-photo-video-compatibility-black-prizm-24k/19466231": {
         "name": "Oakley | Meta Vanguard Glasses with Meta AI, Audio, Photo, Video Compatibility - Black/Prizm 24K",
         "curPrice": 679.99,
@@ -99,15 +90,6 @@
                 "price": 1499.99
             }
         ]
-    },
-    "https://www.bestbuy.ca/en-ca/product/asus-rog-ally-x-7-1080p-touch-gaming-console-amd-ryzen-z1-extreme-24gb-ram-1tb-ssd-win-11-xbox-gamepass/17944483?icmp=computing_20240602_category_feature_asus_rog_ally_x_launch": {
-        "name": "ASUS ROG Ally X 7\" 1080p Touch Gaming Console (AMD Ryzen Z1 Extreme/24GB RAM/1TB SSD/Win 11/Xbox GamePass)",
-        "curPrice": 899.97,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/asus-rog-ally-x-7-1080p-touch-gaming-console-amd-ryzen-z1-extreme-24gb-ram-1tb-ssd-win-11-xbox-gamepass/17944483?icmp=computing_20240602_category_feature_asus_rog_ally_x_launch",
-        "historyPrice": [{
-            "date": "2025-11-25",
-            "price": 899.97
-        }]
     },
     "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk": {
         "name": "Logitech MX Mechanical Wireless Full-size Backlit Tactile Keyboard - Graphite",
