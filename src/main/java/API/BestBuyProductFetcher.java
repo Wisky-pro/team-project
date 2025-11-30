@@ -86,7 +86,7 @@ public class BestBuyProductFetcher extends Fetcher {
 
     @Override
     public void updateJson() {
-        String filePath = "priceHistory.json";
+        String filePath = "data_access/priceHistory.json";
 
         File file = new File(filePath);
         if (!file.exists()) {
