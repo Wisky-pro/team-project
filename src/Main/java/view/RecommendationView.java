@@ -42,7 +42,7 @@ public class RecommendationView extends JPanel implements PropertyChangeListener
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if ("dashboardMesssage".equals(evt.getPropertyName())) {
+        if ("dashboardMessage".equals(evt.getPropertyName())) {
             resultArea.setText(viewModel.getMessage());
         }
     }
