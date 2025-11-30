@@ -2,12 +2,12 @@ package data_access;
 
 import entity.Cart;
 import use_case.Cart.CartDataAccessInterface;
-import use_case.ModifyTargetPrice.ModifyTargetPriceDataAccessInterface;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class InMemoryCartDataAccess implements CartDataAccessInterface, ModifyTargetPriceDataAccessInterface {
+public class InMemoryCartDataAccess implements CartDataAccessInterface {
+
     private final Map<String, Cart> carts = new HashMap<>();
 
     @Override

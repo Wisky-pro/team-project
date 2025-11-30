@@ -14,6 +14,7 @@ public class InMemoryUserDataAccess implements
     private final Map<String, User> users = new HashMap<>();
     private String currentUsername;
 
+    // ===== LOGIN METHODS =====
     @Override
     public boolean userExists(String username) {
         return users.containsKey(username);
