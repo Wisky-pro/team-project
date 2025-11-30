@@ -9,11 +9,10 @@ import java.beans.PropertyChangeListener;
 
 public class RecommendationView extends JPanel implements PropertyChangeListener {
 
-    private final DashboardViewModel viewModel;
-    private Runnable switchToPriceTrackerViewCallback;
+    private final transient DashboardViewModel viewModel;
+    private transient Runnable switchToPriceTrackerViewCallback;
     private final JTextField nameField = new JTextField(20);
     private final JTextArea resultArea = new JTextArea(5, 30);
-    private final JButton backButton = new JButton("Back to PriceTrackerView");
 
     public RecommendationView(DashboardViewModel viewModel,
                               PurchaseRecommendationController controller) {
@@ -26,6 +25,7 @@ public class RecommendationView extends JPanel implements PropertyChangeListener
         this.add(nameField);
         JButton button = new JButton("Get Recommendation");
         this.add(button);
+        JButton backButton = new JButton("Back to PriceTrackerView");
         this.add(backButton);
         this.add(new JScrollPane(resultArea));
 
