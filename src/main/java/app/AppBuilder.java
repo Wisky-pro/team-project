@@ -13,6 +13,7 @@ import interface_adapter.Dashboard.DashBoardController;
 import interface_adapter.Dashboard.DashboardViewModel;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import interface_adapter.RemoveFromCart.RemoveFromCartPresenter;
+import interface_adapter.PriceHistory.PriceHistoryViewModel;
 
 import interface_adapter.ViewManagerModel;
 import interface_adapter.ViewManager;
@@ -36,6 +37,9 @@ import use_case.Signup.SignupOutputBoundary;
 
 import use_case.LogIn.LogInInteractor;
 
+import use_case.PriceHistory.PriceHistoryInteractor;
+import use_case.PriceHistory.PriceHistoryDataAccessInterface;
+
 import view.DashboardView;
 import view.LoginView;
 import view.SignupView;
@@ -57,6 +61,7 @@ public class AppBuilder {
     private DashboardViewModel dashboardVM = new DashboardViewModel();
 
     private final InMemoryUserDataAccess userDataAccess = new InMemoryUserDataAccess();
+
 
     // ------------------- Signup -------------------
     public AppBuilder addSignupUseCase() {
@@ -91,48 +96,55 @@ public class AppBuilder {
 
     // ------------------- Cart / Dashboard -------------------
     public AppBuilder addCartUseCase() {
-    CartDataAccessInterface cartDataAccess = new InMemoryCartDataAccess();
-    ProductDataAccessInterface productDataAccess =
-            new BestBuyProductDataAccess("data_access/priceHistory.json");
+        CartDataAccessInterface cartDataAccess = new InMemoryCartDataAccess();
+        ProductDataAccessInterface productDataAccess =
+                new BestBuyProductDataAccess("data_access/priceHistory.json");
 
-    CartViewModel cartViewModel = new CartViewModel();
+        CartViewModel cartViewModel = new CartViewModel();
 
-    AddToCartPresenter addPresenter = new AddToCartPresenter(cartViewModel);
-    AddToCartInteractor addInteractor =
-            new AddToCartInteractor(cartDataAccess, productDataAccess, addPresenter);
-    AddToCartController addToCartController = new AddToCartController(addInteractor);
+        AddToCartPresenter addPresenter = new AddToCartPresenter(cartViewModel);
+        AddToCartInteractor addInteractor =
+                new AddToCartInteractor(cartDataAccess, productDataAccess, addPresenter);
+        AddToCartController addToCartController = new AddToCartController(addInteractor);
 
-    RemoveFromCartPresenter removePresenter = new RemoveFromCartPresenter(cartViewModel);
-    RemoveFromCartInteractor removeInteractor =
-            new RemoveFromCartInteractor(cartDataAccess, removePresenter);
-    removeFromCartController = new RemoveFromCartController(removeInteractor);
+        RemoveFromCartPresenter removePresenter = new RemoveFromCartPresenter(cartViewModel);
+        RemoveFromCartInteractor removeInteractor =
+                new RemoveFromCartInteractor(cartDataAccess, removePresenter);
+        removeFromCartController = new RemoveFromCartController(removeInteractor);
 
-    // ------------------- Account Info -------------------
-    AccountInfoView accountInfoView = new AccountInfoView();
-    viewManager.addView(accountInfoView, "accountInfo");
+        // ------------------- Account Info -------------------
+        AccountInfoView accountInfoView = new AccountInfoView();
+        viewManager.addView(accountInfoView, "accountInfo");
 
-    // ------------------- Dashboard Buttons Panel -------------------
-    DashboardView dashboardButtons = new DashboardView(dashboardVM);
-    dashboardVM.setDashboardView(dashboardButtons);
+        // ------------------- Dashboard Buttons Panel -------------------
+        DashboardView dashboardButtons = new DashboardView(dashboardVM);
+        dashboardVM.setDashboardView(dashboardButtons);
 
-    // Controller handles the Account Info button
-    new DashboardController(dashboardVM, viewManagerModel, accountInfoView);
+        // Controller handles the Account Info button
+        new DashboardController(dashboardVM, viewManagerModel, accountInfoView);
 
-    // ------------------- Price Tracker Panel -------------------
-    priceTrackerView =
-            new PriceTrackerView(addToCartController, removeFromCartController, cartViewModel, cartDataAccess, "Kevin");
+        // ------------------- Price History -------------------
+        PriceHistoryViewModel priceHistoryViewModel = new PriceHistoryViewModel();
 
-    // ------------------- Combine Dashboard Buttons + Tracker -------------------
-    JPanel combinedDashboard = new JPanel();
-    combinedDashboard.setLayout(new BoxLayout(combinedDashboard, BoxLayout.Y_AXIS));
-    combinedDashboard.add(dashboardButtons); // top buttons
-    combinedDashboard.add(priceTrackerView); // tracker below
 
-    // Add combined panel as "dashboard"
-    viewManager.addView(combinedDashboard, "dashboard");
+        // ------------------- Price Tracker Panel -------------------
+        priceTrackerView =
+                new PriceTrackerView(addToCartController, removeFromCartController, cartViewModel, cartDataAccess, "Kevin", priceHistoryViewModel);
 
-    return this;
-}
+        // ------------------- Combine Dashboard Buttons + Tracker -------------------
+        JPanel combinedDashboard = new JPanel();
+        combinedDashboard.setLayout(new BoxLayout(combinedDashboard, BoxLayout.Y_AXIS));
+        combinedDashboard.add(dashboardButtons); // top buttons
+        combinedDashboard.add(priceTrackerView); // tracker below
+
+
+
+
+        // Add combined panel as "dashboard"
+        viewManager.addView(combinedDashboard, "dashboard");
+
+        return this;
+    }
 
     // ------------------- Getters -------------------
     public ViewManager getViewManager() {

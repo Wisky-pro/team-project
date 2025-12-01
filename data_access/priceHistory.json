@@ -122,6 +122,15 @@
             "price": 549.99
         }]
     },
+    "https://www.bestbuy.ca/en-ca/product/samsung-55-q6f-series-4k-uhd-hdr-qled-tizen-smart-tv-qn55q6faafxzc-2025-only-at-best-buy/19420282": {
+        "name": "Samsung 55\" Q6F Series 4K UHD HDR QLED Tizen Smart TV (QN55Q6FAAFXZC) - 2025 - Only at Best Buy",
+        "curPrice": 499.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/samsung-55-q6f-series-4k-uhd-hdr-qled-tizen-smart-tv-qn55q6faafxzc-2025-only-at-best-buy/19420282",
+        "historyPrice": [{
+            "date": "2025-11-30",
+            "price": 499.99
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/samsung-65-qn70f-series-4k-uhd-hdr-neo-qled-tizen-smart-tv-qn65qn70fafxzc-2025-only-at-best-buy/19206111": {
         "name": "Samsung 65\" QN70F Series 4K UHD HDR Neo QLED Tizen Smart TV (QN65QN70FAFXZC) - 2025 - Only at Best Buy",
         "curPrice": 1099.99,
