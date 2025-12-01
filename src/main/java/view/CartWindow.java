@@ -107,11 +107,17 @@ public class CartWindow extends JFrame implements PropertyChangeListener {
                 priceHistoryButton.addActionListener(e -> {
                     historyController.viewPriceHistory(url);
                     PriceHistoryGraph graph = new PriceHistoryGraph(historyViewModel);
-                    graph.setVisible(true);
+                    SwingUtilities.invokeLater(() -> {
+                        JFrame frame = new JFrame("Price History Test");
+                        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        frame.setContentPane(graph);
+                        frame.pack();
+                        frame.setVisible(true);
+                    });
                 });
 
                 JPanel productRow = new JPanel();
-                productRow.setLayout(new FlowLayout(FlowLayout.LEFT)); // horizontal layout
+                productRow.setLayout(new BoxLayout(productRow, BoxLayout.Y_AXIS));
 
                 productRow.add(button);
                 productRow.add(priceHistoryButton);

@@ -4,6 +4,7 @@ import data_access.BestBuyProductDataAccess;
 import data_access.InMemoryCartDataAccess;
 import data_access.InMemoryUserDataAccess;
 
+import data_access.PriceHistoryDataAccessObject;
 import entity.UserFactory;
 
 import interface_adapter.AddToCart.AddToCartController;
@@ -11,6 +12,8 @@ import interface_adapter.AddToCart.AddToCartPresenter;
 import interface_adapter.Cart.CartViewModel;
 import interface_adapter.Dashboard.DashBoardController;
 import interface_adapter.Dashboard.DashboardViewModel;
+import interface_adapter.PriceHistory.PriceHistoryController;
+import interface_adapter.PriceHistory.PriceHistoryPresenter;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import interface_adapter.RemoveFromCart.RemoveFromCartPresenter;
 import interface_adapter.PriceHistory.PriceHistoryViewModel;
@@ -29,6 +32,7 @@ import interface_adapter.LogIn.LogInViewModel;
 import use_case.AddToCart.AddToCartInteractor;
 import use_case.AddToCart.ProductDataAccessInterface;
 import use_case.Cart.CartDataAccessInterface;
+import use_case.PriceHistory.PriceHistoryInputBoundary;
 import use_case.RemoveFromCart.RemoveFromCartInteractor;
 
 import use_case.Signup.SignupInputBoundary;
@@ -52,6 +56,7 @@ public class AppBuilder {
 
     private RemoveFromCartController removeFromCartController;
     private PriceTrackerView priceTrackerView;
+
 
     private final ViewManagerModel viewManagerModel = new ViewManagerModel();
     private final ViewManager viewManager = new ViewManager(viewManagerModel);
@@ -125,11 +130,18 @@ public class AppBuilder {
 
         // ------------------- Price History -------------------
         PriceHistoryViewModel priceHistoryViewModel = new PriceHistoryViewModel();
+        PriceHistoryPresenter priceHistoryPresenter = new PriceHistoryPresenter(priceHistoryViewModel);
 
+        PriceHistoryDataAccessInterface priceHistoryDataAccessInterface = new PriceHistoryDataAccessObject();
+        PriceHistoryInputBoundary priceHistoryInputBoundary =
+                new PriceHistoryInteractor(priceHistoryDataAccessInterface, priceHistoryPresenter);
+
+        PriceHistoryController priceHistoryController = new PriceHistoryController(priceHistoryInputBoundary);
 
         // ------------------- Price Tracker Panel -------------------
         priceTrackerView =
-                new PriceTrackerView(addToCartController, removeFromCartController, cartViewModel, cartDataAccess, "Kevin", priceHistoryViewModel);
+                new PriceTrackerView(addToCartController, removeFromCartController, cartViewModel, cartDataAccess,
+                        "Kevin", priceHistoryViewModel, priceHistoryController);
 
         // ------------------- Combine Dashboard Buttons + Tracker -------------------
         JPanel combinedDashboard = new JPanel();
