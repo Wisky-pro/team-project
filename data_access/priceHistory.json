@@ -213,6 +213,15 @@
             }
         ]
     },
+    "https://www.bestbuy.ca/en-ca/product/playstation-5-dualsense-wireless-controller-midnight-black/17905836": {
+        "name": "PlayStation 5 DualSense Wireless Controller - Midnight Black",
+        "curPrice": 69.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/playstation-5-dualsense-wireless-controller-midnight-black/17905836",
+        "historyPrice": [{
+            "date": "2025-11-30",
+            "price": 69.99
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-grey/19185830zdvds": {
         "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
         "curPrice": 549.99,

@@ -1,122 +1,81 @@
 {"products": {
-    "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3": {
-        "name": "HyperX QuadCast S RGB USB Condenser Microphone - Black",
-        "curPrice": 155.98,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3",
+    "https://www.bestbuy.ca/en-ca/product/sony-wh-1000xm4-over-ear-noise-cancelling-bluetooth-headphones-blue/15348551?cmp=knc-s-11513670239&&g&utm_source=google&utm_id=240826all881&utm_medium=oroas&utm_creativeformat=shopping&gclsrc=aw.ds&gad_source=1&gad_campaignid=11513670239&gbraid=0AAAAAD-7qGxrEjDerevLj-CokjPPpEoP-&gclid=Cj0KCQiA5uDIBhDAARIsAOxj0CEUtwJt9zg5XXicphDswGik8xLz8_Zo1uw8k4heXE9JNs027JjPX3kaAj7IEALw_wcB": {
+        "name": "Sony WH-1000XM4 Over-Ear Noise Cancelling Bluetooth Headphones - Blue",
+        "curPrice": 278,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/sony-wh-1000xm4-over-ear-noise-cancelling-bluetooth-headphones-blue/15348551?cmp=knc-s-11513670239&&g&utm_source=google&utm_id=240826all881&utm_medium=oroas&utm_creativeformat=shopping&gclsrc=aw.ds&gad_source=1&gad_campaignid=11513670239&gbraid=0AAAAAD-7qGxrEjDerevLj-CokjPPpEoP-&gclid=Cj0KCQiA5uDIBhDAARIsAOxj0CEUtwJt9zg5XXicphDswGik8xLz8_Zo1uw8k4heXE9JNs027JjPX3kaAj7IEALw_wcB",
         "historyPrice": [
             {
-                "date": "2025-11-12",
-                "price": 155.98
-            },
-            {
-                "date": "2025-11-14",
-                "price": 209.99
+                "date": "2025-11-15",
+                "price": 278
             },
             {
                 "date": "2025-11-15",
-                "price": 155.98
+                "price": 0
             }
         ]
     },
-    "https://www.bestbuy.ca/en-ca/product/laifen-premium-hair-dryer-lpr200gp-golden-pink-only-at-best-buy/17113615?source=collection&adSlot=1&slotPos=1": {
-        "name": "Laifen Premium Hair Dryer (LPR200GP) - Golden Pink - Only at Best Buy",
-        "curPrice": 219.99,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/laifen-premium-hair-dryer-lpr200gp-golden-pink-only-at-best-buy/17113615?source=collection&adSlot=1&slotPos=1",
+    "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3": {
+        "name": "HyperX QuadCast S RGB USB Condenser Microphone - Black",
+        "curPrice": 109.98,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3",
         "historyPrice": [{
-            "date": "2025-11-12",
-            "price": 219.99
+            "date": "2025-11-30",
+            "price": 109.98
         }]
     },
-    "https://www.bestbuy.ca/en-ca/product/logitech-mx-master-4-bluetooth-optical-mouse-w-advanced-performance-haptic-feedback-black-only-at-best-buy/19430806": {
-        "name": "Logitech MX Master 4 Bluetooth Optical Mouse w/ Advanced Performance Haptic Feedback - Black - Only at Best Buy",
-        "curPrice": 159.99,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/logitech-mx-master-4-bluetooth-optical-mouse-w-advanced-performance-haptic-feedback-black-only-at-best-buy/19430806",
-        "historyPrice": [
-            {
-                "date": "2025-11-12",
-                "price": 199.99
-            },
-            {
-                "date": "2025-11-13",
-                "price": 159.99
-            }
-        ]
-    },
-    "https://www.bestbuy.ca/en-ca/product/hyperx-cloud-alpha-2-pro-on-ear-noise-cancelling-true-wireless-headphones-black/19491515?icmp=Recos_4across_y_mght_ls_lk": {
-        "name": "Hyperx Cloud Alpha 2 Pro On-Ear Noise Cancelling True Wireless Headphones - Black",
-        "curPrice": 209.99,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/hyperx-cloud-alpha-2-pro-on-ear-noise-cancelling-true-wireless-headphones-black/19491515?icmp=Recos_4across_y_mght_ls_lk",
-        "historyPrice": [
-            {
-                "date": "2025-11-12",
-                "price": 209.99
-            },
-            {
-                "date": "2025-11-14",
-                "price": 299.99
-            }
-        ]
-    },
-    "https://www.bestbuy.ca/en-ca/product/oakley-meta-vanguard-glasses-with-meta-ai-audio-photo-video-compatibility-black-prizm-24k/19466231": {
-        "name": "Oakley | Meta Vanguard Glasses with Meta AI, Audio, Photo, Video Compatibility - Black/Prizm 24K",
-        "curPrice": 679.99,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/oakley-meta-vanguard-glasses-with-meta-ai-audio-photo-video-compatibility-black-prizm-24k/19466231",
-        "historyPrice": [
-            {
-                "date": "2025-11-12",
-                "price": 709.99
-            },
-            {
-                "date": "2025-11-13",
-                "price": 679.99
-            }
-        ]
-    },
-    "https://www.bestbuy.ca/en-ca/product/19206110": {
-        "name": "Samsung 75\" QN70F Series 4K UHD HDR Neo QLED Tizen Smart TV (QN75QN70FAFXZC) - 2025 - Only at Best Buy",
-        "curPrice": 1699.99,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/19206110",
-        "historyPrice": [
-            {
-                "date": "2025-11-12",
-                "price": 1999.99
-            },
-            {
-                "date": "2025-11-13",
-                "price": 1699.99
-            },
-            {
-                "date": "2025-11-14",
-                "price": 1499.99
-            }
-        ]
-    },
-    "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk": {
-        "name": "Logitech MX Mechanical Wireless Full-size Backlit Tactile Keyboard - Graphite",
-        "curPrice": 199.99,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk",
-        "historyPrice": [
-            {
-                "date": "2025-11-12",
-                "price": 269.99
-            },
-            {
-                "date": "2025-11-13",
-                "price": 249.99
-            },
-            {
-                "date": "2025-11-29",
-                "price": 199.99
-            }
-        ]
-    },
-    "https://www.bestbuy.ca/en-ca/product/playstation-5-dualsense-wireless-controller-god-of-war-20th-anniversary-limited-edition/19478135?icmp=Recos_4across_y_mght_ls_lk": {
-        "name": "PlayStation 5 DualSense Wireless Controller - God of War 20th Anniversary Limited Edition",
-        "curPrice": 84.99,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/playstation-5-dualsense-wireless-controller-god-of-war-20th-anniversary-limited-edition/19478135?icmp=Recos_4across_y_mght_ls_lk",
+    "r-ear-noise-cancelling-bluetooth-headphones-blue/15348551?cmp=knc-s-11513670239&&g&utm_source=google&utm_id=240826all881&utm_medium=oroas&utm_creativeformat=shopping&gclsrc=aw.ds&gad_source=1&gad_campaignid=11513670239&gbraid=0AAAAAD-7qGxrEjDerevLj-CokjPPpEoP-&gclid=Cj0KCQiAiebIBhDmARIsAE8PGNLy7ijpPjaZtnJzeW87UOHt3FYE_YB7SM_vch7lyCWzCOTebVgAFiwaAkfMEALw_wcB": {
+        "name": "Sony WH-1000XM4 Over-Ear Noise Cancelling Bluetooth Headphones - Blue",
+        "curPrice": 278,
+        "productURL": "r-ear-noise-cancelling-bluetooth-headphones-blue/15348551?cmp=knc-s-11513670239&&g&utm_source=google&utm_id=240826all881&utm_medium=oroas&utm_creativeformat=shopping&gclsrc=aw.ds&gad_source=1&gad_campaignid=11513670239&gbraid=0AAAAAD-7qGxrEjDerevLj-CokjPPpEoP-&gclid=Cj0KCQiAiebIBhDmARIsAE8PGNLy7ijpPjaZtnJzeW87UOHt3FYE_YB7SM_vch7lyCWzCOTebVgAFiwaAkfMEALw_wcB",
         "historyPrice": [{
-            "date": "2025-11-29",
-            "price": 84.99
+            "date": "2025-11-16",
+            "price": 278
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-genersdfbzsbdfaB AFCDVZation-space-grey/19185830": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-genersdfbzsbdfaB AFCDVZation-space-grey/19185830",
+        "historyPrice": [{
+            "date": "2025-11-15",
+            "price": 549.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/samsung-galaxy-a16-5g-128gb-blue-black-unlocked/18896891": {
+        "name": "Samsung Galaxy A16 5G 128GB - Blue Black - Unlocked",
+        "curPrice": 199.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/samsung-galaxy-a16-5g-128gb-blue-black-unlocked/18896891",
+        "historyPrice": [
+            {
+                "date": "2025-11-16",
+                "price": 199.99
+            },
+            {
+                "date": "2025-11-16",
+                "price": 0
+            },
+            {
+                "date": "2025-11-30",
+                "price": 199.99
+            }
+        ]
+    },
+    "https://www.bestbuy.ca/en-ca/product/open-/19185830": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/open-/19185830",
+        "historyPrice": [{
+            "date": "2025-11-15",
+            "price": 549.99
+        }]
+    },
+    "d-generation-space-grey/19185830": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "d-generation-space-grey/19185830",
+        "historyPrice": [{
+            "date": "2025-11-15",
+            "price": 549.99
         }]
     },
     "https://www.bestbuy.ca/en-ca/product/playstation-5-pro-console/18477929": {
@@ -127,5 +86,206 @@
             "date": "2025-11-29",
             "price": 829.99
         }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/samsung-55-q6f-series-4k-uhd-hdr-qled-tizen-smart-tv-qn55q6faafxzc-2025-only-at-best-buy/19420282": {
+        "name": "Samsung 55\" Q6F Series 4K UHD HDR QLED Tizen Smart TV (QN55Q6FAAFXZC) - 2025 - Only at Best Buy",
+        "curPrice": 499.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/samsung-55-q6f-series-4k-uhd-hdr-qled-tizen-smart-tv-qn55q6faafxzc-2025-only-at-best-buy/19420282",
+        "historyPrice": [{
+            "date": "2025-11-30",
+            "price": 499.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/sony-wh-1000xm4-over-ear-noise-cancelling-bluetooth-headphones-blue/15348551": {
+        "name": "Sony WH-1000XM4 Over-Ear Noise Cancelling Bluetooth Headphones - Blue",
+        "curPrice": 248,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/sony-wh-1000xm4-over-ear-noise-cancelling-bluetooth-headphones-blue/15348551",
+        "historyPrice": [{
+            "date": "2025-11-30",
+            "price": 248
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/op/19185830": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/op/19185830",
+        "historyPrice": [{
+            "date": "2025-11-15",
+            "price": 549.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-sp/19185830": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-sp/19185830",
+        "historyPrice": [{
+            "date": "2025-11-15",
+            "price": 549.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-grey/19185830wefsad": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-grey/19185830wefsad",
+        "historyPrice": [{
+            "date": "2025-11-15",
+            "price": 549.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/sony-wh-1000xm4-over-ear-noise-cancelling-bluetooth-headphones-blue/15348551?cmp=knc-s-11513670239&&g&utm_source=google&utm_id=240826all881&utm_medium=oroas&utm_creativeformat=shopping&gclsrc=aw.ds&gad_source=1&gad_campaignid=11513670239&gbraid=0AAAAAD-7qGxrEjDerevLj-CokjPPpEoP-&gclid=Cj0KCQiAiebIBhDmARIsAE8PGNLy7ijpPjaZtnJzeW87UOHt3FYE_YB7SM_vch7lyCWzCOTebVgAFiwaAkfMEALw_wcB": {
+        "name": "Sony WH-1000XM4 Over-Ear Noise Cancelling Bluetooth Headphones - Blue",
+        "curPrice": 278,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/sony-wh-1000xm4-over-ear-noise-cancelling-bluetooth-headphones-blue/15348551?cmp=knc-s-11513670239&&g&utm_source=google&utm_id=240826all881&utm_medium=oroas&utm_creativeformat=shopping&gclsrc=aw.ds&gad_source=1&gad_campaignid=11513670239&gbraid=0AAAAAD-7qGxrEjDerevLj-CokjPPpEoP-&gclid=Cj0KCQiAiebIBhDmARIsAE8PGNLy7ijpPjaZtnJzeW87UOHt3FYE_YB7SM_vch7lyCWzCOTebVgAFiwaAkfMEALw_wcB",
+        "historyPrice": [{
+            "date": "2025-11-16",
+            "price": 278
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/apple-macbook-pro-14-fall-2025-space-black-apple-m5-16gb-ram-512gb-ssd-english/19495784": {
+        "name": "Apple MacBook Pro 14\" (Fall 2025) - Space Black (Apple M5 / 16GB RAM / 512GB SSD) - English",
+        "curPrice": 2099.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/apple-macbook-pro-14-fall-2025-space-black-apple-m5-16gb-ram-512gb-ssd-english/19495784",
+        "historyPrice": [{
+            "date": "2025-11-30",
+            "price": 2099.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-greyfdsgdsvsbfzbrrfv/19185830": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-greyfdsgdsvsbfzbrrfv/19185830",
+        "historyPrice": [{
+            "date": "2025-11-15",
+            "price": 549.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-gre/19185830": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-gre/19185830",
+        "historyPrice": [{
+            "date": "2025-11-15",
+            "price": 549.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/open/19185830": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/open/19185830",
+        "historyPrice": [{
+            "date": "2025-11-15",
+            "price": 549.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/logitech-mx-master-4-bluetooth-optical-mouse-w-advanced-performance-haptic-feedback-black-only-at-best-buy/19430806": {
+        "name": "Logitech MX Master 4 Bluetooth Optical Mouse w/ Advanced Performance Haptic Feedback - Black - Only at Best Buy",
+        "curPrice": 159.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/logitech-mx-master-4-bluetooth-optical-mouse-w-advanced-performance-haptic-feedback-black-only-at-best-buy/19430806",
+        "historyPrice": [{
+            "date": "2025-11-30",
+            "price": 159.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-grey/19185830": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-grey/19185830",
+        "historyPrice": [
+            {
+                "date": "2025-11-15",
+                "price": 549.99
+            },
+            {
+                "date": "2025-11-15",
+                "price": 0
+            }
+        ]
+    },
+    "https://www.bestbuy.ca/en-ca/product/19206110": {
+        "name": "Samsung 75\" QN70F Series 4K UHD HDR Neo QLED Tizen Smart TV (QN75QN70FAFXZC) - 2025 - Only at Best Buy",
+        "curPrice": 1499.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/19206110",
+        "historyPrice": [
+            {
+                "date": "2025-11-15",
+                "price": 1499.99
+            },
+            {
+                "date": "2025-11-15",
+                "price": 0
+            }
+        ]
+    },
+    "https://www.bestbuy.ca/en-ca/product/playstation-5-dualsense-wireless-controller-midnight-black/17905836": {
+        "name": "PlayStation 5 DualSense Wireless Controller - Midnight Black",
+        "curPrice": 69.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/playstation-5-dualsense-wireless-controller-midnight-black/17905836",
+        "historyPrice": [{
+            "date": "2025-11-30",
+            "price": 69.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-grey/19185830zdvds": {
+        "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
+        "curPrice": 549.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-grey/19185830zdvds",
+        "historyPrice": [{
+            "date": "2025-11-15",
+            "price": 549.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/samsung-65-qn70f-series-4k-uhd-hdr-neo-qled-tizen-smart-tv-qn65qn70fafxzc-2025-only-at-best-buy/19206111": {
+        "name": "Samsung 65\" QN70F Series 4K UHD HDR Neo QLED Tizen Smart TV (QN65QN70FAFXZC) - 2025 - Only at Best Buy",
+        "curPrice": 1099.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/samsung-65-qn70f-series-4k-uhd-hdr-neo-qled-tizen-smart-tv-qn65qn70fafxzc-2025-only-at-best-buy/19206111",
+        "historyPrice": [
+            {
+                "date": "2025-11-15",
+                "price": 1099.99
+            },
+            {
+                "date": "2025-11-15",
+                "price": 0
+            }
+        ]
+    },
+    "https://www.bestbuy.ca/en-ca/product/hp-15-6-laptop-chalkboard-grey-intel-core-i5-1334u-16gb-ram-512gb-ssd-windows-11/19220172": {
+        "name": "HP 15.6\" Laptop - Chalkboard Grey (Intel Core i5-1334U/16GB RAM/512GB SSD/Windows 11)",
+        "curPrice": 649.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/hp-15-6-laptop-chalkboard-grey-intel-core-i5-1334u-16gb-ram-512gb-ssd-windows-11/19220172",
+        "historyPrice": [
+            {
+                "date": "2025-11-16",
+                "price": 649.99
+            },
+            {
+                "date": "2025-11-16",
+                "price": 0
+            }
+        ]
+    },
+    "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk": {
+        "name": "Logitech MX Mechanical Wireless Full-size Backlit Tactile Keyboard - Graphite",
+        "curPrice": 199.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/logitech-mx-mechanical-wireless-full-size-backlit-tactile-keyboard-graphite/16157468?icmp=Recos_4across_y_mght_ls_lk",
+        "historyPrice": [{
+            "date": "2025-11-29",
+            "price": 199.99
+        }]
+    },
+    "https://www.bestbuy.ca/en-ca/product/telus-apple-iphone-16-512gb-black-monthly-financing/18393284": {
+        "name": "TELUS Apple iPhone 16 512GB - Black - Monthly Financing",
+        "curPrice": 67.67,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/telus-apple-iphone-16-512gb-black-monthly-financing/18393284",
+        "historyPrice": [
+            {
+                "date": "2025-11-16",
+                "price": 67.67
+            },
+            {
+                "date": "2025-11-16",
+                "price": 0
+            }
+        ]
     }
 }}

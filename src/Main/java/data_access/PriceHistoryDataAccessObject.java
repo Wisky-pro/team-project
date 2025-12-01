@@ -20,7 +20,7 @@ public class PriceHistoryDataAccessObject implements PriceHistoryDataAccessInter
 
     public PriceHistoryDataAccessObject() {
         try {
-            String filePath = "data_access/priceHistory.json";
+            String filePath = "priceHistory.json";
             String jsonText = Files.readString(Paths.get(filePath));
 
             JSONObject root = new JSONObject(jsonText);

@@ -16,13 +16,9 @@ import org.json.JSONObject;
 
 
 public class BestBuyProductFetcher extends Fetcher {
-    protected final String productURL;
+    protected String productURL;
     protected double price;
     protected String name;
-
-    public BestBuyProductFetcher(String URL){
-        this.productURL = URL;
-    }
 
     private static String extractProductID(String productURL){
         Pattern pattern = Pattern.compile("/(\\d{7,})");
@@ -34,9 +30,27 @@ public class BestBuyProductFetcher extends Fetcher {
         }
     }
 
+    public static String extractProductRawURL(String fullUrl){
+        if (fullUrl == null) {
+            return null;
+        }
+        int qIdx = fullUrl.indexOf('?');
+        if (qIdx >= 0) {
+            return fullUrl.substring(0, qIdx);
+        } else {
+            return fullUrl;
+        }
+    }
+
+    public BestBuyProductFetcher(String URL){
+    this.productURL = URL;
+}
+
+
     @Override
     protected HttpResponse<String> sendRequest() {
         String productID = extractProductID(productURL);
+        productURL = extractProductRawURL(productURL);
 
         String url = "https://www.bestbuy.ca/api/v2/json/product/" + productID +
                 "?currentRegion=ON&include=all&lang=en-CA";
@@ -86,7 +100,7 @@ public class BestBuyProductFetcher extends Fetcher {
 
     @Override
     public void updateJson() {
-        String filePath = "data_access/priceHistory.json";
+        String filePath = "priceHistory.json";
 
         File file = new File(filePath);
         if (!file.exists()) {

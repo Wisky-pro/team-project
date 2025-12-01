@@ -35,7 +35,6 @@ public class DashboardView extends JPanel implements PropertyChangeListener {
         messageLabel.setText(viewModel.getMessage());
     }
 
-    // ✅ Public getter for controller
     public JButton getAccountButton() {
         return accountButton;
     }
