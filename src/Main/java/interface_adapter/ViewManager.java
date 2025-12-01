@@ -31,5 +31,12 @@ public class ViewManager implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         String viewName = (String) evt.getNewValue();
         cardLayout.show(mainPanel, viewName);
+
+        if (viewName.equals("login")) {
+            JPanel login = views.get("login");
+            try {
+                login.getClass().getMethod("clearPassword").invoke(login);
+            } catch (Exception ignored) { }
+        }
     }
 }

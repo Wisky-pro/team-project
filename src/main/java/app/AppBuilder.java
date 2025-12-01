@@ -93,13 +93,12 @@ public class AppBuilder {
         return this;
     }
 
-    // ------------------- Cart / Dashboard -------------------
     public AppBuilder addCartUseCase() {
 
         CartDataAccessInterface cartDataAccess = new InMemoryCartDataAccess();
 
         ProductDataAccessInterface productDataAccess =
-                new BestBuyProductDataAccess("data_access/priceHistory.json");
+                new BestBuyProductDataAccess("priceHistory.json");
 
         CartViewModel cartViewModel = new CartViewModel();
 
@@ -115,7 +114,7 @@ public class AppBuilder {
                 new RemoveFromCartInteractor(cartDataAccess, removePresenter);
         removeFromCartController = new RemoveFromCartController(removeInteractor);
 
-        // ------------------- Dashboard Buttons Panel -------------------
+        //Dashboard Buttons Panel
         DashboardView dashboardButtons = new DashboardView(dashboardVM);
         dashboardVM.setDashboardView(dashboardButtons);
 
@@ -133,13 +132,13 @@ public class AppBuilder {
 
         dashboardButtons.setLogoutController(logoutController);
 
-        // ------------------- Price Tracker Panel -------------------
+        //Price Tracker Panel
         priceTrackerView = new PriceTrackerView(
                 addToCartController,
                 removeFromCartController,
                 cartViewModel,
                 cartDataAccess,
-                "Kevin"  // TEMP username, will replace later
+                "Kevin"  // Temporary username
         );
 
         // ------------------- Combine Dashboard Buttons + Tracker -------------------
