@@ -1,6 +1,7 @@
 package app;
 
 import data_access.BestBuyProductDataAccess;
+import data_access.CommodityDataAccessObject;
 import data_access.InMemoryCartDataAccess;
 import data_access.InMemoryUserDataAccess;
 
@@ -11,6 +12,8 @@ import interface_adapter.AddToCart.AddToCartPresenter;
 import interface_adapter.Cart.CartViewModel;
 import interface_adapter.Dashboard.DashBoardController;
 import interface_adapter.Dashboard.DashboardViewModel;
+import interface_adapter.Recommendation.PurchaseRecommendationController;
+import interface_adapter.Recommendation.PurchaseRecommendationPresenter;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import interface_adapter.RemoveFromCart.RemoveFromCartPresenter;
 import interface_adapter.Logout.LogoutPresenter;
@@ -29,6 +32,10 @@ import interface_adapter.LogIn.LogInViewModel;
 import use_case.AddToCart.AddToCartInteractor;
 import use_case.AddToCart.ProductDataAccessInterface;
 import use_case.Cart.CartDataAccessInterface;
+import use_case.Recommendation.PurchaseRecommendationDataAccessInterface;
+import use_case.Recommendation.PurchaseRecommendationInputBoundary;
+import use_case.Recommendation.PurchaseRecommendationInteractor;
+import use_case.Recommendation.PurchaseRecommendationOutputBoundary;
 import use_case.RemoveFromCart.RemoveFromCartInteractor;
 
 import use_case.Signup.SignupInputBoundary;
@@ -37,17 +44,18 @@ import use_case.Signup.SignupOutputBoundary;
 
 import use_case.LogIn.LogInInteractor;
 import use_case.LogOut.LogOutInteractor;
-import view.DashboardView;
-import view.LoginView;
-import view.SignupView;
-import view.PriceTrackerView;
+import view.*;
 
-import javax.swing.*;
+import view.RecommendationView;
+import view.LoginView;
+import view.PriceTrackerView;
+import view.SignupView;
 
 public class AppBuilder {
 
     private RemoveFromCartController removeFromCartController;
     private PriceTrackerView priceTrackerView;
+    private RecommendationView recommendationView;
 
     private final ViewManagerModel viewManagerModel = new ViewManagerModel();
     private final ViewManager viewManager = new ViewManager(viewManagerModel);
@@ -149,7 +157,22 @@ public class AppBuilder {
         combinedDashboard.add(priceTrackerView); // tracker section
 
         viewManager.addView(combinedDashboard, "dashboard");
-
+        priceTrackerView.setSwitchToRecommendationCallback(() -> viewManagerModel.setActiveView("recommendation"));
+        return this;
+    }
+    public AppBuilder addRecommendationUseCase() {
+        PurchaseRecommendationDataAccessInterface dataAccess =
+                new CommodityDataAccessObject();
+        // 3. Presenter
+        PurchaseRecommendationOutputBoundary presenter =
+                new PurchaseRecommendationPresenter(dashboardVM);
+        // 4. Interactor
+        PurchaseRecommendationInputBoundary interactor =
+                new PurchaseRecommendationInteractor(dataAccess, presenter);
+        PurchaseRecommendationController controller = new PurchaseRecommendationController(interactor);
+        recommendationView = new RecommendationView(dashboardVM, controller);
+        viewManager.addView(recommendationView, "recommendation");
+        recommendationView.setSwitchToPriceTrackerViewCallback(() -> viewManagerModel.setActiveView("dashboard"));
         return this;
     }
 

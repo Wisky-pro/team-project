@@ -27,7 +27,7 @@ public class DashboardViewModel {
     public void setMessage(String message) {
         String old = this.message;
         this.message = message;
-        support.firePropertyChange("message", old, message);
+        support.firePropertyChange("dashboardMessage", old, message);
     }
 
     public String getMessage() {
