@@ -28,7 +28,8 @@ public class PriceHistoryPresenter implements PriceHistoryOutputBoundary {
 
         viewModel.setDates(dateList);
         viewModel.setPrices(outputData.getPrices());
-        viewModel.setProductName(outputData.getProductUrl());
+        viewModel.setProductName(outputData.getProductName());
+        viewModel.setProductUrl(outputData.getProductUrl());
     }
 
     @Override

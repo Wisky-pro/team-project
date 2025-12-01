@@ -8,7 +8,8 @@ public class PriceHistoryViewModel {
     private List<Date> dates;
     private List<Double> prices;
     private String productName;
-    private String message = " ";
+    private String productUrl;
+    private String message;
 
     public PriceHistoryViewModel() {
         this.dates = new ArrayList<>();
@@ -39,6 +40,12 @@ public class PriceHistoryViewModel {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getProductUrl() { return productUrl; }
+
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
     }
 
     public void setMessage(String message){

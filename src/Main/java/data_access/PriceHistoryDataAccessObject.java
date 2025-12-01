@@ -29,6 +29,7 @@ public class PriceHistoryDataAccessObject implements PriceHistoryDataAccessInter
             for (String productUrl: products.keySet()) {
                 JSONObject product = products.getJSONObject(productUrl);
                 JSONArray productHistory = product.getJSONArray("historyPrice");
+                String productName = product.getString("name");
 
                 Map<LocalDate, Double> pricePoint = new HashMap<>();
                 for (int i = 0; i < productHistory.length(); i++) {
@@ -37,7 +38,7 @@ public class PriceHistoryDataAccessObject implements PriceHistoryDataAccessInter
                     double price = pricePerDate.getDouble("price");
                     pricePoint.put(date, price);
                 }
-                PriceHistory priceHistory = new PriceHistory(productUrl, pricePoint);
+                PriceHistory priceHistory = new PriceHistory(productUrl, productName, pricePoint);
                 historyByUrl.put(productUrl, priceHistory);
             }
         } catch (IOException e) {

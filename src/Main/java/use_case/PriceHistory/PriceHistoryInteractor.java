@@ -29,12 +29,14 @@ public class PriceHistoryInteractor implements PriceHistoryInputBoundary {
         Map<LocalDate, Double> priceHistory = history.getPriceHistory();
         LocalDate today = LocalDate.now();
 
+
         LocalDate minDate = Collections.min(priceHistory.keySet());
         int checkTemp = Math.toIntExact(ChronoUnit.DAYS.between(minDate, today)) + 1;
         System.out.println(checkTemp);
 
         List<LocalDate> dates = new ArrayList<>();
         List<Double> prices = new ArrayList<>();
+        String productName = history.getProductName();
 
         Double lastPrice = null; // if data has a gap between days, then last known price will be used
 
@@ -56,7 +58,7 @@ public class PriceHistoryInteractor implements PriceHistoryInputBoundary {
             return;
         }
 
-        PriceHistoryOutputData outputData = new PriceHistoryOutputData(dates, prices, productUrl);
+        PriceHistoryOutputData outputData = new PriceHistoryOutputData(dates, prices, productUrl, productName);
         priceHistoryOutputBoundary.prepareSuccessView(outputData);
     }
 }
