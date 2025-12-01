@@ -108,7 +108,7 @@ public class BestBuyProductFetcher extends Fetcher {
         JSONObject json;
         if (content.isEmpty()) {
             json = new JSONObject();
-            json.put("products", new org.json.JSONObject());
+            json.put("products", new JSONObject());
         } else {
             json = new JSONObject(content);
         }

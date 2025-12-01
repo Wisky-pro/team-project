@@ -4,6 +4,7 @@ import interface_adapter.AddToCart.AddToCartController;
 import interface_adapter.Cart.CartViewModel;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import use_case.Cart.CartDataAccessInterface;
+import interface_adapter.LogIn.LogInViewModel;  // import
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,18 +24,20 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
     private final RemoveFromCartController removeFromCartController;
     private final CartViewModel cartViewModel;
     private final CartDataAccessInterface cartDataAccess;
-    private final String username;
+    private final LogInViewModel loginVM;  // use view-model instead of fixed username
 
-    public PriceTrackerView(AddToCartController addToCartController,
-                            RemoveFromCartController removeFromCartController,
-                            CartViewModel cartViewModel,
-                            CartDataAccessInterface cartDataAccess,
-                            String username) {
+    public PriceTrackerView(
+            AddToCartController addToCartController,
+            RemoveFromCartController removeFromCartController,
+            CartViewModel cartViewModel,
+            CartDataAccessInterface cartDataAccess,
+            LogInViewModel loginVM  // <--- changed
+    ) {
         this.addToCartController = addToCartController;
         this.removeFromCartController = removeFromCartController;
         this.cartViewModel = cartViewModel;
         this.cartDataAccess = cartDataAccess;
-        this.username = username;
+        this.loginVM = loginVM;
 
         this.cartViewModel.addPropertyChangeListener(this);
 
@@ -82,6 +85,7 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
                 return;
             }
 
+            String username = loginVM.getUsername();  // get current username
             addToCartController.execute(username, url, quantity);
 
             urlField.setText("");
@@ -90,6 +94,7 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         });
 
         viewCartButton.addActionListener(e -> {
+            String username = loginVM.getUsername();  // use current username
             CartWindow window = new CartWindow(cartDataAccess, removeFromCartController, cartViewModel, username);
             window.setVisible(true);
         });
@@ -101,3 +106,4 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         totalLabel.setText(String.format("Total: $%.2f", cartViewModel.getTotal()));
     }
 }
+

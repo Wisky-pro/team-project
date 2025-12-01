@@ -4,7 +4,7 @@ import use_case.Recommendation.PurchaseRecommendationOutputBoundary;
 import use_case.Recommendation.PurchaseRecommendationOutputData;
 
 /**
- * 暂时用于测试的简单 Presenter：只打印到控制台。
+ * The presenter used for test, only print on console。
  */
 public class ConsolePurchaseRecommendationPresenter implements PurchaseRecommendationOutputBoundary {
 

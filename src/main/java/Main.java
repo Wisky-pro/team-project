@@ -8,12 +8,17 @@ public class Main {
 
             AppBuilder appBuilder = new AppBuilder();
 
-            appBuilder.addCartUseCase();
+            appBuilder.addSignupUseCase();
+            appBuilder.addLoginUseCase();
+            appBuilder.addCartUseCase(); // includes Dashboard + Account Info wiring
 
-            JFrame frame = new JFrame("Price Tracker Test");
+            JFrame frame = new JFrame("Price Tracker");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            frame.add(appBuilder.getPriceTrackerView());
+            frame.add(appBuilder.getViewManager().getPanel());
+
+            appBuilder.getViewManagerModel().setActiveView("login");
+
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);

@@ -47,6 +47,7 @@ public class AddToCartInteractor implements AddToCartInputBoundary {
         } catch (IllegalArgumentException e) {
             presenter.prepareFailView("Invalid BestBuy product URL.");
         } catch (Exception e) {
+            e.printStackTrace();
             presenter.prepareFailView("Could not add item to cart.");
         }
     }
