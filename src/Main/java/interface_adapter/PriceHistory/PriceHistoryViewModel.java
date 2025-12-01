@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * ViewModel for displaying price history graph data.
+ */
 public class PriceHistoryViewModel {
     private List<Date> dates;
     private List<Double> prices;
@@ -52,7 +55,5 @@ public class PriceHistoryViewModel {
         this.message = message;
     }
 
-    public String getMessage() {
-        return this.message;
-    }
+    public String getMessage() { return this.message; }
 }

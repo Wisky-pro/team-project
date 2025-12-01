@@ -5,6 +5,7 @@ package use_case.PriceHistory;
  For now, we only need the productUrl that user selects.
  */
 public class PriceHistoryInputData {
+
     private final String productUrl;
 
     public PriceHistoryInputData(String productUrl) {

@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  Output data for Use Case 7.
- It contains the dates and prices.
+ Contains the list of dates, list of corresponding prices, and identifying information.
  */
 public class PriceHistoryOutputData {
     private final List<LocalDate> dates;
@@ -32,7 +32,5 @@ public class PriceHistoryOutputData {
         return productUrl;
     }
 
-    public String getProductName() {
-        return productName;
-    }
+    public String getProductName() { return productName; }
 }

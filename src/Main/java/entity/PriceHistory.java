@@ -28,8 +28,4 @@ public class PriceHistory {
     public Map<LocalDate, Double> getPriceHistory() {
         return priceHistory;
     }
-
-    public Double getPriceForDate(LocalDate date) {
-        return priceHistory.get(date);
-    }
 }
