@@ -31,8 +31,7 @@ public class PriceHistoryInteractor implements PriceHistoryInputBoundary {
 
 
         LocalDate minDate = Collections.min(priceHistory.keySet());
-        int checkTemp = Math.max(Math.toIntExact(ChronoUnit.DAYS.between(minDate, today)) + 1, 10);
-        System.out.println(checkTemp);
+        int checkTemp = Math.max(Math.toIntExact(ChronoUnit.DAYS.between(minDate, today)) + 1, 7);
 
         List<LocalDate> dates = new ArrayList<>();
         List<Double> prices = new ArrayList<>();
