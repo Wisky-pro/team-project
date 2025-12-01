@@ -13,21 +13,19 @@ public class LoginView extends JPanel implements PropertyChangeListener {
     private final JTextField usernameField = new JTextField(15);
     private final JPasswordField passwordField = new JPasswordField(15);
     private final JButton loginButton = new JButton("Log In");
-    private final JButton signupButton = new JButton("Sign Up"); // new button
+    private final JButton signupButton = new JButton("Sign Up");
     private final JLabel messageLabel = new JLabel(" ");
 
     private final LogInController controller;
     private final LogInViewModel viewModel;
 
-    // Callback to switch to signup view
     private Runnable switchToSignupCallback;
 
     public LoginView(LogInController controller, LogInViewModel viewModel) {
         this.controller = controller;
         this.viewModel = viewModel;
 
-        // Register to listen for changes in the view model
-        this.viewModel.addPropertyChangeListener(this);
+        viewModel.addPropertyChangeListener(this);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -40,21 +38,23 @@ public class LoginView extends JPanel implements PropertyChangeListener {
         add(Box.createVerticalStrut(15));
 
         add(loginButton);
-        add(signupButton); // add signup button
+        add(signupButton);
         add(Box.createVerticalStrut(15));
         add(messageLabel);
 
-        // Login button action
-        loginButton.addActionListener(e -> controller.login(
-                usernameField.getText(),
-                new String(passwordField.getPassword())
-        ));
+        loginButton.addActionListener(e -> {
+            // 🔥 FIX: Save into ViewModel
+            viewModel.setUsername(usernameField.getText());
+            viewModel.setPassword(new String(passwordField.getPassword()));
 
-        // Sign up button action
+            controller.login(
+                    usernameField.getText(),
+                    new String(passwordField.getPassword())
+            );
+        });
+
         signupButton.addActionListener(e -> {
-            if (switchToSignupCallback != null) {
-                switchToSignupCallback.run();
-            }
+            if (switchToSignupCallback != null) switchToSignupCallback.run();
         });
     }
 
@@ -63,10 +63,6 @@ public class LoginView extends JPanel implements PropertyChangeListener {
         messageLabel.setText(viewModel.getMessage());
     }
 
-    /**
-     * Set the callback to switch to the signup view.
-     * This keeps the view decoupled from the main frame.
-     */
     public void setSwitchToSignupCallback(Runnable callback) {
         this.switchToSignupCallback = callback;
     }

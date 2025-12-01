@@ -6,6 +6,8 @@ import java.beans.PropertyChangeSupport;
 public class LogInViewModel {
 
     private String message = "";
+    private String username = "";
+    private String password = "";
     private boolean loggedIn = false;
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -18,9 +20,7 @@ public class LogInViewModel {
         support.firePropertyChange("state", null, this);
     }
 
-    public String getMessage() {
-        return message;
-    }
+    public String getMessage() { return message; }
 
     public void setMessage(String message) {
         String old = this.message;
@@ -28,9 +28,13 @@ public class LogInViewModel {
         support.firePropertyChange("message", old, message);
     }
 
-    public boolean isLoggedIn() {
-        return loggedIn;
-    }
+    public void setUsername(String username) { this.username = username; }
+    public String getUsername() { return username; }
+
+    public void setPassword(String password) { this.password = password; }
+    public String getPassword() { return password; }
+
+    public boolean isLoggedIn() { return loggedIn; }
 
     public void setLoggedIn(boolean loggedIn) {
         boolean old = this.loggedIn;
@@ -38,25 +42,13 @@ public class LogInViewModel {
         support.firePropertyChange("loggedIn", old, loggedIn);
     }
 
-    public void setSuccessMessage(String s) {
-        String oldMessage = this.message;
-        boolean oldLoggedIn = this.loggedIn;
-
-        this.message = s;
-        this.loggedIn = true;
-
-        support.firePropertyChange("message", oldMessage, s);
-        support.firePropertyChange("loggedIn", oldLoggedIn, true);
+    public void setSuccessMessage(String message) {
+        setMessage(message);
+        setLoggedIn(true);
     }
 
     public void setErrorMessage(String error) {
-        String oldMessage = this.message;
-        boolean oldLoggedIn = this.loggedIn;
-
-        this.message = error;
-        this.loggedIn = false;
-
-        support.firePropertyChange("message", oldMessage, error);
-        support.firePropertyChange("loggedIn", oldLoggedIn, false);
+        setMessage(error);
+        setLoggedIn(false);
     }
 }

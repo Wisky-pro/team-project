@@ -21,6 +21,11 @@ public class LogInPresenter implements LogInOutputBoundary {
 
     @Override
     public void prepareSuccessView(LogInOutputData data) {
+
+        // 🔥 Store username
+        loginViewModel.setUsername(data.getUsername());
+        loginViewModel.setSuccessMessage("Login successful!");
+
         dashboardViewModel.setMessage("Logged in as: " + data.getUsername());
         dashboardViewModel.firePropertyChanged();
 
@@ -30,7 +35,7 @@ public class LogInPresenter implements LogInOutputBoundary {
 
     @Override
     public void prepareFailView(String errorMessage) {
-        loginViewModel.setMessage(errorMessage);
+        loginViewModel.setErrorMessage(errorMessage);
         loginViewModel.firePropertyChanged();
     }
 }
