@@ -4,6 +4,7 @@ import use_case.PriceHistory.PriceHistoryOutputBoundary;
 import use_case.PriceHistory.PriceHistoryOutputData;
 
 import java.awt.*;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,7 +21,8 @@ public class PriceHistoryPresenter implements PriceHistoryOutputBoundary {
     public void prepareSuccessView(PriceHistoryOutputData outputData){
         List<Date> dateList = new ArrayList<>();
         for(var localDate : outputData.getDates()){
-            Date asDate = Date.from(localDate.atStartOfDay(ZoneId.of("UTC")).toInstant());
+            LocalDate date = localDate.plusDays(1);
+            Date asDate = Date.from(date.atStartOfDay(ZoneId.of("UTC")).toInstant());
             dateList.add(asDate);
         }
 
@@ -30,7 +32,7 @@ public class PriceHistoryPresenter implements PriceHistoryOutputBoundary {
     }
 
     @Override
-    public void prepareFailureView(String errorMessage){
-        viewModel.setErrorMessage(errorMessage);
+    public void prepareFailView(String errorMessage){
+        viewModel.setMessage(errorMessage);
     }
 }

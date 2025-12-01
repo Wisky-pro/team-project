@@ -6,18 +6,12 @@ package use_case.PriceHistory;
  */
 public class PriceHistoryInputData {
     private final String productUrl;
-    private final int numDaysView;
 
-    public PriceHistoryInputData(String productUrl, int numDaysView) {
+    public PriceHistoryInputData(String productUrl) {
         this.productUrl = productUrl;
-        this.numDaysView = numDaysView;
     }
 
     public String getProductUrl() {
         return productUrl;
-    }
-
-    public int getNumDaysView() {
-        return numDaysView;
     }
 }
