@@ -27,8 +27,6 @@ public class PriceHistoryGraphView extends JPanel {
                 .width(1200).height(500).title("Price History: " + viewModel.getProductName())
                 .xAxisTitle("Date").yAxisTitle("Price ($CAD)").build();
 
-        graph.addSeries("Product Price", allDates, allPrices);
-
         graph.getStyler().setToolTipsEnabled(true);
         graph.getStyler().setDatePattern("MMM d");
         graph.getStyler().setPlotContentSize(0.78);
@@ -51,6 +49,9 @@ public class PriceHistoryGraphView extends JPanel {
 
         add(buttonPanel, BorderLayout.SOUTH);
         add(graphPanel, BorderLayout.NORTH);
+
+        //Default graph shows 7 days view
+        showLastNDays(7);
     }
 
     private void showLastNDays(int days) {
@@ -58,15 +59,17 @@ public class PriceHistoryGraphView extends JPanel {
             showAllDays();
             return;
         }
-        Date cutoff = allDates.get(allDates.size() - days);
+
         List<Date> allDates = viewModel.getDates();
         List<Double> allPrices = viewModel.getPrices();
+
+        Date cutoff = allDates.get(allDates.size() - days);
 
         List<Date> filteredDates = new ArrayList<>();
         List<Double> filteredPrices = new ArrayList<>();
 
-        for (int i=allDates.size() - 1; i >= 0; i--){
-            if(allDates.get(i).before(cutoff)){
+        for (int i = allDates.size() - 1; i >= 0; i--) {
+            if(allDates.get(i).before(cutoff)) {
                 break;
             }
             filteredDates.add(allDates.get(i));
