@@ -8,12 +8,14 @@ public class PriceHistoryViewModel {
     private List<Date> dates;
     private List<Double> prices;
     private String productName;
-    private String errorMessage;
+    private String productUrl;
+    private String message;
+
     public PriceHistoryViewModel() {
         this.dates = new ArrayList<>();
         this.prices = new ArrayList<>();
         this.productName = "";
-        this.errorMessage = "";
+        this.message = "";
     }
 
     public List<Date> getDates() {
@@ -40,7 +42,17 @@ public class PriceHistoryViewModel {
         this.productName = productName;
     }
 
-    public void setErrorMessage(String errorMessage){
-        this.errorMessage = errorMessage;
+    public String getProductUrl() { return productUrl; }
+
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
+    }
+
+    public void setMessage(String message){
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return this.message;
     }
 }
