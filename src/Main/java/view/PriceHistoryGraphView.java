@@ -29,7 +29,7 @@ public class PriceHistoryGraphView extends JPanel {
 
         graph.getStyler().setToolTipsEnabled(true);
         graph.getStyler().setDatePattern("MMM d");
-        graph.getStyler().setPlotContentSize(0.78);
+        graph.getStyler().setPlotContentSize(0.88);
 
         setLayout(new BorderLayout());
         this.graphPanel = new XChartPanel<>(graph);
