@@ -9,8 +9,8 @@ public class CartTest {
     @Test
     public void testAddItemNewAndExisting() {
         Cart cart = new Cart();
-        cart.addItem("url1", "Item 1", 5.0, 2);
-        cart.addItem("url1", "Item 1", 5.0, 3);
+        cart.addItem("url1", "Item 1", 5.0, 2, 0);
+        cart.addItem("url1", "Item 1", 5.0, 3, 0);
 
         CartItem item = cart.getItemByUrl("url1");
         assertNotNull(item);
@@ -21,7 +21,7 @@ public class CartTest {
     @Test
     public void testRemoveItemDecreasesQuantityAndRemovesWhenZero() {
         Cart cart = new Cart();
-        cart.addItem("url1", "Item 1", 5.0, 3);
+        cart.addItem("url1", "Item 1", 5.0, 3, 0);
 
         cart.removeItem("url1", 1);
         CartItem item = cart.getItemByUrl("url1");
@@ -36,8 +36,8 @@ public class CartTest {
     @Test
     public void testGetTotal() {
         Cart cart = new Cart();
-        cart.addItem("url1", "Item 1", 5.0, 2);
-        cart.addItem("url2", "Item 2", 3.0, 4);
+        cart.addItem("url1", "Item 1", 5.0, 2, 0);
+        cart.addItem("url2", "Item 2", 3.0, 4, 0);
 
         assertEquals(5.0 * 2 + 3.0 * 4, cart.getTotal(), 0.0001);
     }
@@ -46,7 +46,7 @@ public class CartTest {
     public void testIsEmpty() {
         Cart cart = new Cart();
         assertTrue(cart.isEmpty());
-        cart.addItem("url1", "Item 1", 5.0, 1);
+        cart.addItem("url1", "Item 1", 5.0, 1, 0);
         assertFalse(cart.isEmpty());
     }
 }

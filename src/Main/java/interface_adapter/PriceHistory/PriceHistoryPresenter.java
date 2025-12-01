@@ -3,7 +3,6 @@ package interface_adapter.PriceHistory;
 import use_case.PriceHistory.PriceHistoryOutputBoundary;
 import use_case.PriceHistory.PriceHistoryOutputData;
 
-import java.awt.*;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,7 +29,7 @@ public class PriceHistoryPresenter implements PriceHistoryOutputBoundary {
     }
 
     @Override
-    public void prepareFailureView(String errorMessage){
-        viewModel.setErrorMessage(errorMessage);
+    public void prepareFailView(String errorMessage){
+        viewModel.setMessage(errorMessage);
     }
 }

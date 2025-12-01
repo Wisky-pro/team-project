@@ -5,5 +5,5 @@ package use_case.PriceHistory;
  */
 public interface PriceHistoryOutputBoundary {
     void prepareSuccessView(PriceHistoryOutputData OutputData);
-    void prepareFailureView(String ErrorMessage);
+    void prepareFailView(String ErrorMessage);
 }

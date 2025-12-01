@@ -18,20 +18,20 @@ import java.util.Map;
 public class PriceHistoryDataAccessObject implements PriceHistoryDataAccessInterface{
     private final Map<String, PriceHistory> historyByUrl = new HashMap<>();
 
-    public PriceHistoryDataAccessObject(){
-        try{
+    public PriceHistoryDataAccessObject() {
+        try { 
             String filePath = "priceHistory.json";
             String jsonText = Files.readString(Paths.get(filePath));
 
             JSONObject root = new JSONObject(jsonText);
             JSONObject products = root.getJSONObject("products");
 
-            for(String productUrl: products.keySet()){
+            for (String productUrl: products.keySet()) {
                 JSONObject product = products.getJSONObject(productUrl);
                 JSONArray productHistory = product.getJSONArray("historyPrice");
 
                 Map<LocalDate, Double> pricePoint = new HashMap<>();
-                for(int i = 0; i < productHistory.length(); i++){
+                for (int i = 0; i < productHistory.length(); i++) {
                     JSONObject pricePerDate = productHistory.getJSONObject(i);
                     LocalDate date = LocalDate.parse(pricePerDate.getString("date"));
                     double price = pricePerDate.getDouble("price");
@@ -41,13 +41,13 @@ public class PriceHistoryDataAccessObject implements PriceHistoryDataAccessInter
                 PriceHistory priceHistory = new PriceHistory(productUrl, pricePoint);
                 historyByUrl.put(productUrl, priceHistory);
             }
-        }catch(IOException e){
+        } catch (IOException e) {
             throw new RuntimeException("Failed to read priceHistory.json", e);
         }
     }
 
     @Override
-    public PriceHistory getPriceHistory(String productUrl){
+    public PriceHistory getPriceHistory(String productUrl) {
         return historyByUrl.get(productUrl);
     }
 

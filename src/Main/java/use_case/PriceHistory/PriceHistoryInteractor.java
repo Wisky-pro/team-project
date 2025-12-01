@@ -2,7 +2,6 @@ package use_case.PriceHistory;
 
 import entity.PriceHistory;
 
-import java.awt.*;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.List;

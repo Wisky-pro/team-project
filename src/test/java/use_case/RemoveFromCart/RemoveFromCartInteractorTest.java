@@ -50,7 +50,7 @@ public class RemoveFromCartInteractorTest {
         TestRemovePresenter presenter = new TestRemovePresenter();
 
         Cart cart = cartDAO.getCart("user1");
-        cart.addItem("url1", "Test Product", 10.0, 5);
+        cart.addItem("url1", "Test Product", 10.0, 5, 0);
         cartDAO.saveCart("user1", cart);
 
         RemoveFromCartInteractor interactor =
@@ -74,7 +74,7 @@ public class RemoveFromCartInteractorTest {
         TestRemovePresenter presenter = new TestRemovePresenter();
 
         Cart cart = cartDAO.getCart("user1");
-        cart.addItem("url1", "Test Product", 10.0, 3);
+        cart.addItem("url1", "Test Product", 10.0, 3, 0);
         cartDAO.saveCart("user1", cart);
 
         RemoveFromCartInteractor interactor =
@@ -98,7 +98,7 @@ public class RemoveFromCartInteractorTest {
         TestRemovePresenter presenter = new TestRemovePresenter();
 
         Cart cart = cartDAO.getCart("user1");
-        cart.addItem("url1", "Test Product", 10.0, 2);
+        cart.addItem("url1", "Test Product", 10.0, 2, 0);
         cartDAO.saveCart("user1", cart);
 
         RemoveFromCartInteractor interactor =
@@ -122,7 +122,7 @@ public class RemoveFromCartInteractorTest {
         TestRemovePresenter presenter = new TestRemovePresenter();
 
         Cart cart = cartDAO.getCart("user1");
-        cart.addItem("url1", "Test Product", 10.0, 2);
+        cart.addItem("url1", "Test Product", 10.0, 2, 0);
         cartDAO.saveCart("user1", cart);
 
         RemoveFromCartInteractor interactor =
