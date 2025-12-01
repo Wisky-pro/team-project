@@ -1,12 +1,12 @@
 package app;
 
+
 import data_access.BestBuyProductDataAccess;
 import data_access.CommodityDataAccessObject;
 import data_access.InMemoryCartDataAccess;
 import data_access.InMemoryUserDataAccess;
 
 import entity.UserFactory;
-
 import interface_adapter.AddToCart.AddToCartController;
 import interface_adapter.AddToCart.AddToCartPresenter;
 import interface_adapter.Cart.CartViewModel;
@@ -50,6 +50,8 @@ import view.RecommendationView;
 import view.LoginView;
 import view.PriceTrackerView;
 import view.SignupView;
+
+import javax.swing.*;
 
 public class AppBuilder {
 
