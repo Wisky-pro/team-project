@@ -14,7 +14,6 @@ public class InMemoryUserDataAccess implements
     private final Map<String, User> users = new HashMap<>();
     private String currentUsername;
 
-    // ===== LOGIN METHODS =====
     @Override
     public boolean userExists(String username) {
         return users.containsKey(username);
@@ -36,7 +35,10 @@ public class InMemoryUserDataAccess implements
         this.currentUsername = username;
     }
 
-    // ===== SIGNUP METHODS =====
+    public String getCurrentUsername() {
+        return currentUsername;
+    }
+
     @Override
     public boolean usernameTaken(String username) {
         return users.containsKey(username);
@@ -44,11 +46,15 @@ public class InMemoryUserDataAccess implements
 
     @Override
     public void saveUser(User user) {
-
+        users.put(user.getUsername(), user);
     }
 
     @Override
     public void addUser(User user) {
         users.put(user.getUsername(), user);
+    }
+
+    public void addUser(String username, String password) {
+        users.put(username, new User(username, password));
     }
 }

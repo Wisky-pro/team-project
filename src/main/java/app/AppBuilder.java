@@ -1,12 +1,12 @@
 package app;
 
+
 import data_access.BestBuyProductDataAccess;
 import data_access.CommodityDataAccessObject;
 import data_access.InMemoryCartDataAccess;
 import data_access.InMemoryUserDataAccess;
 
 import entity.UserFactory;
-
 import interface_adapter.AddToCart.AddToCartController;
 import interface_adapter.AddToCart.AddToCartPresenter;
 import interface_adapter.Cart.CartViewModel;
@@ -50,6 +50,8 @@ import view.RecommendationView;
 import view.LoginView;
 import view.PriceTrackerView;
 import view.SignupView;
+
+import javax.swing.*;
 
 public class AppBuilder {
 
@@ -101,13 +103,12 @@ public class AppBuilder {
         return this;
     }
 
-    // ------------------- Cart / Dashboard -------------------
     public AppBuilder addCartUseCase() {
 
         CartDataAccessInterface cartDataAccess = new InMemoryCartDataAccess();
 
         ProductDataAccessInterface productDataAccess =
-                new BestBuyProductDataAccess("data_access/priceHistory.json");
+                new BestBuyProductDataAccess("priceHistory.json");
 
         CartViewModel cartViewModel = new CartViewModel();
 
@@ -123,7 +124,7 @@ public class AppBuilder {
                 new RemoveFromCartInteractor(cartDataAccess, removePresenter);
         removeFromCartController = new RemoveFromCartController(removeInteractor);
 
-        // ------------------- Dashboard Buttons Panel -------------------
+        //Dashboard Buttons Panel
         DashboardView dashboardButtons = new DashboardView(dashboardVM);
         dashboardVM.setDashboardView(dashboardButtons);
 
@@ -141,13 +142,13 @@ public class AppBuilder {
 
         dashboardButtons.setLogoutController(logoutController);
 
-        // ------------------- Price Tracker Panel -------------------
+        //Price Tracker Panel
         priceTrackerView = new PriceTrackerView(
                 addToCartController,
                 removeFromCartController,
                 cartViewModel,
                 cartDataAccess,
-                "Kevin"  // TEMP username, will replace later
+                "Kevin"  // Temporary username
         );
 
         // ------------------- Combine Dashboard Buttons + Tracker -------------------

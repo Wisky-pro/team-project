@@ -7,6 +7,7 @@ public class LogInViewModel {
 
     private String message = "";
     private boolean loggedIn = false;
+    private String password = "";
     private final String viewName = "login";
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -29,10 +30,6 @@ public class LogInViewModel {
         support.firePropertyChange("message", old, message);
     }
 
-    public String getViewName() {
-        return viewName;
-    }
-
     public boolean isLoggedIn() {
         return loggedIn;
     }
@@ -41,6 +38,20 @@ public class LogInViewModel {
         boolean old = this.loggedIn;
         this.loggedIn = loggedIn;
         support.firePropertyChange("loggedIn", old, loggedIn);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        String old = this.password;
+        this.password = password;
+        support.firePropertyChange("password", old, password);
+    }
+
+    public String getViewName() {
+        return viewName;
     }
 
     public void setSuccessMessage(String s) {
@@ -63,5 +74,11 @@ public class LogInViewModel {
 
         support.firePropertyChange("message", oldMessage, error);
         support.firePropertyChange("loggedIn", oldLoggedIn, false);
+    }
+
+    public void reset() {
+        setMessage("");
+        setPassword("");
+        setLoggedIn(false);
     }
 }
