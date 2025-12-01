@@ -7,8 +7,6 @@ import java.util.Map;
 public class Cart {
 
     private final Map<String, CartItem> items = new HashMap<>();
-
-    // for the target price use case
     private double targetTotalPrice;
 
     public void addItem(String productUrl, String name, double price, int quantity) {
@@ -21,15 +19,16 @@ public class Cart {
         }
     }
 
+    // NEW: Accept a CartItem directly
+    public void addItem(CartItem item) {
+        addItem(item.getProductUrl(), item.getName(), item.getPrice(), item.getQuantity());
+    }
+
     public void removeItem(String productUrl, int quantity) {
-        if (!items.containsKey(productUrl)) {
-            return;
-        }
+        if (!items.containsKey(productUrl)) return;
         CartItem item = items.get(productUrl);
         item.decreaseQuantity(quantity);
-        if (item.getQuantity() <= 0) {
-            items.remove(productUrl);
-        }
+        if (item.getQuantity() <= 0) items.remove(productUrl);
     }
 
     public void removeCompletely(String productUrl) {

@@ -1,4 +1,5 @@
 import app.AppBuilder;
+
 import javax.swing.*;
 
 public class Main {
@@ -6,15 +7,16 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             AppBuilder appBuilder = new AppBuilder();
 
-            appBuilder.addSignupUseCase();
-            appBuilder.addLoginUseCase();
-            appBuilder.addCartUseCase();
-            appBuilder.addRecommendationUseCase();
+            appBuilder.addSignupUseCase()
+                      .addLoginUseCase()
+                      .addCartUseCase()
+                    .addRecommendationUseCase();
 
             JFrame frame = new JFrame("Price Tracker");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.add(appBuilder.getViewManager().getPanel());
 
+            // start at login view
             appBuilder.getViewManagerModel().setActiveView("login");
             appBuilder.getViewManagerModel().firePropertyChanged();
 

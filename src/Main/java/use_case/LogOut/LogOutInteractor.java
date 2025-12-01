@@ -1,14 +1,12 @@
 package use_case.LogOut;
 
-import data_access.InMemoryUserDataAccess;
-
 public class LogOutInteractor implements LogOutInputBoundary {
 
     private final LogOutOutputBoundary presenter;
-    private final InMemoryUserDataAccess userDAO;
+    private final LogOutUserDataAccessInterface userDAO; // now uses interface
 
     public LogOutInteractor(LogOutOutputBoundary presenter,
-                            InMemoryUserDataAccess userDAO) {
+                            LogOutUserDataAccessInterface userDAO) {
         this.presenter = presenter;
         this.userDAO = userDAO;
     }

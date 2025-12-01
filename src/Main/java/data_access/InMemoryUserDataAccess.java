@@ -3,17 +3,20 @@ package data_access;
 import entity.User;
 import use_case.LogIn.LogInUserDataAccessInterface;
 import use_case.Signup.SignupUserDataAccessInterface;
+import use_case.LogOut.LogOutUserDataAccessInterface; // <-- add this
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class InMemoryUserDataAccess implements
         LogInUserDataAccessInterface,
-        SignupUserDataAccessInterface {
+        SignupUserDataAccessInterface,
+        LogOutUserDataAccessInterface { // <-- implement logout
 
     private final Map<String, User> users = new HashMap<>();
     private String currentUsername;
 
+    // --- Login methods ---
     @Override
     public boolean userExists(String username) {
         return users.containsKey(username);
@@ -35,10 +38,12 @@ public class InMemoryUserDataAccess implements
         this.currentUsername = username;
     }
 
+    // --- Getter for test purposes ---
     public String getCurrentUsername() {
         return currentUsername;
     }
 
+    // --- Signup methods ---
     @Override
     public boolean usernameTaken(String username) {
         return users.containsKey(username);
