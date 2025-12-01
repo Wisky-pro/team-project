@@ -27,7 +27,7 @@ public class TestRecommendationGuiMain {
 
     private static PurchaseRecommendationController getPurchaseRecommendationController(DashboardViewModel dashboardVM) {
         PurchaseRecommendationDataAccessInterface dataAccess =
-                new CommodityDataAccessObject();
+                new CommodityDataAccessObject("Products.dat");
 
         PurchaseRecommendationOutputBoundary presenter =
                 new PurchaseRecommendationPresenter(dashboardVM);
