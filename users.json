@@ -7,6 +7,10 @@
         "password": "kms",
         "cart": {"items": []}
     },
+    "w": {
+        "password": "w",
+        "cart": {"items": []}
+    },
     "207": {
         "password": "kms",
         "cart": {"items": [{
