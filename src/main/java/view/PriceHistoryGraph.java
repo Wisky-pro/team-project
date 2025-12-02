@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-public class PriceHistoryGraph extends JPanel{
+public class PriceHistoryGraph extends JPanel {
     private final PriceHistoryViewModel viewModel;
 
     public PriceHistoryGraph(PriceHistoryViewModel viewModel) {
