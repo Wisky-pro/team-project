@@ -3,8 +3,6 @@ package view;
 import entity.Cart;
 import entity.CartItem;
 import interface_adapter.Cart.CartViewModel;
-import interface_adapter.PriceHistory.PriceHistoryController;
-import interface_adapter.PriceHistory.PriceHistoryViewModel;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import use_case.Cart.CartDataAccessInterface;
 
@@ -19,8 +17,6 @@ public class CartWindow extends JFrame implements PropertyChangeListener {
     private final RemoveFromCartController removeController;
     private final CartViewModel cartViewModel;
     private final String username;
-    private final PriceHistoryViewModel historyViewModel;
-    private final PriceHistoryController historyController;
 
     private final JPanel itemsPanel = new JPanel();
     private final JTextField quantityField = new JTextField("1", 5);
@@ -33,17 +29,11 @@ public class CartWindow extends JFrame implements PropertyChangeListener {
     public CartWindow(CartDataAccessInterface cartDataAccess,
                       RemoveFromCartController removeController,
                       CartViewModel cartViewModel,
-                      String username,
-                      PriceHistoryViewModel historyViewModel,
-                      PriceHistoryController historyController) {
-
+                      String username) {
         this.cartDataAccess = cartDataAccess;
         this.removeController = removeController;
         this.cartViewModel = cartViewModel;
         this.username = username;
-        this.historyViewModel = historyViewModel;
-        this.historyController = historyController;
-
 
         cartViewModel.addPropertyChangeListener(this);
 
@@ -101,36 +91,6 @@ public class CartWindow extends JFrame implements PropertyChangeListener {
                     selectedProductUrl = url;
                     selectedLabel.setText("Selected: " + item.getName());
                 });
-
-                JButton priceHistoryButton = new JButton("Show price history");
-
-                priceHistoryButton.addActionListener(e -> {
-                    historyController.viewPriceHistory(url);
-                    PriceHistoryGraphView graph = new PriceHistoryGraphView(historyViewModel);
-                    SwingUtilities.invokeLater(() -> {
-                        JFrame frame = new JFrame("Price History Test");
-                        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        frame.setContentPane(graph);
-                        frame.pack();
-                        frame.setVisible(true);
-                    });
-                });
-
-                JPanel productRow = new JPanel();
-                productRow.setLayout(new BoxLayout(productRow, BoxLayout.X_AXIS));
-
-                productRow.add(button);
-                productRow.add(priceHistoryButton);
-
-                itemsPanel.add(productRow);
-
-                button.addActionListener(e -> {
-                    selectedProductUrl = url;
-                    selectedLabel.setText("Selected: " + item.getName());
-                });
-
-
-
                 itemsPanel.add(button);
             }
             totalLabel.setText(String.format("Total: $%.2f", cart.getTotal()));

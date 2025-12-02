@@ -1,6 +1,9 @@
 package app;
 
-import data_access.*;
+import data_access.BestBuyProductDataAccess;
+import data_access.CommodityDataAccessObject;
+import data_access.InMemoryCartDataAccess;
+import data_access.JsonUserDataAccess;
 
 import entity.UserFactory;
 
@@ -11,9 +14,6 @@ import interface_adapter.Dashboard.DashBoardController;
 import interface_adapter.Dashboard.DashboardViewModel;
 import interface_adapter.Recommendation.PurchaseRecommendationController;
 import interface_adapter.Recommendation.PurchaseRecommendationPresenter;
-import interface_adapter.PriceHistory.PriceHistoryController;
-import interface_adapter.PriceHistory.PriceHistoryPresenter;
-import interface_adapter.PriceHistory.PriceHistoryViewModel;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import interface_adapter.RemoveFromCart.RemoveFromCartPresenter;
 import interface_adapter.Logout.LogoutPresenter;
@@ -36,9 +36,6 @@ import use_case.Recommendation.PurchaseRecommendationDataAccessInterface;
 import use_case.Recommendation.PurchaseRecommendationInputBoundary;
 import use_case.Recommendation.PurchaseRecommendationInteractor;
 import use_case.Recommendation.PurchaseRecommendationOutputBoundary;
-import use_case.PriceHistory.PriceHistoryDataAccessInterface;
-import use_case.PriceHistory.PriceHistoryInputBoundary;
-import use_case.PriceHistory.PriceHistoryInteractor;
 import use_case.RemoveFromCart.RemoveFromCartInteractor;
 
 import use_case.Signup.SignupInputBoundary;
@@ -138,24 +135,12 @@ public class AppBuilder {
 
         dashboardButtons.setLogoutController(logoutController);
 
-        PriceHistoryViewModel priceHistoryViewModel = new PriceHistoryViewModel();
-        PriceHistoryPresenter priceHistoryPresenter = new PriceHistoryPresenter(priceHistoryViewModel);
-
-        PriceHistoryDataAccessInterface priceHistoryDataAccessInterface = new PriceHistoryDataAccessObject();
-        PriceHistoryInputBoundary priceHistoryInputBoundary =
-                new PriceHistoryInteractor(priceHistoryDataAccessInterface, priceHistoryPresenter);
-
-        PriceHistoryController priceHistoryController = new PriceHistoryController(priceHistoryInputBoundary);
-
         priceTrackerView = new PriceTrackerView(
                 addToCartController,
                 removeFromCartController,
                 cartViewModel,
                 cartDataAccess,
-                "Kevin",
-                priceHistoryViewModel,
-                priceHistoryController
-
+                "Kevin"
         );
 
         JPanel combinedDashboard = new JPanel();
