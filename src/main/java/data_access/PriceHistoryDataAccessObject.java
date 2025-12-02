@@ -16,16 +16,10 @@ import java.util.Map;
  Data access object for view graph (use case 7).
  */
 public class PriceHistoryDataAccessObject implements PriceHistoryDataAccessInterface {
-    private final Map<String, PriceHistory> historyByUrl;
+    private final String filePath;
 
     public PriceHistoryDataAccessObject() {
-        try {
-            String filePath = "data_access/priceHistory.json";
-            String jsonText = Files.readString(Paths.get(filePath));
-            this.historyByUrl = parseJson(jsonText);
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to read priceHistory.json", e);
-        }
+        this.filePath = "priceHistory.json";
     }
 
     private Map<String, PriceHistory> parseJson(String jsonText) {
@@ -56,6 +50,17 @@ public class PriceHistoryDataAccessObject implements PriceHistoryDataAccessInter
 
     @Override
     public PriceHistory getPriceHistory(String productUrl) {
-        return historyByUrl.get(productUrl);
+        try {
+            String jsonText = Files.readString(Paths.get(filePath));
+            Map<String, PriceHistory> historyByUrl = parseJson(jsonText);
+            PriceHistory history = historyByUrl.get(productUrl);
+
+            if (history == null) {
+                throw new RuntimeException("No price history for URL: " + productUrl);
+            }
+            return history;
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read priceHistory.json", e);
+        }
     }
 }

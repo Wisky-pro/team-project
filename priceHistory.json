@@ -27,6 +27,15 @@
             }
         ]
     },
+    "https://www.bestbuy.ca/en-ca/product/polaroid-go-36-photo-album-white/15760075?icmp=Recos_4across_y_mght_ls_lk": {
+        "name": "Polaroid Go 36 Photo Album - White",
+        "curPrice": 34.58,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/polaroid-go-36-photo-album-white/15760075?icmp=Recos_4across_y_mght_ls_lk",
+        "historyPrice": [{
+            "date": "2025-12-01",
+            "price": 34.58
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/laifen-premium-hair-dryer-lpr200gp-golden-pink-only-at-best-buy/17113615?source=collection&adSlot=1&slotPos=1": {
         "name": "Laifen Premium Hair Dryer (LPR200GP) - Golden Pink - Only at Best Buy",
         "curPrice": 219.99,
