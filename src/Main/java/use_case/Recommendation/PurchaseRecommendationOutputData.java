@@ -1,8 +1,8 @@
 package use_case.Recommendation;
 
 /**
-  Output data for Use Case 9.
-  It contains the current price, mean price and a human-readable suggestion.
+ Output data for Use Case 9.
+ It contains the current price, mean price and a human-readable suggestion.
  */
 public class PurchaseRecommendationOutputData {
 

@@ -1,6 +1,10 @@
 {
-    "currentUsername": "will",
+    "currentUsername": "qq",
     "users": {
+        "qq": {
+            "password": "11",
+            "cart": {"items": []}
+        },
         "111": {
             "password": "111",
             "cart": {"items": []}
