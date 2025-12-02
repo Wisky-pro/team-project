@@ -114,5 +114,14 @@
                 "price": 249.99
             }
         ]
+    },
+    "https://www.bestbuy.ca/en-ca/product/amd-ryzen-5-5600g-6-core-12-thread-7nm-processor-socket-am4-3-9ghz-4-4ghz-radeon-graphics-wraith-stealth-cooler/16010838": {
+        "name": "AMD Ryzen 5 5600G 6-Core/12-Thread 7nm Processor - Socket AM4 3.9GHz/ 4.4GHz Radeon Graphics Wraith Stealth Cooler",
+        "curPrice": 271.68,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/amd-ryzen-5-5600g-6-core-12-thread-7nm-processor-socket-am4-3-9ghz-4-4ghz-radeon-graphics-wraith-stealth-cooler/16010838",
+        "historyPrice": [{
+            "date": "2025-12-02",
+            "price": 271.68
+        }]
     }
 }}
