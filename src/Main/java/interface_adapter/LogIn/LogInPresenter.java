@@ -22,7 +22,6 @@ public class LogInPresenter implements LogInOutputBoundary {
     @Override
     public void prepareSuccessView(LogInOutputData data) {
 
-        // 🔥 Store username
         loginViewModel.setUsername(data.getUsername());
         loginViewModel.setSuccessMessage("Login successful!");
 
