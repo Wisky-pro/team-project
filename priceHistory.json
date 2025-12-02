@@ -1,13 +1,4 @@
 {"products": {
-    "https://www.bestbuy.ca/en-ca/product/samsung-55-q6f-series-4k-uhd-hdr-qled-tizen-smart-tv-qn55q6faafxzc-2025-only-at-best-buy/19420282": {
-        "name": "Samsung 55\" Q6F Series 4K UHD HDR QLED Tizen Smart TV (QN55Q6FAAFXZC) - 2025 - Only at Best Buy",
-        "curPrice": 499.99,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/samsung-55-q6f-series-4k-uhd-hdr-qled-tizen-smart-tv-qn55q6faafxzc-2025-only-at-best-buy/19420282",
-        "historyPrice": [{
-            "date": "2025-12-01",
-            "price": 499.99
-        }]
-    },
     "https://www.bestbuy.ca/en-ca/product/hyperx-quadcast-s-rgb-usb-condenser-microphone-black/15101853?source=collection&adSlot=3&slotPos=3": {
         "name": "HyperX QuadCast S RGB USB Condenser Microphone - Black",
         "curPrice": 155.98,
@@ -27,13 +18,13 @@
             }
         ]
     },
-    "https://www.bestbuy.ca/en-ca/product/polaroid-go-36-photo-album-white/15760075?icmp=Recos_4across_y_mght_ls_lk": {
-        "name": "Polaroid Go 36 Photo Album - White",
-        "curPrice": 34.58,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/polaroid-go-36-photo-album-white/15760075?icmp=Recos_4across_y_mght_ls_lk",
+    "https://www.bestbuy.ca/en-ca/product/lenovo-loq-laptop-17-3-fhd-ips-165hz-nvidia-rtx-5050-13th-generation-intel-core-i5-13450hx-16gb-1tb-ssd/19594198": {
+        "name": "Lenovo LOQ Laptop, 17.3\" FHD IPS 165Hz, NVIDIA RTX 5050, 13th Generation Intel Core i5-13450HX, 16GB, 1TB SSD",
+        "curPrice": 999.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/lenovo-loq-laptop-17-3-fhd-ips-165hz-nvidia-rtx-5050-13th-generation-intel-core-i5-13450hx-16gb-1tb-ssd/19594198",
         "historyPrice": [{
             "date": "2025-12-01",
-            "price": 34.58
+            "price": 999.99
         }]
     },
     "https://www.bestbuy.ca/en-ca/product/laifen-premium-hair-dryer-lpr200gp-golden-pink-only-at-best-buy/17113615?source=collection&adSlot=1&slotPos=1": {
@@ -123,14 +114,5 @@
                 "price": 249.99
             }
         ]
-    },
-    "https://www.bestbuy.ca/en-ca/product/telus-apple-iphone-16-512gb-black-monthly-financing/18393284": {
-        "name": "TELUS Apple iPhone 16 512GB - Black - Monthly Financing",
-        "curPrice": 52.38,
-        "productURL": "https://www.bestbuy.ca/en-ca/product/telus-apple-iphone-16-512gb-black-monthly-financing/18393284",
-        "historyPrice": [{
-            "date": "2025-12-01",
-            "price": 52.38
-        }]
     }
 }}

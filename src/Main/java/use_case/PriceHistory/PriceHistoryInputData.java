@@ -5,12 +5,19 @@ package use_case.PriceHistory;
  For now, we only need the productUrl that user selects.
  */
 public class PriceHistoryInputData {
-
     private final String productUrl;
+    private final int numDaysView;
 
-    public PriceHistoryInputData(String productUrl) {
+    public PriceHistoryInputData(String productUrl, int numDaysView) {
         this.productUrl = productUrl;
+        this.numDaysView = numDaysView;
     }
 
-    public String getProductUrl() { return productUrl; }
+    public String getProductUrl() {
+        return productUrl;
+    }
+
+    public int getNumDaysView() {
+        return numDaysView;
+    }
 }
