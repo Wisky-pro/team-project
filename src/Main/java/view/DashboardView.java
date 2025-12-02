@@ -1,0 +1,49 @@
+package view;
+
+import interface_adapter.Dashboard.DashboardViewModel;
+import interface_adapter.Logout.LogoutController;
+
+import javax.swing.*;
+import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class DashboardView extends JPanel implements PropertyChangeListener {
+
+    private final DashboardViewModel viewModel;
+    private LogoutController logoutController;
+
+    private final JLabel messageLabel = new JLabel(" ");
+
+    public DashboardView(DashboardViewModel viewModel) {
+        this.viewModel = viewModel;
+        viewModel.addPropertyChangeListener(this);
+
+        setLayout(new BorderLayout());
+
+        JButton logoutButton = new JButton("Log Out");
+        logoutButton.addActionListener(e -> {
+            if (logoutController != null) {
+                logoutController.logout();
+            }
+        });
+
+        JPanel topRight = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        topRight.add(logoutButton);
+        add(topRight, BorderLayout.NORTH);
+
+        JPanel center = new JPanel();
+        add(center, BorderLayout.CENTER);
+
+        add(messageLabel, BorderLayout.SOUTH);
+    }
+
+    public void setLogoutController(LogoutController controller) {
+        this.logoutController = controller;
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        messageLabel.setText(viewModel.getMessage());
+    }
+}
