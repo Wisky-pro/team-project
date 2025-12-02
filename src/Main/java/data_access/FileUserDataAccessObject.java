@@ -17,7 +17,6 @@ public class FileUserDataAccessObject implements LogInUserDataAccessInterface, S
     public FileUserDataAccessObject(String filename, UserFactory userFactory) {
         this.userFactory = userFactory;
 
-        // Optional: add a default test user
         User defaultUser = userFactory.createUser("CSC207", "1234");
         users.put(defaultUser.getUsername(), defaultUser);
     }
@@ -60,7 +59,6 @@ public class FileUserDataAccessObject implements LogInUserDataAccessInterface, S
         saveUser(user);
     }
 
-    // Optional helper to access all users
     public Map<String, User> getUserMap() {
         return users;
     }

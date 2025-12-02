@@ -52,7 +52,6 @@ public class LogInViewModel {
         setLoggedIn(false);
     }
 
-    // ✅ NEW METHOD: reset login UI state
     public void reset() {
         String oldUsername = this.username;
         String oldPassword = this.password;
@@ -69,7 +68,6 @@ public class LogInViewModel {
         support.firePropertyChange("message", oldMessage, this.message);
         support.firePropertyChange("loggedIn", oldLoggedIn, this.loggedIn);
 
-        // general UI update event
         firePropertyChanged();
     }
 }

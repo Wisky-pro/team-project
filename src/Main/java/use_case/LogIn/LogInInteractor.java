@@ -18,28 +18,22 @@ public class LogInInteractor implements LogInInputBoundary {
         String username = inputData.getUsername();
         String password = inputData.getPassword();
 
-        // Check if user exists
         if (!userDataAccessObject.userExists(username)) {
             logInPresenter.prepareFailView(username + ": account does not exist.");
             return;
         }
 
-        // Validate password
         if (!userDataAccessObject.isPasswordCorrect(username, password)) {
             logInPresenter.prepareFailView("Incorrect password for \"" + username + "\".");
             return;
         }
 
-        // Fetch user
         User user = userDataAccessObject.get(username);
 
-        // Update current user
         userDataAccessObject.setCurrentUsername(username);
 
-        // Prepare output data
         LogInOutputData outputData = new LogInOutputData(user.getUsername());
 
-        // Send success to presenter
         logInPresenter.prepareSuccessView(outputData);
     }
 }

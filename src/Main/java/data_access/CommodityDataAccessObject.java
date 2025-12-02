@@ -18,12 +18,10 @@ import org.json.JSONArray;
  */
 public class CommodityDataAccessObject implements PurchaseRecommendationDataAccessInterface{
 
-    // Example in-memory storage. You will replace this with real JSON loading.
     private final Map<String, List<Double>> priceHistory = new HashMap<>();
     private final Map<String, Commodity> currentCommodities = new HashMap<>();
 
     public CommodityDataAccessObject() {
-        // This constructor is just a placeholder so AppBuilder can pass a filename.
         try{
             String filePath = "priceHistory.json";
             String jsontext = Files.readString(Paths.get(filePath));
@@ -57,7 +55,6 @@ public class CommodityDataAccessObject implements PurchaseRecommendationDataAcce
     public double getCurrentPrice(String commodityName) {
         Commodity commodity = currentCommodities.get(commodityName);
         if (commodity == null) {
-            // You can also throw an exception here if you prefer.
             return -1.0;
         }
         return commodity.getCurrentPrice();
