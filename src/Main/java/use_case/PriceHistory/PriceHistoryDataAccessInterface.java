@@ -7,7 +7,6 @@ import entity.PriceHistory;
  Implemented in the data_access layer (e.g., PriceHistoryDataAccessObject).
  */
 public interface PriceHistoryDataAccessInterface {
-    PriceHistory getPriceHistory(String productUrl);
 
-    boolean existsByUrl(String productUrl);
+    PriceHistory getPriceHistory(String productUrl);
 }
