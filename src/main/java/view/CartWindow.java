@@ -107,7 +107,7 @@ public class CartWindow extends JFrame implements PropertyChangeListener {
 
                 priceHistoryButton.addActionListener(e -> {
                     historyController.viewPriceHistory(url);
-                    PriceHistoryGraph graph = new PriceHistoryGraph(historyViewModel);
+                    PriceHistoryGraphView graph = new PriceHistoryGraphView(historyViewModel);
                     SwingUtilities.invokeLater(() -> {
                         JFrame frame = new JFrame("Price History Test");
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

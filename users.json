@@ -1,7 +1,12 @@
 {"users": {
     "123": {
         "password": "123",
-        "cart": {"items": []}
+        "cart": {"items": [{
+            "quantity": 3,
+            "price": 52.38,
+            "name": "TELUS Apple iPhone 16 512GB - Black - Monthly Financing",
+            "productURL": "https://www.bestbuy.ca/en-ca/product/telus-apple-iphone-16-512gb-black-monthly-financing/18393284"
+        }]}
     },
     "will": {
         "password": "kms",
