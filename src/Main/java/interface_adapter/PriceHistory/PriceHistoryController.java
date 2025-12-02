@@ -6,12 +6,12 @@ import use_case.PriceHistory.PriceHistoryInputData;
 public class PriceHistoryController {
     private final PriceHistoryInputBoundary interactor;
 
-    public PriceHistoryController(PriceHistoryInputBoundary interactor){
+    public PriceHistoryController(PriceHistoryInputBoundary interactor) {
         this.interactor = interactor;
     }
 
-    public void viewPriceHistory(String productUrl){
-        PriceHistoryInputData inputData = new PriceHistoryInputData(productUrl, 10); //viewing the price graph of the last 10 days.
+    public void viewPriceHistory(String productUrl) {
+        PriceHistoryInputData inputData = new PriceHistoryInputData(productUrl); //viewing the price graph of the last 10 days.
         interactor.execute(inputData);
     }
 }

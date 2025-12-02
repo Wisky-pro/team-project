@@ -2,6 +2,8 @@ package view;
 
 import interface_adapter.AddToCart.AddToCartController;
 import interface_adapter.Cart.CartViewModel;
+import interface_adapter.PriceHistory.PriceHistoryController;
+import interface_adapter.PriceHistory.PriceHistoryViewModel;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import use_case.Cart.CartDataAccessInterface;
 
@@ -25,17 +27,23 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
     private final CartDataAccessInterface cartDataAccess;
     private final String username;
     private Runnable switchToRecommendationCallback;
+    private final PriceHistoryViewModel historyViewModel;
+    private final PriceHistoryController priceHistoryController;
 
     public PriceTrackerView(AddToCartController addToCartController,
                             RemoveFromCartController removeFromCartController,
                             CartViewModel cartViewModel,
                             CartDataAccessInterface cartDataAccess,
-                            String username) {
+                            String username,
+                            PriceHistoryViewModel historyViewModel,
+                            PriceHistoryController priceHistoryController) {
         this.addToCartController = addToCartController;
         this.removeFromCartController = removeFromCartController;
         this.cartViewModel = cartViewModel;
         this.cartDataAccess = cartDataAccess;
         this.username = username;
+        this.historyViewModel = historyViewModel;
+        this.priceHistoryController = priceHistoryController;
 
         this.cartViewModel.addPropertyChangeListener(this);
 
@@ -92,7 +100,8 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         });
 
         viewCartButton.addActionListener(e -> {
-            CartWindow window = new CartWindow(cartDataAccess, removeFromCartController, cartViewModel, username);
+            CartWindow window = new CartWindow(cartDataAccess, removeFromCartController, cartViewModel, username,
+                    historyViewModel, priceHistoryController);
             window.setVisible(true);
         });
         recommendationButton.addActionListener(e -> {
