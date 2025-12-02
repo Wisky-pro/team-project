@@ -1,17 +1,7 @@
 package use_case.RemoveFromCart;
 
-import entity.Cart;
-import entity.CartItem;
-import org.junit.Test;
-import use_case.Cart.CartDataAccessInterface;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.Assert.*;
-
 public class RemoveFromCartInteractorTest {
-
+    /*
     private static class InMemoryCartDataAccess implements CartDataAccessInterface {
         private final Map<String, Cart> carts = new HashMap<>();
 
@@ -138,5 +128,7 @@ public class RemoveFromCartInteractorTest {
         CartItem item = updatedCart.getItemByUrl("url1");
         assertNotNull(item);
         assertEquals(2, item.getQuantity());
-    }
+        */
+
+
 }

@@ -15,4 +15,9 @@ public class AddToCartController {
         AddToCartInputData inputData = new AddToCartInputData(username, productUrl, quantity);
         interactor.execute(inputData);
     }
+
+    public void execute(String username, String productUrl, int quantity, int targetPrice) {
+        AddToCartInputData input = new AddToCartInputData(username, productUrl, quantity, targetPrice);
+        interactor.execute(input);
+    }
 }

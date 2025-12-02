@@ -102,6 +102,7 @@ public class JsonUserDataAccess implements
                     item.getString("name"),
                     item.getDouble("price"),
                     item.getInt("quantity")
+                    , 1000
             );
         }
 

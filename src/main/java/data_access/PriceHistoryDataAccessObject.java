@@ -18,8 +18,8 @@ import java.util.Map;
 public class PriceHistoryDataAccessObject implements PriceHistoryDataAccessInterface{
     private final Map<String, PriceHistory> historyByUrl = new HashMap<>();
 
-    public PriceHistoryDataAccessObject(){
-        try{
+    public PriceHistoryDataAccessObject() {
+        try {
             String filePath = "priceHistory.json";
             String jsonText = Files.readString(Paths.get(filePath));
 

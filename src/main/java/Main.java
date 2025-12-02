@@ -1,9 +1,6 @@
-import app.AppBuilder;
-
-import javax.swing.*;
-
 public class Main {
     public static void main(String[] args) {
+        /*
         SwingUtilities.invokeLater(() -> {
 
             AppBuilder appBuilder = new AppBuilder();
@@ -22,6 +19,7 @@ public class Main {
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-        });
+            */
+
     }
 }

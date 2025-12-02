@@ -23,6 +23,7 @@ public class AddToCartInteractor implements AddToCartInputBoundary {
         String username = inputData.getUsername();
         String productUrl = inputData.getProductUrl();
         int quantity = inputData.getQuantity();
+        int targetPrice = inputData.getTargetPrice();
 
         if (quantity <= 0) {
             presenter.prepareFailView("Quantity must be positive.");
@@ -37,7 +38,7 @@ public class AddToCartInteractor implements AddToCartInputBoundary {
             }
 
             Cart cart = cartDataAccess.getCart(username);
-            cart.addItem(productData.getProductUrl(), productData.getName(), productData.getPrice(), quantity);
+            cart.addItem(productData.getProductUrl(), productData.getName(), productData.getPrice(), quantity, targetPrice);
             cartDataAccess.saveCart(username, cart);
 
             double total = cart.getTotal();
