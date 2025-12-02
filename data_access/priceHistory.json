@@ -65,6 +65,15 @@
             "price": 549.99
         }]
     },
+    "https://www.bestbuy.ca/en-ca/product/rogers-apple-iphone-17-pro-256gb-deep-blue-monthly-financing/19418759?icmp=wi_tspd_offer_iphone_priority_3": {
+        "name": "Rogers Apple iPhone 17 Pro 256GB - Deep Blue - Monthly Financing",
+        "curPrice": 68.5,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/rogers-apple-iphone-17-pro-256gb-deep-blue-monthly-financing/19418759?icmp=wi_tspd_offer_iphone_priority_3",
+        "historyPrice": [{
+            "date": "2025-12-02",
+            "price": 68.5
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/open-box-apple-ipad-mini-8-3-128gb-with-wi-fi-7th-generation-space-grey/19185830": {
         "name": "Open Box - Apple iPad mini 8.3\" 128GB with Wi-Fi (7th Generation) - Space Grey",
         "curPrice": 549.99,

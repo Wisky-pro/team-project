@@ -14,11 +14,14 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
 
     private final JTextField urlField = new JTextField(30);
     private final JTextField quantityField = new JTextField("1", 5);
+    private final JTextField targetPriceField = new JTextField("1", 5);
     private final JButton addButton = new JButton("Add to Cart");
+
     private final JButton viewCartButton = new JButton("View Cart");
     private final JButton recommendationButton = new JButton("Recommendation");
     private final JLabel messageLabel = new JLabel(" ");
     private final JLabel totalLabel = new JLabel("Total: $0.00");
+
     private final AddToCartController addToCartController;
     private final RemoveFromCartController removeFromCartController;
     private final CartViewModel cartViewModel;
@@ -46,6 +49,8 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         urlPanel.add(urlField);
         urlPanel.add(new JLabel("Quantity:"));
         urlPanel.add(quantityField);
+        urlPanel.add(new JLabel("Target Price:"));
+        urlPanel.add(targetPriceField);
         urlPanel.add(addButton);
         urlPanel.add(viewCartButton);
         urlPanel.add(recommendationButton);
@@ -84,7 +89,27 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
                 return;
             }
 
-            addToCartController.execute(username, url, quantity);
+            String targetPriceText = targetPriceField.getText().trim();
+            int targetPrice;
+
+            try {
+                targetPrice = Integer.parseInt(targetPriceText);
+                if (targetPrice <= 0) {
+                    messageLabel.setText("Target price must be a positive integer.");
+                    urlField.setText("");
+                    quantityField.setText("1");
+                    urlField.requestFocusInWindow();
+                    return;
+                }
+            } catch (NumberFormatException ex) {
+                messageLabel.setText("Target price must be a positive integer.");
+                urlField.setText("");
+                quantityField.setText("1");
+                urlField.requestFocusInWindow();
+                return;
+            }
+
+            addToCartController.execute(username, url, quantity, targetPrice);
 
             urlField.setText("");
             quantityField.setText("1");

@@ -83,10 +83,12 @@ public class CartWindow extends JFrame implements PropertyChangeListener {
             totalLabel.setText("Total: $0.00");
         } else {
             for (CartItem item : cart.getItems()) {
-                String text = item.getName() + " | $" + item.getPrice()
-                        + " x " + item.getQuantity();
-                JButton button = new JButton(text);
                 String url = item.getProductUrl();
+
+                String text = item.getName() + " | $" + item.getPrice()
+                        + " x " + item.getQuantity() + " | " + cart.getTargetPrice(url);
+                JButton button = new JButton(text);
+
                 button.addActionListener(e -> {
                     selectedProductUrl = url;
                     selectedLabel.setText("Selected: " + item.getName());
