@@ -1,16 +1,14 @@
 package use_case.LogIn;
 
-import entity.User;
-
 public class LogInInteractor implements LogInInputBoundary {
 
-    private final LogInUserDataAccessInterface userDataAccessObject;
-    private final LogInOutputBoundary logInPresenter;
+    private final LogInUserDataAccessInterface userDataAccess;
+    private final LogInOutputBoundary presenter;
 
-    public LogInInteractor(LogInUserDataAccessInterface userDataAccessObject,
-                           LogInOutputBoundary logInPresenter) {
-        this.userDataAccessObject = userDataAccessObject;
-        this.logInPresenter = logInPresenter;
+    public LogInInteractor(LogInUserDataAccessInterface userDataAccess,
+                           LogInOutputBoundary presenter) {
+        this.userDataAccess = userDataAccess;
+        this.presenter = presenter;
     }
 
     @Override
@@ -18,28 +16,26 @@ public class LogInInteractor implements LogInInputBoundary {
         String username = inputData.getUsername();
         String password = inputData.getPassword();
 
-        // Check if user exists
-        if (!userDataAccessObject.userExists(username)) {
-            logInPresenter.prepareFailView(username + ": account does not exist.");
+        // Validate empty fields
+        if (username == null || username.isBlank()) {
+            presenter.prepareFailView("Username cannot be empty");
             return;
         }
 
-        // Validate password
-        if (!userDataAccessObject.isPasswordCorrect(username, password)) {
-            logInPresenter.prepareFailView("Incorrect password for \"" + username + "\".");
+        if (password == null || password.isBlank()) {
+            presenter.prepareFailView("Password cannot be empty");
             return;
         }
 
-        // Fetch user
-        User user = userDataAccessObject.get(username);
+        // Check user exists and password matches
+        if (!userDataAccess.userExists(username) ||
+            !userDataAccess.isPasswordCorrect(username, password)) {
+            presenter.prepareFailView("Invalid username or password");
+            return;
+        }
 
-        // Update current user
-        userDataAccessObject.setCurrentUsername(username);
-
-        // Prepare output data
-        LogInOutputData outputData = new LogInOutputData(user.getUsername());
-
-        // Send success to presenter
-        logInPresenter.prepareSuccessView(outputData);
+        // Success
+        LogInOutputData outputData = new LogInOutputData(username);
+        presenter.prepareSuccessView(outputData);
     }
 }
