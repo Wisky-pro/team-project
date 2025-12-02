@@ -1,12 +1,7 @@
 {"users": {
     "123": {
         "password": "123",
-        "cart": {"items": [{
-            "quantity": 3,
-            "price": 52.38,
-            "name": "TELUS Apple iPhone 16 512GB - Black - Monthly Financing",
-            "productURL": "https://www.bestbuy.ca/en-ca/product/telus-apple-iphone-16-512gb-black-monthly-financing/18393284"
-        }]}
+        "cart": {"items": []}
     },
     "will": {
         "password": "kms",
@@ -14,12 +9,7 @@
     },
     "w": {
         "password": "w",
-        "cart": {"items": [{
-            "quantity": 1,
-            "price": 34.58,
-            "name": "Polaroid Go 36 Photo Album - White",
-            "productURL": "https://www.bestbuy.ca/en-ca/product/polaroid-go-36-photo-album-white/15760075?icmp=Recos_4across_y_mght_ls_lk"
-        }]}
+        "cart": {"items": []}
     },
     "207": {
         "password": "kms",
