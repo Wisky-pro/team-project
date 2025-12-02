@@ -20,7 +20,6 @@ public class DashBoardController {
     }
 
     private void addListeners() {
-        // There is NO account button in DashboardView,
-        // so no listeners for account info are added here.
+        // There is no account button so we don't need to put any listeners for account info.
     }
 }

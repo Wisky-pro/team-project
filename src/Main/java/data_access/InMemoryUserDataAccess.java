@@ -38,7 +38,6 @@ public class InMemoryUserDataAccess implements
         this.currentUsername = username;
     }
 
-
     public String getCurrentUsername() {
         return currentUsername;
     }

@@ -172,10 +172,8 @@ public class AppBuilder {
     public AppBuilder addRecommendationUseCase() {
         PurchaseRecommendationDataAccessInterface dataAccess =
                 new CommodityDataAccessObject();
-        // 3. Presenter
         PurchaseRecommendationOutputBoundary presenter =
                 new PurchaseRecommendationPresenter(dashboardVM);
-        // 4. Interactor
         PurchaseRecommendationInputBoundary interactor =
                 new PurchaseRecommendationInteractor(dataAccess, presenter);
         PurchaseRecommendationController controller = new PurchaseRecommendationController(interactor);

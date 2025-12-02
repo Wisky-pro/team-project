@@ -10,7 +10,6 @@ public class DashboardViewModel {
     private DashboardView dashboardView;
     private String message = " ";
 
-    // Setter and getter for view
     public void setDashboardView(DashboardView dashboardView) {
         this.dashboardView = dashboardView;
     }
@@ -19,7 +18,6 @@ public class DashboardViewModel {
         return dashboardView;
     }
 
-    // Message handling
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }

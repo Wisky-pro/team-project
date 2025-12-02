@@ -23,7 +23,6 @@ public class SignupInteractor implements SignupInputBoundary {
         String username = inputData.getUsername();
         String password = inputData.getPassword();
 
-        // 1️⃣ 手动校验避免 User constructor 抛 IllegalArgumentException
         if (username == null || username.isBlank()) {
             presenter.prepareFailView("Username cannot be empty");
             return;
@@ -33,17 +32,14 @@ public class SignupInteractor implements SignupInputBoundary {
             return;
         }
 
-        // 2️⃣ 重复用户名
         if (userDataAccess.usernameTaken(username)) {
             presenter.prepareFailView("Username already exists: " + username);
             return;
         }
 
-        // 3️⃣ 创建用户
         User newUser = userFactory.createUser(username, password);
         userDataAccess.addUser(newUser);
 
-        // 4️⃣ 调用成功逻辑
         presenter.prepareSuccessView(new SignupOutputData(newUser.getUsername()));
     }
 }
