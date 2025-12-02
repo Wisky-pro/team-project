@@ -3,13 +3,13 @@ package use_case.AddToCart;
 import entity.Cart;
 import entity.CartItem;
 import entity.ProductData;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import use_case.Cart.CartDataAccessInterface;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AddToCartInteractorTest {
 
@@ -125,6 +125,34 @@ public class AddToCartInteractorTest {
         interactor.execute(input);
 
         assertFalse(presenter.success);
+        Cart cart = cartDAO.getCart("user1");
+        assertTrue(cart.isEmpty());
+    }
+
+    @Test
+    public void testAddToCartFailsOnIllegalArgumentException() {
+        InMemoryCartDataAccess cartDAO = new InMemoryCartDataAccess();
+        FakeProductDataAccess productDAO = new FakeProductDataAccess();
+        TestAddPresenter presenter = new TestAddPresenter();
+
+        ProductDataAccessInterface throwingDAO = new ProductDataAccessInterface() {
+            @Override
+            public ProductData getByUrl(String url) {
+                throw new IllegalArgumentException("Invalid URL");
+            }
+        };
+
+        AddToCartInteractor interactor =
+                new AddToCartInteractor(cartDAO, throwingDAO, presenter);
+
+        AddToCartInputData input =
+                new AddToCartInputData("user1", "bad-url", 1);
+
+        interactor.execute(input);
+
+        assertFalse(presenter.success);
+        assertEquals("Invalid BestBuy product URL.", presenter.lastErrorMessage);
+
         Cart cart = cartDAO.getCart("user1");
         assertTrue(cart.isEmpty());
     }

@@ -2,13 +2,13 @@ package use_case.RemoveFromCart;
 
 import entity.Cart;
 import entity.CartItem;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import use_case.Cart.CartDataAccessInterface;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RemoveFromCartInteractorTest {
 
