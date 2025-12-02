@@ -36,7 +36,7 @@ public class AddToCartInteractor implements AddToCartInputBoundary {
                 return;
             }
 
-            Cart cart = cartDataAccess.getCart(username);
+            Cart cart = cartDataAccess.getCart(username); // gets data from dataccessobject
             cart.addItem(productData.getProductUrl(), productData.getName(), productData.getPrice(), quantity);
             cartDataAccess.saveCart(username, cart);
 

@@ -23,6 +23,7 @@ public class CommodityDataAccessObject implements PurchaseRecommendationDataAcce
 
     public CommodityDataAccessObject() {
         try{
+            //reads priceHistory.json
             String filePath = "priceHistory.json";
             String jsontext = Files.readString(Paths.get(filePath));
             JSONObject jsonObject = new JSONObject(jsontext);

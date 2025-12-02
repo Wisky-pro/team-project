@@ -22,7 +22,7 @@ public class Cart {
     }
 
     public void removeItem(String productUrl, int quantity) {
-        if (!items.containsKey(productUrl)) {
+        if (!items.containsKey(productUrl)) { //items doesnt contain a url key
             return;
         }
         CartItem item = items.get(productUrl);

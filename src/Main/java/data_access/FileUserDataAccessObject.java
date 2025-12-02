@@ -29,6 +29,7 @@ public class FileUserDataAccessObject implements LogInUserDataAccessInterface, S
 
     @Override
     public boolean isPasswordCorrect(String username, String password) {
+        //get user
         User user = users.get(username);
         return user != null && user.getPassword().equals(password);
     }
