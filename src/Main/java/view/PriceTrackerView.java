@@ -2,8 +2,11 @@ package view;
 
 import interface_adapter.AddToCart.AddToCartController;
 import interface_adapter.Cart.CartViewModel;
+import interface_adapter.PriceHistory.PriceHistoryController;
+import interface_adapter.PriceHistory.PriceHistoryViewModel;
 import interface_adapter.RemoveFromCart.RemoveFromCartController;
 import use_case.Cart.CartDataAccessInterface;
+import interface_adapter.LogIn.LogInViewModel;  // import
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,26 +19,34 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
     private final JTextField quantityField = new JTextField("1", 5);
     private final JButton addButton = new JButton("Add to Cart");
     private final JButton viewCartButton = new JButton("View Cart");
-    private final JButton recommendationButton = new JButton("Recommendation");
     private final JLabel messageLabel = new JLabel(" ");
     private final JLabel totalLabel = new JLabel("Total: $0.00");
+
     private final AddToCartController addToCartController;
     private final RemoveFromCartController removeFromCartController;
     private final CartViewModel cartViewModel;
     private final CartDataAccessInterface cartDataAccess;
-    private final String username;
-    private Runnable switchToRecommendationCallback;
+    private final LogInViewModel loginVM;  // use view-model instead of fixed username
+    private final PriceHistoryViewModel historyViewModel;
+    private final PriceHistoryController priceHistoryController;
 
-    public PriceTrackerView(AddToCartController addToCartController,
-                            RemoveFromCartController removeFromCartController,
-                            CartViewModel cartViewModel,
-                            CartDataAccessInterface cartDataAccess,
-                            String username) {
+
+    public PriceTrackerView(
+            AddToCartController addToCartController,
+            RemoveFromCartController removeFromCartController,
+            CartViewModel cartViewModel,
+            CartDataAccessInterface cartDataAccess,
+            LogInViewModel loginVM,
+            PriceHistoryViewModel historyViewModel,
+            PriceHistoryController priceHistoryController// <--- changed
+    ) {
         this.addToCartController = addToCartController;
         this.removeFromCartController = removeFromCartController;
         this.cartViewModel = cartViewModel;
         this.cartDataAccess = cartDataAccess;
-        this.username = username;
+        this.loginVM = loginVM;
+        this.historyViewModel = historyViewModel;
+        this.priceHistoryController = priceHistoryController;
 
         this.cartViewModel.addPropertyChangeListener(this);
 
@@ -48,7 +59,6 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         urlPanel.add(quantityField);
         urlPanel.add(addButton);
         urlPanel.add(viewCartButton);
-        urlPanel.add(recommendationButton);
 
         JPanel infoPanel = new JPanel(new GridLayout(2, 1));
         infoPanel.add(messageLabel);
@@ -84,6 +94,7 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
                 return;
             }
 
+            String username = loginVM.getUsername();  // get current username
             addToCartController.execute(username, url, quantity);
 
             urlField.setText("");
@@ -92,13 +103,10 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         });
 
         viewCartButton.addActionListener(e -> {
-            CartWindow window = new CartWindow(cartDataAccess, removeFromCartController, cartViewModel, username);
+            String username = loginVM.getUsername();  // use current username
+            CartWindow window = new CartWindow(cartDataAccess, removeFromCartController, cartViewModel, username,
+                    historyViewModel, priceHistoryController);
             window.setVisible(true);
-        });
-        recommendationButton.addActionListener(e -> {
-            if (switchToRecommendationCallback != null) {
-                switchToRecommendationCallback.run();
-            }
         });
     }
 
@@ -107,7 +115,5 @@ public class PriceTrackerView extends JPanel implements PropertyChangeListener {
         messageLabel.setText(cartViewModel.getMessage());
         totalLabel.setText(String.format("Total: $%.2f", cartViewModel.getTotal()));
     }
-    public void setSwitchToRecommendationCallback(Runnable callback) {
-        this.switchToRecommendationCallback = callback;
-    }
 }
+
