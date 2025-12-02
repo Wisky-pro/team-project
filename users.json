@@ -1,5 +1,5 @@
 {
-    "currentUsername": "qq",
+    "currentUsername": "w",
     "users": {
         "qq": {
             "password": "11",
@@ -15,6 +15,10 @@
         },
         "will": {
             "password": "kms",
+            "cart": {"items": []}
+        },
+        "e": {
+            "password": "e",
             "cart": {"items": []}
         },
         "w": {
