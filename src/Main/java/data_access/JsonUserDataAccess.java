@@ -6,8 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import use_case.Cart.CartDataAccessInterface;
 import use_case.LogIn.LogInUserDataAccessInterface;
-import use_case.Signup.SignupUserDataAccessInterface;
 import use_case.LogOut.LogOutUserDataAccessInterface;
+import use_case.Signup.SignupUserDataAccessInterface;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,34 +20,16 @@ public class JsonUserDataAccess implements
         LogOutUserDataAccessInterface {
 
     private final String filePath;
-    private JSONObject root;
+    private final JSONObject root;
 
     public JsonUserDataAccess(String filePath) {
         this.filePath = filePath;
 
         try {
-            if (Files.exists(Paths.get(filePath))) {
-                String content = new String(Files.readAllBytes(Paths.get(filePath)));
-                if (content.isBlank()) {
-                    root = new JSONObject();
-                    root.put("users", new JSONObject());
-                    save();
-                } else {
-                    root = new JSONObject(content);
-                    if (!root.has("users")) {
-                        root.put("users", new JSONObject());
-                        save();
-                    }
-                }
-            } else {
-                root = new JSONObject();
-                root.put("users", new JSONObject());
-                save();
-            }
+            String content = new String(Files.readAllBytes(Paths.get(filePath)));
+            root = new JSONObject(content);
         } catch (IOException e) {
-            root = new JSONObject();
-            root.put("users", new JSONObject());
-            save();
+            throw new RuntimeException("Could not load users.json", e);
         }
     }
 
@@ -59,7 +41,7 @@ public class JsonUserDataAccess implements
         }
     }
 
-    // ===== USER METHODS =====
+    // USER METHODS
 
     @Override
     public boolean usernameTaken(String username) {
@@ -102,11 +84,10 @@ public class JsonUserDataAccess implements
 
     @Override
     public void setCurrentUsername(String username) {
-        root.put("currentUsername", username);
-        save();
+        // optional — used if you want to track session
     }
 
-    // ===== CART METHODS =====
+    // CART METHODS
 
     @Override
     public Cart getCart(String username) {

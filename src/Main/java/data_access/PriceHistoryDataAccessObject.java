@@ -15,44 +15,52 @@ import java.util.Map;
 /**
  Data access object for view graph (use case 7).
  */
-public class PriceHistoryDataAccessObject implements PriceHistoryDataAccessInterface{
-    private final Map<String, PriceHistory> historyByUrl = new HashMap<>();
+public class PriceHistoryDataAccessObject implements PriceHistoryDataAccessInterface {
+    private final String filePath;
 
-    public PriceHistoryDataAccessObject(){
-        try{
-            String filePath = "priceHistory.json";
-            String jsonText = Files.readString(Paths.get(filePath));
+    public PriceHistoryDataAccessObject() {
+        this.filePath = "priceHistory.json";
+    }
 
-            JSONObject root = new JSONObject(jsonText);
-            JSONObject products = root.getJSONObject("products");
+    private Map<String, PriceHistory> parseJson(String jsonText) {
+        Map<String, PriceHistory> result = new HashMap<>();
 
-            for(String productUrl: products.keySet()){
-                JSONObject product = products.getJSONObject(productUrl);
-                JSONArray productHistory = product.getJSONArray("historyPrice");
+        JSONObject root = new JSONObject(jsonText);
+        JSONObject products = root.getJSONObject("products");
 
-                Map<LocalDate, Double> pricePoint = new HashMap<>();
-                for(int i = 0; i < productHistory.length(); i++){
-                    JSONObject pricePerDate = productHistory.getJSONObject(i);
-                    LocalDate date = LocalDate.parse(pricePerDate.getString("date"));
-                    double price = pricePerDate.getDouble("price");
-                    pricePoint.put(date, price);
-                }
+        for (String productUrl: products.keySet()) {
+            JSONObject product = products.getJSONObject(productUrl);
+            JSONArray productHistory = product.getJSONArray("historyPrice");
+            String productName = product.getString("name");
 
-                PriceHistory priceHistory = new PriceHistory(productUrl, pricePoint);
-                historyByUrl.put(productUrl, priceHistory);
+            Map<LocalDate, Double> pricePoint = new HashMap<>();
+            for (int i = 0; i < productHistory.length(); i++) {
+                JSONObject pricePerDate = productHistory.getJSONObject(i);
+                LocalDate date = LocalDate.parse(pricePerDate.getString("date"));
+                double price = pricePerDate.getDouble("price");
+                pricePoint.put(date, price);
             }
-        }catch(IOException e){
+
+            PriceHistory priceHistory = new PriceHistory(productUrl, productName, pricePoint);
+            result.put(productUrl, priceHistory);
+        }
+
+        return result;
+    }
+
+    @Override
+    public PriceHistory getPriceHistory(String productUrl) {
+        try {
+            String jsonText = Files.readString(Paths.get(filePath));
+            Map<String, PriceHistory> historyByUrl = parseJson(jsonText);
+            PriceHistory history = historyByUrl.get(productUrl);
+
+            if (history == null) {
+                throw new RuntimeException("No price history for URL: " + productUrl);
+            }
+            return history;
+        } catch (IOException e) {
             throw new RuntimeException("Failed to read priceHistory.json", e);
         }
-    }
-
-    @Override
-    public PriceHistory getPriceHistory(String productUrl){
-        return historyByUrl.get(productUrl);
-    }
-
-    @Override
-    public boolean existsByUrl(String productUrl){
-        return historyByUrl.containsKey(productUrl);
     }
 }
