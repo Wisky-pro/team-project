@@ -105,7 +105,7 @@ public class AppBuilder {
         CartDataAccessInterface cartDataAccess = new InMemoryCartDataAccess();
 
         ProductDataAccessInterface productDataAccess =
-                new BestBuyProductDataAccess("data_access/priceHistory.json");
+                new BestBuyProductDataAccess("priceHistory.json");
 
         CartViewModel cartViewModel = new CartViewModel();
 
