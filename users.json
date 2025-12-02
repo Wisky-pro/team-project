@@ -1,4 +1,8 @@
 {"users": {
+    "111": {
+        "password": "111",
+        "cart": {"items": []}
+    },
     "123": {
         "password": "123",
         "cart": {"items": []}
