@@ -114,5 +114,14 @@
                 "price": 249.99
             }
         ]
+    },
+    "https://www.bestbuy.ca/en-ca/product/telus-apple-iphone-16-512gb-black-monthly-financing/18393284": {
+        "name": "TELUS Apple iPhone 16 512GB - Black - Monthly Financing",
+        "curPrice": 52.38,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/telus-apple-iphone-16-512gb-black-monthly-financing/18393284",
+        "historyPrice": [{
+            "date": "2025-12-01",
+            "price": 52.38
+        }]
     }
 }}
