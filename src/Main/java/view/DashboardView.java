@@ -19,6 +19,12 @@ public class DashboardView extends JPanel implements PropertyChangeListener {
         this.viewModel = viewModel;
         viewModel.addPropertyChangeListener(this);
 
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        add(Box.createVerticalStrut(15));
+
+        JPanel buttons = new JPanel();
+
         setLayout(new BorderLayout());
 
         JButton logoutButton = new JButton("Log Out");
@@ -35,6 +41,9 @@ public class DashboardView extends JPanel implements PropertyChangeListener {
         JPanel center = new JPanel();
         add(center, BorderLayout.CENTER);
 
+        add(buttons);
+
+        add(Box.createVerticalStrut(10));
         add(messageLabel, BorderLayout.SOUTH);
     }
 
