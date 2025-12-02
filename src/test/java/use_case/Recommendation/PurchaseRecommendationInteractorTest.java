@@ -1,12 +1,9 @@
+package use_case.Recommendation;
+
 import org.junit.jupiter.api.Test;
-import use_case.Recommendation.PurchaseRecommendationInteractor;
-import use_case.Recommendation.PurchaseRecommendationOutputData;
-import use_case.Recommendation.PurchaseRecommendationDataAccessInterface;
 
 import java.util.List;
 
-import use_case.Recommendation.PurchaseRecommendationInputData;
-import use_case.Recommendation.PurchaseRecommendationOutputBoundary;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,8 +17,11 @@ class PurchaseRecommendationInteractorTest {
         @Override
         public boolean commodityExists(String commodityName) {
             // Only laptop exist
-            return Objects.equals(commodityName, "Laptop") || Objects.equals(commodityName, "GTX 1080") ||
-                    Objects.equals(commodityName, "i7 4790")|| Objects.equals(commodityName, "AMD Raden RX 580");
+            return Objects.equals(commodityName, "Laptop")
+                    || Objects.equals(commodityName, "GTX 1080")
+                    || Objects.equals(commodityName, "i7 4790")
+                    || Objects.equals(commodityName, "AMD Raden RX 580")
+                    || Objects.equals(commodityName, "EmptyHistory");
         }
 
         @Override
@@ -45,6 +45,8 @@ class PurchaseRecommendationInteractorTest {
                 history.add(350.0);
                 history.add(400.0);
                 return history;
+            } else if ("EmptyHistory".equals(commodityName)) {
+                return new ArrayList<>();
             }
 
             return null;
@@ -199,4 +201,23 @@ class PurchaseRecommendationInteractorTest {
         assertNotNull(presenter.errorMessage);       // has error message
     }
 
+    @Test
+    void testExistingCommodityWithEmptyHistory() {
+        // arrange
+        TestDataAccess dataAccess = new TestDataAccess();
+        TestPresenter presenter = new TestPresenter();
+        PurchaseRecommendationInteractor interactor =
+                new PurchaseRecommendationInteractor(dataAccess, presenter);
+
+        PurchaseRecommendationInputData input =
+                new PurchaseRecommendationInputData("EmptyHistory");
+
+        // act
+        interactor.execute(input);
+
+        // assert
+        assertNull(presenter.outputData);
+        assertNotNull(presenter.errorMessage);
+        assertEquals("No price history for EmptyHistory.", presenter.errorMessage);
+    }
 }

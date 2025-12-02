@@ -1,10 +1,9 @@
-package app;
+package use_case.Recommendation;
 
 import data_access.CommodityDataAccessObject;
 import interface_adapter.Dashboard.DashboardViewModel;
 import interface_adapter.Recommendation.PurchaseRecommendationController;
 import interface_adapter.Recommendation.PurchaseRecommendationPresenter;
-import use_case.Recommendation.*;
 import view.RecommendationView;
 
 import javax.swing.*;
