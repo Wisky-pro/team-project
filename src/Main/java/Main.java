@@ -11,7 +11,7 @@ public class Main {
             appBuilder.addSignupUseCase();
             appBuilder.addLoginUseCase();
             appBuilder.addCartUseCase(); // includes Dashboard + Account Info wiring
-
+            appBuilder.addRecommendationUseCase();
             JFrame frame = new JFrame("Price Tracker");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

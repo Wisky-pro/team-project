@@ -1,7 +1,6 @@
 package interface_adapter.Dashboard;
 
 import view.DashboardView;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -11,6 +10,7 @@ public class DashboardViewModel {
     private DashboardView dashboardView;
     private String message = " ";
 
+    // Setter and getter for view
     public void setDashboardView(DashboardView dashboardView) {
         this.dashboardView = dashboardView;
     }
@@ -19,6 +19,7 @@ public class DashboardViewModel {
         return dashboardView;
     }
 
+    // Message handling
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
@@ -26,7 +27,7 @@ public class DashboardViewModel {
     public void setMessage(String message) {
         String old = this.message;
         this.message = message;
-        support.firePropertyChange("message", old, message);
+        support.firePropertyChange("dashboardMessage", old, message);
     }
 
     public String getMessage() {
@@ -34,6 +35,5 @@ public class DashboardViewModel {
     }
 
     public void firePropertyChanged() {
-        support.firePropertyChange("state", null, this);
     }
 }

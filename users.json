@@ -1,27 +1,34 @@
-{"users": {
-    "111": {
-        "password": "111",
-        "cart": {"items": []}
-    },
-    "123": {
-        "password": "123",
-        "cart": {"items": []}
-    },
-    "will": {
-        "password": "kms",
-        "cart": {"items": []}
-    },
-    "w": {
-        "password": "w",
-        "cart": {"items": []}
-    },
-    "207": {
-        "password": "kms",
-        "cart": {"items": [{
-            "quantity": 3,
-            "price": 579.99,
-            "name": "Samsung 65\" U8200F Series 4K UHD HDR LED Tizen OS Smart TV (UN65U8200FFXZC) - 2025",
-            "productURL": "https://www.bestbuy.ca/en-ca/product/samsung-65-u8200f-series-4k-uhd-hdr-led-tizen-os-smart-tv-un65u8200ffxzc-2025/19382530"
-        }]}
+{
+    "currentUsername": "qq",
+    "users": {
+        "qq": {
+            "password": "11",
+            "cart": {"items": []}
+        },
+        "111": {
+            "password": "111",
+            "cart": {"items": []}
+        },
+        "123": {
+            "password": "123",
+            "cart": {"items": []}
+        },
+        "will": {
+            "password": "kms",
+            "cart": {"items": []}
+        },
+        "w": {
+            "password": "w",
+            "cart": {"items": []}
+        },
+        "207": {
+            "password": "kms",
+            "cart": {"items": [{
+                "quantity": 3,
+                "price": 579.99,
+                "name": "Samsung 65\" U8200F Series 4K UHD HDR LED Tizen OS Smart TV (UN65U8200FFXZC) - 2025",
+                "productURL": "https://www.bestbuy.ca/en-ca/product/samsung-65-u8200f-series-4k-uhd-hdr-led-tizen-os-smart-tv-un65u8200ffxzc-2025/19382530"
+            }]}
+        }
     }
-}}
+}
