@@ -18,6 +18,15 @@
             }
         ]
     },
+    "https://www.bestbuy.ca/en-ca/product/polaroid-go-36-photo-album-white/15760075?icmp=Recos_4across_y_mght_ls_lk": {
+        "name": "Polaroid Go 36 Photo Album - White",
+        "curPrice": 34.58,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/polaroid-go-36-photo-album-white/15760075?icmp=Recos_4across_y_mght_ls_lk",
+        "historyPrice": [{
+            "date": "2025-12-02",
+            "price": 34.58
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/lenovo-loq-laptop-17-3-fhd-ips-165hz-nvidia-rtx-5050-13th-generation-intel-core-i5-13450hx-16gb-1tb-ssd/19594198": {
         "name": "Lenovo LOQ Laptop, 17.3\" FHD IPS 165Hz, NVIDIA RTX 5050, 13th Generation Intel Core i5-13450HX, 16GB, 1TB SSD",
         "curPrice": 999.99,
