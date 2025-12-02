@@ -18,6 +18,15 @@
             }
         ]
     },
+    "https://www.bestbuy.ca/en-ca/product/lenovo-loq-laptop-17-3-fhd-ips-165hz-nvidia-rtx-5050-13th-generation-intel-core-i5-13450hx-16gb-1tb-ssd/19594198": {
+        "name": "Lenovo LOQ Laptop, 17.3\" FHD IPS 165Hz, NVIDIA RTX 5050, 13th Generation Intel Core i5-13450HX, 16GB, 1TB SSD",
+        "curPrice": 999.99,
+        "productURL": "https://www.bestbuy.ca/en-ca/product/lenovo-loq-laptop-17-3-fhd-ips-165hz-nvidia-rtx-5050-13th-generation-intel-core-i5-13450hx-16gb-1tb-ssd/19594198",
+        "historyPrice": [{
+            "date": "2025-12-01",
+            "price": 999.99
+        }]
+    },
     "https://www.bestbuy.ca/en-ca/product/laifen-premium-hair-dryer-lpr200gp-golden-pink-only-at-best-buy/17113615?source=collection&adSlot=1&slotPos=1": {
         "name": "Laifen Premium Hair Dryer (LPR200GP) - Golden Pink - Only at Best Buy",
         "curPrice": 219.99,
