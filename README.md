@@ -25,10 +25,9 @@ The system collects price data, stores it in a structured database, and allows u
 
 ##Tech Stack
 
-* **Language:** (e.g., Python / C / Java — fill yours)
-* **Database:** (e.g., SQLite / MySQL / custom hash table)
-* **Data Handling:** File I/O / APIs / manual input
-* **Tools:** Git, command-line interface
+* **Language:Java
+* **Data Handling:File I/O / APIs / manual input
+* **Tools: Git, command-line interface
 
 
 ## How It Works
