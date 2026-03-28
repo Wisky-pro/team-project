@@ -44,9 +44,3 @@ The system collects price data, stores it in a structured database, and allows u
 * Uses structured data storage for efficient retrieval
 * Supports dynamic updates without overwriting history
 * Designed with scalability in mind (inspired by real-world data systems like those used in industry)
-
----
-
-##Experience Connection
-
-This project reflects my experience working with database systems across different scales. Similar concepts were applied during my internship at INESA, where I worked with large-scale system data, including tracking, storing, and managing operational data efficiently.
