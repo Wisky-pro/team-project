@@ -71,11 +71,6 @@ public class PriceHistoryInteractor implements PriceHistoryInputBoundary {
             }
         }
 
-        if (dates.isEmpty() || prices.isEmpty()) {
-            priceHistoryOutputBoundary.prepareFailView("Was not able to collect price data.");
-            return null;
-        }
-
         return new PriceHistoryOutputData(dates, prices, productUrl, productName);
     }
 }
